@@ -1,12 +1,9 @@
 class CreateCarts < ActiveRecord::Migration[5.1]
   def change
     create_table :carts do |t|
-      t.integer :IP
+      t.string :IP
       t.boolean :inUse
-      
-      t.references :trip, foreign_key: true, required: false
-
-      t.timestamps
+      t.integer :cart_id
     end
   end
 end

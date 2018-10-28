@@ -1,0 +1,44 @@
+/* line 8, /home/ec2-user/environment/tamuber-students/app/assets/stylesheets/tamuber.scss */
+body {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100vw;
+  height: 100vh;
+  color: #fff;
+  background: #500;
+}
+
+/* line 19, /home/ec2-user/environment/tamuber-students/app/assets/stylesheets/tamuber.scss */
+main > * {
+  text-align: center;
+}
+/* line 22, /home/ec2-user/environment/tamuber-students/app/assets/stylesheets/tamuber.scss */
+main > *:not(:last-child) {
+  margin-bottom: 1rem;
+}
+
+/* line 27, /home/ec2-user/environment/tamuber-students/app/assets/stylesheets/tamuber.scss */
+h1 {
+  font-size: 3em;
+  font-weight: bold;
+}
+
+/* line 32, /home/ec2-user/environment/tamuber-students/app/assets/stylesheets/tamuber.scss */
+p {
+  font-size: 1.5em;
+  line-height: 1.25;
+}
+
+/* line 37, /home/ec2-user/environment/tamuber-students/app/assets/stylesheets/tamuber.scss */
+a {
+  display: inline-block;
+  padding: 0.75rem;
+  border-radius: 0.375rem;
+  font-weight: bold;
+  line-height: 1;
+  text-decoration: none;
+  color: #500;
+  background: #fff;
+}

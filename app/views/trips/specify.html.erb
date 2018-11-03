@@ -19,7 +19,7 @@
       <div class="form-group">
         <label for="source">Pickup</label>:
         <select id="source" class="form-control" name="source">
-          <% @places.each do |num| %>
+          <% (1..6).each do |num| %>
             <option><%= num %></option>
           <% end %>
         </select>

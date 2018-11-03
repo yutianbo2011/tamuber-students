@@ -103,7 +103,7 @@ class TripsController < ApplicationController
     # end
     
     def specify
-        @places = Places.all
+        @places = ["ETB", "HRBB", "MSC", "Evans Library", "Kyle Field", "REC"]
     end
     
     def create

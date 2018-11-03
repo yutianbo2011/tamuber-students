@@ -95,11 +95,15 @@ class TripsController < ApplicationController
         end
     end
     
+    # def specify
+    #     #Dummy ips for testing the ros functions to get route data
+    #     @cartIPs = Cart.all.select(:IP)
+    #     @cartIDs = Cart.all.select(:id)
+    #     @message = flash[:alert]
+    # end
+    
     def specify
-        #Dummy ips for testing the ros functions to get route data
-        @cartIPs = Cart.all.select(:IP)
-        @cartIDs = Cart.all.select(:id)
-        @message = flash[:alert]
+        @places = Places.all
     end
     
     def create

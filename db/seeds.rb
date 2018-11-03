@@ -32,6 +32,11 @@ carts.each do |cart|
   Cart.create!(cart)
 end
 
+places = ["ETB", "HRBB", "MSC", "Evans Library", "Kyle Field", "REC"]
+places.each do |place|
+  Places.create!(place)
+end
+
 # carts = [{:IP => 0, :inUse => false, :seat_count => 6, :handicap_access => false, :last_busy_check => 0, :id => 3}]
 
 # carts.each do |cart|

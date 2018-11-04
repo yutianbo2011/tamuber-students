@@ -1,0 +1,42 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, or any plugin's
+ * vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any other CSS/SCSS
+ * files in this directory. Styles in this file should be added after the last require_* statement.
+ * It is generally better to create a new file per style scope.
+ *
+
+ */
+/* line 17, /home/ec2-user/environment/tamuber-students/app/assets/stylesheets/sessions.scss */
+* {
+  margin: 0;
+  padding: 0;
+}
+
+/* line 22, /home/ec2-user/environment/tamuber-students/app/assets/stylesheets/sessions.scss */
+html {
+  text-size-adjust: none;
+  -moz-text-size-adjust: none;
+  -webkit-text-size-adjust: none;
+  -ms-text-size-adjust: none;
+  font-family: sans-serif;
+  line-height: 1;
+}
+
+@media (max-width: 40em) {
+  /* line 32, /home/ec2-user/environment/tamuber-students/app/assets/stylesheets/sessions.scss */
+  main {
+    width: 100%;
+  }
+}
+@media (min-width: 40em) {
+  /* line 38, /home/ec2-user/environment/tamuber-students/app/assets/stylesheets/sessions.scss */
+  main {
+    width: 40em;
+  }
+}

@@ -13,4 +13,13 @@ Rails.application.routes.draw do
   get '/cart_not_found', to: 'trips#cart_not_found'
   get '/specify', to: 'trips#specify'
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
+  # Added the following for signup and logging
+  # Edit Manish start
+  get    '/signup',  to: 'users#new'
+  post '/signup',  to: 'users#create'
+  get    '/login',   to: 'sessions#new'
+  post   '/login',   to: 'sessions#create'
+  delete '/logout',  to: 'sessions#destroy'
+  # Edit end
+  
 end

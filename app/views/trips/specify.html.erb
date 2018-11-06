@@ -28,7 +28,7 @@
       <div class="form-group">
         <label for="destination">Destination</label>:
         <select id="destination" class="form-control" name="destination">
-          <% (1..6).each do |num| %>
+          <% @places.each do |num| %>
             <option><%= num %></option>
           <% end %>
         </select>

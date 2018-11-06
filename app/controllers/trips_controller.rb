@@ -107,6 +107,10 @@ class TripsController < ApplicationController
         
         if params.has_key?(:destination)
             @dest = params[:destination] #.to_i
+            if @src == @dest
+                flash[:alert] = 'Pickup and Destination are same'
+                redirect_to '/specify'
+            end
         else
             # specify redirect to select dest
             flash[:alert] = 'Please select a destination'

@@ -101,19 +101,19 @@ class TripsController < ApplicationController
             @src = params[:source] #.to_i
         else
             # specify redirect to select source
-            flash[:alert] = 'Please select a source'
+            flash[:notice] = "Please select a source"
             redirect_to '/specify'
         end
         
         if params.has_key?(:destination)
             @dest = params[:destination] #.to_i
             if @src == @dest
-                flash[:alert] = 'Pickup and Destination are same'
+                flash[:notice] = "Pickup and Destination are same"
                 redirect_to '/specify'
             end
         else
             # specify redirect to select dest
-            flash[:alert] = 'Please select a destination'
+            flash[:notice] = "Please select a destination"
             redirect_to '/specify'
         end
     end

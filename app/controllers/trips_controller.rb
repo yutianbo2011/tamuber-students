@@ -97,21 +97,14 @@ class TripsController < ApplicationController
     
     def new
         # print params
-        if params.has_key?(:source)
+        
+        if params.has_key?(:source) and params.has_key?(:destination)
             @src = params[:source] #.to_i
+            @dest = params[:destination] #.to_i
             if @src == ""
                 flash[:notice] = "Please select a pickup point"
                 redirect_to '/specify'
-            end
-        else
-            # specify redirect to select source
-            flash[:notice] = "Please select a pickup point"
-            redirect_to '/specify'
-        end
-        
-        if params.has_key?(:destination)
-            @dest = params[:destination] #.to_i
-            if @dest == ""
+            elsif @dest == ""
                 flash[:notice] = "Please select a drop off point"
                 redirect_to '/specify'
             elsif @src == @dest
@@ -119,10 +112,45 @@ class TripsController < ApplicationController
                 redirect_to '/specify'
             end
         else
-            # specify redirect to select dest
-            flash[:notice] = "Please select a drop off point"
-            redirect_to '/specify'
+            if !params.has_key?(:source)
+                flash[:notice] = "Please select a pickup point"
+                redirect_to '/specify'
+            elsif !params.has_key?(:destination)
+                flash[:notice] = "Please select a drop off point"
+                redirect_to '/specify'
+            else
+                flash[:notice] = "Please select a pickup and drop off point"
+                redirect_to '/specify'
+            end
         end
+                
+        
+        # if params.has_key?(:source)
+        #     @src = params[:source] #.to_i
+        #     if @src == ""
+        #         flash[:notice] = "Please select a pickup point"
+        #         redirect_to '/specify'
+        #     end
+        # else
+        #     # specify redirect to select source
+        #     flash[:notice] = "Please select a pickup point"
+        #     redirect_to '/specify'
+        # end
+        
+        # if params.has_key?(:destination)
+        #     @dest = params[:destination] #.to_i
+        #     if @dest == ""
+        #         flash[:notice] = "Please select a drop off point"
+        #         redirect_to '/specify'
+        #     elsif @src == @dest
+        #         flash[:notice] = "pickup and drop off point are same"
+        #         redirect_to '/specify'
+        #     end
+        # else
+        #     # specify redirect to select dest
+        #     flash[:notice] = "Please select a drop off point"
+        #     redirect_to '/specify'
+        # end
         
         if params.has_key?(:handicap_access)
             @needs_assist = params[:handicap_access].to_s == "on"

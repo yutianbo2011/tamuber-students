@@ -96,8 +96,10 @@ class TripsController < ApplicationController
     # end
     
     def new
+        print params
         if params.has_key?(:source)
             @src = params[:source] #.to_i
+            
         else
             # specify redirect to select source
             flash[:alert] = 'Please select a source'

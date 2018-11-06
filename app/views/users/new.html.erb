@@ -4,7 +4,8 @@
 <div class="row">
   <div class="col-md-6 col-md-offset-3">
     <%= form_for(@user, url: signup_path) do |f| %>
-      <%= render 'shared/error_messages' %>
+    <%# This is a great comment! %>
+      <%#= render 'shared/error_messages' %>
 
       <%= f.label :firstname %>
       <%= f.text_field :firstname, class: 'form-control' %>

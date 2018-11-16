@@ -14,7 +14,7 @@ class UsersController < ApplicationController
       log_in @user
       flash[:success] = "Welcome to TamUber!"
       #redirect_to @user
-      redirect_to trips_path
+      redirect_to "trips/index"
     else
       render 'new'
     end

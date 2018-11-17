@@ -57,6 +57,8 @@ function initMapWithMarker(lat, lng, startPoint) {
             console.log("data " +geo);
             console.log("data " + geo.coordinates[0])
             console.log("fsdfsd"+geo.coordinates.length);
+            console.log("travel time invoked from outside");
+      
             
             start = geo.coordinates[0];
             end = geo.coordinates[geo.coordinates.length-1];

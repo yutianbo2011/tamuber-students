@@ -17,6 +17,7 @@ function initMap() {
 }
 
 function initMapWithMarker(lat, lng, startPoint) {
+      console.log("in initMapwithMarker");
       var mapEl = $('#map');
       var optimized = mapEl.data('test-env'); //so that marker elements show up for testing
       var myLatLng = {lat: lat, lng: lng};
@@ -33,7 +34,7 @@ function initMapWithMarker(lat, lng, startPoint) {
       var end = [ -96.3425741,30.6213251];
       
       console.log("travel time invoked from outside");
-       getTravelTime(start[1], start[0], end[1], end[0]);
+      getTravelTime(start[1], start[0], end[1], end[0]);
        
       map.on('load', function() {
         getRoute(start,end);

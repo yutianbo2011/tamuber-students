@@ -32,6 +32,7 @@ function initMapWithMarker(lat, lng, startPoint) {
       var start = [-96.3409565,30.6189768];
       var end = [ -96.3425741,30.6213251];
       
+      console.log("travel time invoked from outside");
        getTravelTime(start[1], start[0], end[1], end[0]);
        
       map.on('load', function() {

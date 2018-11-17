@@ -31,12 +31,15 @@ function initMapWithMarker(lat, lng, startPoint) {
       
       var start = [-96.3409565,30.6189768];
       var end = [ -96.3425741,30.6213251];
+      
+       getTravelTime(start[1], start[0], end[1], end[0]);
+       
       map.on('load', function() {
         getRoute(start,end);
       });
 
 
-      getTravelTime(start[1], start[0], end[1], end[0]);
+     
       function getRoute(start,end) {
         //var start = [lat,lng];
         console.log("route enter");

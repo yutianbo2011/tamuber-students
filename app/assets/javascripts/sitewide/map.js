@@ -36,7 +36,7 @@ function initMapWithMarker(lat, lng, startPoint) {
       });
 
 
-      getTravelTime(start[1], start[0], end[1], end[0])
+      getTravelTime(start[1], start[0], end[1], end[0]);
       function getRoute(start,end) {
         //var start = [lat,lng];
         console.log("route enter");

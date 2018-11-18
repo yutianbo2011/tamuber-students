@@ -19,9 +19,11 @@
     <div id="mapid1" name='mapid1'></div>
 
     <%= form_for @trip, url: {action: "create"}, method: "POST" do |form| %>
-    <p>Estimated Time of Arrival:</p>
-    <p>Estimated Trip Time:</p>
-    <p>Car Details:</p>
+    <table style='margin-bottom:10px'>
+        <tr>Estimated Time of Arrival:</tr>
+        <tr>Estimated Trip Time:</tr>
+        <tr>Car Details:</tr>
+    </table>
    <!--   <table style='margin-bottom:10px'>
         <tr>
           <th>Start</th>

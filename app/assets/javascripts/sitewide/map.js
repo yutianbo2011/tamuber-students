@@ -18,7 +18,7 @@ function initMap() {
    });
 }
 
-function initMapWithMarker(lat, lng, startPoint) {
+function initMapWithMarker(startLat, startLng, endLng, endLat) {
       console.log("in initMapwithMarker");
       var mapEl = $('#map');
       var optimized = mapEl.data('test-env'); //so that marker elements show up for testing
@@ -78,20 +78,29 @@ function initMapWithMarker(lat, lng, startPoint) {
           });
           // this is where the code from the next step will go
           var message = null;
-          if(startpoint!=null){
-            message = "HRBB"
-            address = "Harvey R. \"Bum\" Bright Building College Station, TX 77840..";
+          if(start!=null){
+            strtMessage = "HRBB"
+            strtAddress = "Harvey R. \"Bum\" Bright Building, College Station, TX 77840..";
           }
-          var contentString = '<h5>'+message+"</h5>"
-          contentString = contentString + "<p>Details : "+address+"</p>"
-          var pop1 = new mapboxgl.Popup().setHTML(contentString);
-          var marker = new mapboxgl.Marker()
+          if(end!=null){
+            endMessage = "ZACH"
+            endAddress = "Zachry Engineering Education Complex, College Station, TX 77840..";
+          }
+          var contentStartString = '<h5>'+strtMessage+"</h5>"
+          contentStartString = contentStartString + "<p>Details : "+strtAddress+"</p>"
+          var contenEndString = '<h5>'+endMessage+"</h5>"
+          contenEndString = contenEndString + "<p>Details : "+strtAddress+"</p>"
+          
+          var popStart = new mapboxgl.Popup().setHTML(contentStartString);
+          var popEnd = new mapboxgl.Popup().setHTML(contenEndString);
+          
+          var markerStart = new mapboxgl.Marker()
                 .setLngLat(start)
-                .setPopup(pop1)
+                .setPopup(popStart)
                 .addTo(map);
-          var marker2 = new mapboxgl.Marker()
+          var markerEnd = new mapboxgl.Marker()
                 .setLngLat(end)
-                .setPopup(pop1)
+                .setPopup(popEnd)
                 .addTo(map);
           
         }).always(function(){

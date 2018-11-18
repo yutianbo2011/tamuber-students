@@ -18,23 +18,24 @@ function initMap() {
    });
 }
 
-function initMapWithMarker(startLat, startLng, endLng, endLat) {
+function initMapWithMarker(start, end) {
       console.log("in initMapwithMarker");
       var mapEl = $('#map');
       var optimized = mapEl.data('test-env'); //so that marker elements show up for testing
-      var myLatLng = {lat: lat, lng: lng};
+      // var myLatLng = {lat: lat, lng: lng};
      
       // mapboxgl.accessToken = 'pk.eyJ1IjoiZ3Vsc2hhbmsiLCJhIjoiY2pvM3d1NGV3MTFydzN3cWlkZ2xjdmE1MSJ9.zQ1AATk2EOGJ4XMDyBV9vA';
       mapboxgl.accessToken = ACCESS_TOKEN
       map = new mapboxgl.Map({
         container: 'mapid1', // HTML container id
         style: 'mapbox://styles/mapbox/streets-v9', // style URL
-        center: [lat,lng], // starting position as [lng, lat]
+        center: [-96.3365,30.6185],
+        //center: [lat,lng], // starting position as [lng, lat]
         zoom: 15
       });
       
-      var start = [-96.3409565,30.6189768];
-      var end = [ -96.3425741,30.6213251];
+      var start = [-96.3409565,30.6189768];//start;
+      var end = [ -96.3425741,30.6213251];//end;
       console.log("travel time invoked from outside");
       // getTravelTime(start[1], start[0], end[1], end[0]);
       

@@ -12,7 +12,8 @@ class ApplicationController < ActionController::Base
   def check_token
     unless logged_in?
       session[:original_url] = request.url
-      redirect_to :controller => :users, :action => :new
+     # redirect_to :controller => :users, :action => :new
+      redirect_to :controller => :sessions, :action => :new
     end
   end
   # Edit Manish end

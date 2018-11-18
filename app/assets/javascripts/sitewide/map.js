@@ -19,7 +19,7 @@ function initMap() {
 }
 
 function initMapWithMarker(lat, lng, startPoint) {
-  //console.log("in initMapwithMarker");
+      console.log("in initMapwithMarker");
       var mapEl = $('#map');
       var optimized = mapEl.data('test-env'); //so that marker elements show up for testing
       var myLatLng = {lat: lat, lng: lng};
@@ -35,18 +35,14 @@ function initMapWithMarker(lat, lng, startPoint) {
       
       var start = [-96.3409565,30.6189768];
       var end = [ -96.3425741,30.6213251];
-      // console.log("travel time invoked from outside");
-      // getTravelTime(start[1], start[0], end[1], end[0]);
+      console.log("travel time invoked from outside");
+      getTravelTime(start[1], start[0], end[1], end[0]);
       
       map.on('load', function() {
         getRoute(start,end);
       });
-      var start1 = [-96.3409565,30.6189768];
 
       function getRoute(start,end) {
-        //var start = [lat,lng];
-        // var start = [-96.3409565,30.6189768];
-        // var end = [ -96.3425741,30.6213251];
         console.log("route enter");
         var directionsRequest = 'https://api.mapbox.com/directions/v5/mapbox/cycling/' + start[0] + ',' + start[1] + ';' + end[0] + ',' + end[1] + '?geometries=geojson&access_token=' + mapboxgl.accessToken;
         console.log(directionsRequest)

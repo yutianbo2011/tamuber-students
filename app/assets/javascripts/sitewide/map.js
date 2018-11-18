@@ -77,10 +77,13 @@ function initMapWithMarker(lat, lng, startPoint) {
             }
           });
           // this is where the code from the next step will go
-          
-          var contentString = '<h3>'+startPoint+"</h3>"
-          address = "..random.."
-          contentString = contentString + "<p>Closest address: "+address+"</p>"
+          var message = null;
+          if(startpoint!=null){
+            message = "HRBB"
+            address = "Harvey R. \"Bum\" Bright Building College Station, TX 77840..";
+          }
+          var contentString = '<h5>'+message+"</h5>"
+          contentString = contentString + "<p>Details : "+address+"</p>"
           var pop1 = new mapboxgl.Popup().setHTML(contentString);
           var marker = new mapboxgl.Marker()
                 .setLngLat(start)

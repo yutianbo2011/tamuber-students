@@ -97,11 +97,11 @@ function initMapWithMarker(start, end) {
           
           var markerStart = new mapboxgl.Marker()
                 .setLngLat(start)
-                .setPopup(popStart)
+                .setPopup(popStart).setColor('#ff0000')
                 .addTo(map);
           var markerEnd = new mapboxgl.Marker()
                 .setLngLat(end)
-                .setPopup(popEnd)
+                .setPopup(popEnd).setColor('#ff0000')
                 .addTo(map);
           
         }).always(function(){

@@ -272,7 +272,7 @@ function getTravelTime(startGPSLat, startGPSLon,endGPSLat, endGPSLon){
   listOfPoints = startGPS + ";" + endGPS;
   console.log("travel time invoked4")
   var directionsMatrixClient = MapboxMatrix.builder()
-    .accessToken(ACCESS_TOKEN)
+    .accessToken('pk.eyJ1IjoiZ3Vsc2hhbmsiLCJhIjoiY2pvM3d1NGV3MTFydzN3cWlkZ2xjdmE1MSJ9.zQ1AATk2EOGJ4XMDyBV9vA')
     .profile(DirectionsCriteria.PROFILE_DRIVING)
     .coordinates(listOfPoints)
     .build()

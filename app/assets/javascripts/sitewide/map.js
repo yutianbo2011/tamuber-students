@@ -105,37 +105,37 @@ function initMapWithMarker(start, end) {
                 .addTo(map);
           
         }).always(function(){
-                    map.addLayer({
-                      id: 'start',
-                      type: 'circle',
-                      source: {
-                        type: 'geojson',
-                        data: {
-                          type: 'Feature',
-                          geometry: {
-                            type: 'Point',
-                            coordinates: start
-                          }
-                        }
-                      }
+                    // map.addLayer({
+                    //   id: 'start',
+                    //   type: 'circle',
+                    //   source: {
+                    //     type: 'geojson',
+                    //     data: {
+                    //       type: 'Feature',
+                    //       geometry: {
+                    //         type: 'Point',
+                    //         coordinates: start
+                    //       }
+                    //     }
+                    //   }
                       
-                    });
-                    map.setPaintProperty('start', 'fill-color', '#ff0000');
-                    map.addLayer({
-                      id: 'end',
-                      type: 'circle',
-                      source: {
-                        type: 'geojson',
-                        data: {
-                          type: 'Feature',
-                          geometry: {
-                            type: 'Point',
-                            coordinates: end
-                          }
-                        }
-                      }
-                    });
-                    map.setPaintProperty('end', 'fill-color', '#ff0000');
+                    // });
+                    // map.setPaintProperty('start', 'fill-color', '#ff0000');
+                    // map.addLayer({
+                    //   id: 'end',
+                    //   type: 'circle',
+                    //   source: {
+                    //     type: 'geojson',
+                    //     data: {
+                    //       type: 'Feature',
+                    //       geometry: {
+                    //         type: 'Point',
+                    //         coordinates: end
+                    //       }
+                    //     }
+                    //   }
+                    // });
+                    // map.setPaintProperty('end', 'fill-color', '#ff0000');
         });
       }
 }    

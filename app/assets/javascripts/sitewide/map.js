@@ -105,41 +105,53 @@ function initMapWithMarker(start, end) {
                 .addTo(map);
           
         }).always(function(){
-          map.addLayer({
-            id: 'start',
-            type: 'circle',
-            source: {
-              type: 'geojson',
-              data: {
-                type: 'Feature',
-                geometry: {
-                  type: 'Point',
-                  coordinates: start
-                }
-              }
-            }
-          });
-          map.addLayer({
-            id: 'end',
-            type: 'circle',
-            source: {
-              type: 'geojson',
-              data: {
-                type: 'Feature',
-                geometry: {
-                  type: 'Point',
-                  coordinates: end
-                }
-              }
-            }
-          });
+                    map.addLayer({
+                      id: 'start',
+                      type: 'circle',
+                      source: {
+                        type: 'geojson',
+                        data: {
+                          type: 'Feature',
+                          geometry: {
+                            type: 'Point',
+                            coordinates: start
+                          }
+                        }
+                      },
+                      'paint': {
+                        'circle-radius': 2,
+                        'circle-color': {
+                            property: 'mytype', // geojson property based on which you want too change the color
+                            type: 'categorical',
+                        }
+                      }
+                      
+                    });
+                    map.addLayer({
+                      id: 'end',
+                      type: 'circle',
+                      source: {
+                        type: 'geojson',
+                        data: {
+                          type: 'Feature',
+                          geometry: {
+                            type: 'Point',
+                            coordinates: end
+                          }
+                        }
+                      },
+                      'paint': {
+                        'circle-radius': 2,
+                        'circle-color': {
+                            property: 'mytype', // geojson property based on which you want too change the color
+                            type: 'categorical'
+                        }
+                      }
+                    });
         });
-      
-      
-        
-        
       }
 }    
+
 function removeDirections() {
   // directionsDisplay.setMap(null);
 }

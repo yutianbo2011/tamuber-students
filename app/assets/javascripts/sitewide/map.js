@@ -123,6 +123,7 @@ function initMapWithMarker(start, end) {
                         'circle-color': {
                             property: 'mytype', // geojson property based on which you want too change the color
                             type: 'categorical',
+                            stops: [['type1', '#fbb03b'], ['type2', '#223b53'],['type3', '#e55e5e']]
                         }
                       }
                       
@@ -144,7 +145,8 @@ function initMapWithMarker(start, end) {
                         'circle-radius': 2,
                         'circle-color': {
                             property: 'mytype', // geojson property based on which you want too change the color
-                            type: 'categorical'
+                            type: 'categorical',
+                            stops: [['type1', '#fbb03b'], ['type2', '#223b53'],['type3', '#e55e5e']]
                         }
                       }
                     });

@@ -266,8 +266,11 @@ function selectRoute(route) {
 function getTravelTime(startGPSLat, startGPSLon,endGPSLat, endGPSLon){
   console.log("travel time invoked")
   startGPS = [startGPSLat,startGPSLon];
+  console.log("travel time invoked2")
   endGPS = [endGPSLat,endGPSLon];
+  console.log("travel time invoked3")
   listOfPoints = startGPS + ";" + endGPS;
+  console.log("travel time invoked4")
   var directionsMatrixClient = MapboxMatrix.builder()
     .accessToken(ACCESS_TOKEN)
     .profile(DirectionsCriteria.PROFILE_DRIVING)

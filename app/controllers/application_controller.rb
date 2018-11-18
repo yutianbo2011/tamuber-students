@@ -1,10 +1,12 @@
 class ApplicationController < ActionController::Base
+  
+  before_action :check_token
+  
   layout 'application'
   protect_from_forgery with: :exception
   
   # Added the following for Login 
   # Edit Manish start
-  before_filter :check_token
   
   include SessionsHelper
   def check_token

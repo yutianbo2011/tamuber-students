@@ -277,7 +277,7 @@ function getTravelTime(startGPSLat, startGPSLon,endGPSLat, endGPSLon){
     .coordinates(listOfPoints)
     .build()
        
-    console.log( "My travel times are:", directionsMatrixClient[0][0], directionsMatrixClient[0][1], directionsMatrixClient[1][0], directionsMatrixClient[1][1])
+    //console.log( "My travel times are:", directionsMatrixClient[0][0], directionsMatrixClient[0][1], directionsMatrixClient[1][0], directionsMatrixClient[1][1])
 }
 
 // // function calculateDistance(strtLat, strtLong, endLat, endLong){

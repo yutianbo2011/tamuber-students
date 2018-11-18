@@ -21,7 +21,7 @@ Rails.application.routes.draw do
   post   '/login',   to: 'sessions#create'
   delete '/logout',  to: 'sessions#destroy'
 
-  match 'users/show',   to: "trips#specify",      via: :get
+  #match 'users/show',   to: "trips#specify",      via: :get
   # Edit end
   resources :users
 end

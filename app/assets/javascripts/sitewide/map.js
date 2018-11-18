@@ -89,6 +89,11 @@ function initMapWithMarker(lat, lng, startPoint) {
                 .setLngLat(start)
                 .setPopup(pop1)
                 .addTo(map);
+          var marker2 = new mapboxgl.Marker()
+                .setLngLat(end)
+                .setPopup(pop1)
+                .addTo(map);
+          
         }).always(function(){
           map.addLayer({
             id: 'start',

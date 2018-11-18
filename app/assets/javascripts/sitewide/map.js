@@ -32,6 +32,7 @@ function initMapWithMarker(lat, lng, startPoint) {
       map.on('load', function() {
         getRoute();
       });
+      var start1 = [-96.3409565,30.6189768];
 
       function getRoute() {
         //var start = [lat,lng];

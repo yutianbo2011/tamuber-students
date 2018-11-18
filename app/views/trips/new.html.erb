@@ -20,9 +20,12 @@
 
     <%= form_for @trip, url: {action: "create"}, method: "POST" do |form| %>
     <table style='margin-bottom:10px'>
-        <tr>Estimated Time of Arrival:</tr>
-        <tr>Estimated Trip Time:</tr>
-        <tr>Car Details:</tr>
+      <tr>
+          <th>Trip Details</th>
+        </tr>
+        <tr><td>Estimated Time of Arrival:</td><td><%=15 minute></td></tr>
+        <tr><td>Estimated Trip Time:</td><td><%=15 minute></td></tr>
+        <tr><td>Car Details:</td><td><%=ZYZ></td></tr>
     </table>
    <!--   <table style='margin-bottom:10px'>
         <tr>

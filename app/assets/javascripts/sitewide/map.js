@@ -117,17 +117,10 @@ function initMapWithMarker(start, end) {
                             coordinates: start
                           }
                         }
-                      },
-                      'paint': {
-                        'circle-radius': 2,
-                        'circle-color': {
-                            property: 'mytype', // geojson property based on which you want too change the color
-                            type: 'categorical',
-                            stops: [['type1', '#fbb03b'], ['type2', '#223b53'],['type3', '#e55e5e']]
-                        }
                       }
                       
                     });
+                    map.setPaintProperty('start', 'fill-color', '#ff0000');
                     map.addLayer({
                       id: 'end',
                       type: 'circle',
@@ -140,16 +133,9 @@ function initMapWithMarker(start, end) {
                             coordinates: end
                           }
                         }
-                      },
-                      'paint': {
-                        'circle-radius': 2,
-                        'circle-color': {
-                            property: 'mytype', // geojson property based on which you want too change the color
-                            type: 'categorical',
-                            stops: [['type1', '#fbb03b'], ['type2', '#223b53'],['type3', '#e55e5e']]
-                        }
                       }
                     });
+                    map.setPaintProperty('end', 'fill-color', '#ff0000');
         });
       }
 }    

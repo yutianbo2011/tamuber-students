@@ -33,19 +33,20 @@ function initMapWithMarker(lat, lng, startPoint) {
         zoom: 15
       });
       
+      var start = [-96.3409565,30.6189768];
+      var end = [ -96.3425741,30.6213251];
       // console.log("travel time invoked from outside");
       // getTravelTime(start[1], start[0], end[1], end[0]);
       
       map.on('load', function() {
-        getRoute();
-        getRoute();//start,end);
+        getRoute(start,end);
       });
       var start1 = [-96.3409565,30.6189768];
 
-      function getRoute() {//(start,end) {
+      function getRoute(start,end) {
         //var start = [lat,lng];
-        var start = [-96.3409565,30.6189768];
-        var end = [ -96.3425741,30.6213251];
+        // var start = [-96.3409565,30.6189768];
+        // var end = [ -96.3425741,30.6213251];
         console.log("route enter");
         var directionsRequest = 'https://api.mapbox.com/directions/v5/mapbox/cycling/' + start[0] + ',' + start[1] + ';' + end[0] + ',' + end[1] + '?geometries=geojson&access_token=' + mapboxgl.accessToken;
         console.log(directionsRequest)
@@ -266,19 +267,19 @@ function selectRoute(route) {
   
 // }
 
-// function getTravelTime(startGPSLat, startGPSLon,endGPSLat, endGPSLon){
-//   console.log("travel time invoked")
-//   startGPS = [startGPSLat,startGPSLon];
-//   endGPS = [endGPSLat,endGPSLon];
-//   listOfPoints = startGPS + ";" + endGPS;
-//   var directionsMatrixClient = MapboxMatrix.builder()
-//     .accessToken(ACCESS_TOKEN)
-//     .profile(DirectionsCriteria.PROFILE_DRIVING)
-//     .coordinates(listOfPoints)
-//     .build()
+function getTravelTime(startGPSLat, startGPSLon,endGPSLat, endGPSLon){
+  console.log("travel time invoked")
+  startGPS = [startGPSLat,startGPSLon];
+  endGPS = [endGPSLat,endGPSLon];
+  listOfPoints = startGPS + ";" + endGPS;
+  var directionsMatrixClient = MapboxMatrix.builder()
+    .accessToken(ACCESS_TOKEN)
+    .profile(DirectionsCriteria.PROFILE_DRIVING)
+    .coordinates(listOfPoints)
+    .build()
        
-//     console.log( "My travel times are:", directionsMatrixClient[0][0], directionsMatrixClient[0][1], directionsMatrixClient[1][0], directionsMatrixClient[1][1])
-// }
+    console.log( "My travel times are:", directionsMatrixClient[0][0], directionsMatrixClient[0][1], directionsMatrixClient[1][0], directionsMatrixClient[1][1])
+}
 
 // // function calculateDistance(strtLat, strtLong, endLat, endLong){
  

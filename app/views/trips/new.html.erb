@@ -14,12 +14,12 @@
   <!--<body onload='initMap();updateSelectedRoute(<%= @routeData.to_json.html_safe %>);'>-->
   <body onload='initMapWithMarker([-96.3425741, 30.6213251], [-96.3425741, 30.6213251])'>
   <main>
-    <h1>Select Route</h1>
+    <h1>Selected Route</h1>
     <div id="mapid" name='mapid'></div>
     <div id="mapid1" name='mapid1'></div>
 
     <%= form_for @trip, url: {action: "create"}, method: "POST" do |form| %>
-      <table style='margin-bottom:10px'>
+   <!--   <table style='margin-bottom:10px'>
         <tr>
           <th>Start</th>
           <th>End</th>
@@ -41,7 +41,7 @@
           <%= form.text_field :cart_id, :id => 'trip_cart_id' %>
         </div>
       </div>
-    </table>
+    </table> -->
     
     
       <div style="display:none;">

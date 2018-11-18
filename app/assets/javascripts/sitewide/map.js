@@ -80,11 +80,11 @@ function initMapWithMarker(start, end) {
           // this is where the code from the next step will go
           var message = null;
           if(start!=null){
-            strtMessage = "HRBB"
+            strtMessage = "Start:"+"HRBB"
             strtAddress = "Harvey R. \"Bum\" Bright Building, College Station, TX 77840..";
           }
           if(end!=null){
-            endMessage = "ZACH"
+            endMessage = "End:"+"ZACH"
             endAddress = "Zachry Engineering Education Complex, College Station, TX 77840..";
           }
           var contentStartString = '<h5>'+strtMessage+"</h5>"
@@ -97,11 +97,11 @@ function initMapWithMarker(start, end) {
           
           var markerStart = new mapboxgl.Marker()
                 .setLngLat(start)
-                .setPopup(popStart).setColor('#ff0000')
+                .setPopup(popStart)
                 .addTo(map);
           var markerEnd = new mapboxgl.Marker()
                 .setLngLat(end)
-                .setPopup(popEnd).setColor('#ff0000')
+                .setPopup(popEnd)
                 .addTo(map);
           
         }).always(function(){

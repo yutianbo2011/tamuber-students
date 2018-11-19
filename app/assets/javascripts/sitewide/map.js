@@ -52,6 +52,12 @@ function initMapWithMarker(start, end) {
           url: directionsRequest,
         }).done(function(data) {
             var geo = data.routes[0].geometry;
+            var distancebtw = data.routes[0].distance*0.001;
+            var durationbtw = data.routes[0].duration*60;
+            
+            console.log("distance is " + distancebtw);
+            console.log("duration is " + durationbtw);
+            
             var route = geo;
             if(geo!=null && geo.coordinates.length!=0){
             console.log("data " +geo);
@@ -318,3 +324,154 @@ function selectRoute(route) {
 // function getVehicleGPS(cart_id){
   
 // }
+
+
+/* Manvitha changes 
+
+
+function updateRoute() {
+  removeRoute(); // overwrite any existing layers
+  var data = draw.getAll();
+  var answer = document.getElementById('calculated-line');
+  var lastFeature = data.features.length - 1;
+  var coords = data.features[lastFeature].geometry.coordinates;
+  var newCoords = coords.join(';')
+  getMatch(newCoords);
+}
+
+function removeRoute () {
+  if (map.getSource('route')) {
+    map.removeLayer('route');
+    map.removeSource('route');
+    document.getElementById('calculated-line').innerHTML = '';
+  } else  {
+    return;
+  }
+}
+
+function getMatch(e) {
+    // https://www.mapbox.com/api-documentation/#directions
+    mapboxgl.accessToken = ACCESS_TOKEN
+    var url = 'https://api.mapbox.com/directions/v5/mapbox/cycling/' + e +'?geometries=geojson&steps=true&&access_token=' + mapboxgl.accessToken;
+    var req = new XMLHttpRequest();
+    req.responseType = 'json';
+    req.open('GET', url, true);
+    req.onload  = function() {
+      var jsonResponse = req.response;
+      var distance = jsonResponse.routes[0].distance*0.001; // convert to km
+      var duration = jsonResponse.routes[0].duration/60; // convert to minutes
+      console.log("distance is " + distance)
+      console.log("duration is " + duration)
+      // add results to info box
+      document.getElementById('calculated-line').innerHTML = 'Distance: ' + distance.toFixed(2) + ' km<br>Duration: ' + duration.toFixed(2) + ' minutes';
+      var coords = jsonResponse.routes[0].geometry;
+      // add the route to the map
+      addRoute(coords);
+    };
+    req.send();
+}
+
+
+function addRoute (coords) {
+  // check if the route is already loaded
+  if (map.getSource('route')) {
+    map.removeLayer('route')
+    map.removeSource('route')
+  } else{
+    map.addLayer({
+      "id": "route",
+      "type": "line",
+      "source": {
+        "type": "geojson",
+        "data": {
+          "type": "Feature",
+          "properties": {},
+          "geometry": coords
+        }
+      },
+      "layout": {
+        "line-join": "round",
+        "line-cap": "round"
+      },
+      "paint": {
+        "line-color": "#3b9ddd",
+        "line-width": 8,
+        "line-opacity": 0.8
+      }
+    });
+  };
+}
+
+
+map.on('draw.create', updateRoute);
+map.on('draw.update', updateRoute);
+map.on('draw.delete', removeRoute);
+
+
+
+
+function initMapWithMarker(start, end) {
+      console.log("in initMapwithMarker");
+      var mapEl = $('#map');
+      var optimized = mapEl.data('test-env'); //so that marker elements show up for testing
+    
+     
+  
+      mapboxgl.accessToken = ACCESS_TOKEN
+      map = new mapboxgl.Map({
+        container: 'mapid1',
+        style: 'mapbox://styles/mapbox/streets-v9', 
+        center: start,
+        zoom: 15,
+        minZoom: 11
+      });
+      
+      var draw = new MapboxDraw({
+          displayControlsDefault: false,
+          controls: {
+              line_string: true,
+              trash: true
+      },
+      styles: [
+      {
+        "id": "gl-draw-line",
+        "type": "line",
+        "filter": ["all", ["==", "$type", "LineString"], ["!=", "mode", "static"]],
+        "layout": {
+          "line-cap": "round",
+          "line-join": "round"
+      },
+      "paint": {
+        "line-color": "#3b9ddd",
+        "line-dasharray": [0.2, 2],
+        "line-width": 4,
+        "line-opacity": 0.7
+      }
+    },
+    // vertex point halos
+    {
+      "id": "gl-draw-polygon-and-line-vertex-halo-active",
+      "type": "circle",
+      "filter": ["all", ["==", "meta", "vertex"], ["==", "$type", "Point"], ["!=", "mode", "static"]],
+      "paint": {
+        "circle-radius": 10,
+        "circle-color": "#FFF"
+      }
+    },
+    // vertex points
+    {
+      "id": "gl-draw-polygon-and-line-vertex-active",
+      "type": "circle",
+      "filter": ["all", ["==", "meta", "vertex"], ["==", "$type", "Point"], ["!=", "mode", "static"]],
+      "paint": {
+        "circle-radius": 6,
+        "circle-color": "#3b9ddd",
+      }
+    },
+  ]
+});
+map.addControl(draw);
+    
+}    
+
+Manvitha changes */

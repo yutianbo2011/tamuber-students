@@ -1,5 +1,6 @@
 class ApplicationController < ActionController::Base
-  
+  # The below line ensures that login is checked before any page is loaded
+  # However it is skipped in signup and login controllers.
   before_action :check_token
   
   layout 'application'

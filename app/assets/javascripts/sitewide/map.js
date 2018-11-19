@@ -34,8 +34,11 @@ function initMapWithMarker(start, end) {
         zoom: 15
       });
       
-      var start = [-96.3409565,30.6189768];//start;
-      var end = [ -96.3425741,30.6213251];//end;
+      var start = [-96.340379, 30.620167]
+      var end = [-96.323706,30.609521]
+      
+      //var start = [-96.3409565,30.6189768];//start;
+      //var end = [ -96.3425741,30.6213251];//end;
       console.log("travel time invoked from outside");
       // getTravelTime(start[1], start[0], end[1], end[0]);
       

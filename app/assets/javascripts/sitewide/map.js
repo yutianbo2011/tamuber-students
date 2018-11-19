@@ -277,6 +277,7 @@ function calculateAndDisplayRoute(request, startPointName, endPointName, routeId
 // 		};
 // 		directionsService.route(service_opts, service_callback);
 // 	}
+//delete this comment
 }
 
 function selectRoute(route) {

@@ -330,7 +330,7 @@ function selectRoute(route) {
 // }
 
 
-/* Manvitha changes 
+// Manvitha changes 
 
 
 function updateRoute() {
@@ -340,6 +340,8 @@ function updateRoute() {
   var lastFeature = data.features.length - 1;
   var coords = data.features[lastFeature].geometry.coordinates;
   var newCoords = coords.join(';')
+  console.log("newCoords are " + newCoords);
+  var newCoords = "-96.340379,30.620167;-96.323706,30.609521";
   getMatch(newCoords);
 }
 
@@ -356,7 +358,7 @@ function removeRoute () {
 function getMatch(e) {
     // https://www.mapbox.com/api-documentation/#directions
     mapboxgl.accessToken = ACCESS_TOKEN
-    var url = 'https://api.mapbox.com/directions/v5/mapbox/cycling/' + e +'?geometries=geojson&steps=true&&access_token=' + mapboxgl.accessToken;
+    var url = 'https://api.mapbox.com/directions/v5/mapbox/driving/' + e +'?geometries=geojson&steps=true&&access_token=' + mapboxgl.accessToken;
     var req = new XMLHttpRequest();
     req.responseType = 'json';
     req.open('GET', url, true);
@@ -414,13 +416,9 @@ map.on('draw.delete', removeRoute);
 
 
 
-function initMapWithMarker(start, end) {
-      console.log("in initMapwithMarker");
-      var mapEl = $('#map');
-      var optimized = mapEl.data('test-env'); //so that marker elements show up for testing
-    
-     
-  
+function newInitMapWithMarker() {
+      
+      console.log("in new initMapwithMarker");
       mapboxgl.accessToken = ACCESS_TOKEN
       map = new mapboxgl.Map({
         container: 'mapid1',
@@ -478,4 +476,4 @@ map.addControl(draw);
     
 }    
 
-Manvitha changes */
+//Manvitha changes 

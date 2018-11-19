@@ -334,6 +334,7 @@ function selectRoute(route) {
 
 
 function updateRoute() {
+  console.log("invoked update route");
   removeRoute(); // overwrite any existing layers
   var data = draw.getAll();
   var answer = document.getElementById('calculated-line');
@@ -346,6 +347,7 @@ function updateRoute() {
 }
 
 function removeRoute () {
+  console.log("invoked remove route");
   if (map.getSource('route')) {
     map.removeLayer('route');
     map.removeSource('route');
@@ -409,9 +411,7 @@ function addRoute (coords) {
 }
 
 
-map.on('draw.create', updateRoute);
-map.on('draw.update', updateRoute);
-map.on('draw.delete', removeRoute);
+
 
 
 
@@ -473,6 +473,10 @@ function newInitMapWithMarker() {
   ]
 });
 map.addControl(draw);
+console.log("control has been added");
+map.on('draw.create', updateRoute);
+map.on('draw.update', updateRoute);
+map.on('draw.delete', removeRoute);
     
 }    
 

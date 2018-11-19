@@ -423,7 +423,7 @@ function newInitMapWithMarker() {
       map = new mapboxgl.Map({
         container: 'mapid1',
         style: 'mapbox://styles/mapbox/streets-v9', 
-        center: start,
+        center: [-96.3365,30.6185],
         zoom: 15,
         minZoom: 11
       });

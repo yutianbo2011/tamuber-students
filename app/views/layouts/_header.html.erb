@@ -6,7 +6,7 @@
       <ul class="nav navbar-nav navbar-right">
         <% if logged_in? %>
 
-            <li><%= link_to "Home", specify %></li>
+            <li><%= link_to "Home", specify_url %></li>
             <li><%= link_to "Log out", logout_path, method: :delete %></li>
     
         <% else %>

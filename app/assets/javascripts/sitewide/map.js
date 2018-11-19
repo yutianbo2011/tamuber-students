@@ -428,7 +428,7 @@ function newInitMapWithMarker() {
         minZoom: 11
       });
       
-      var draw = mapboxgl.Draw(({
+      var draw = mapboxgl.Draw({
           displayControlsDefault: false,
           controls: {
               line_string: true,

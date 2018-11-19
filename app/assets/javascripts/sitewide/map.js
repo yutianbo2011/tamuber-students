@@ -48,7 +48,7 @@ function initMapWithMarker(start, end) {
 
       function getRoute(start,end) {
         console.log("route enter");
-        var directionsRequest = 'https://api.mapbox.com/directions/v5/mapbox/cycling/' + start[0] + ',' + start[1] + ';' + end[0] + ',' + end[1] + '?geometries=geojson&access_token=' + mapboxgl.accessToken;
+        var directionsRequest = 'https://api.mapbox.com/directions/v5/mapbox/driving/' + start[0] + ',' + start[1] + ';' + end[0] + ',' + end[1] + '?geometries=geojson&access_token=' + mapboxgl.accessToken;
         console.log(directionsRequest)
         $.ajax({
           method: 'GET',

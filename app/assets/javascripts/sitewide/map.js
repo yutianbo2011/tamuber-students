@@ -420,7 +420,7 @@ function newInitMapWithMarker() {
       
       console.log("in new initMapwithMarker");
       mapboxgl.accessToken = ACCESS_TOKEN
-      map = new mapboxgl.Map({
+      var map = new mapboxgl.Map({
         container: 'mapid1',
         style: 'mapbox://styles/mapbox/streets-v9', 
         center: [-96.3365,30.6185],
@@ -428,7 +428,10 @@ function newInitMapWithMarker() {
         minZoom: 11
       });
       
-      var draw = mapboxgl.Draw({
+      
+      
+      
+      var draw = new MapboxDraw({
           displayControlsDefault: false,
           controls: {
               line_string: true,

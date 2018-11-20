@@ -434,17 +434,12 @@ function addRoute (coords) {
           var popStart = new mapboxgl.Popup().setHTML(contentStartString);
           var popEnd = new mapboxgl.Popup().setHTML(contenEndString);
           
-          /*var markerStart = new mapboxgl.Marker('#ff0000')
+          var markerStart = new mapboxgl.Marker()
                 .setLngLat(start)
                 .setPopup(popStart)
-                .addTo(map);*/
+                .addTo(map);
                 
-          var circle =  new mapboxgl.circle(start, {
-    color: 'red',
-    fillColor: '#f03',
-    fillOpacity: 0.5,
-    radius: 500
-}).addTo(map);
+  
           var markerEnd = new mapboxgl.Marker()
                 .setLngLat(end)
                 .setPopup(popEnd)

@@ -339,10 +339,11 @@ function updateRoute() {
   removeRoute(); // overwrite any existing layers
   var data = draw.getAll();
   var answer = document.getElementById('calculated-line');
+  /*
   var lastFeature = data.features.length - 1;
   var coords = data.features[lastFeature].geometry.coordinates;
   var newCoords = coords.join(';')
-  console.log("newCoords are " + newCoords);
+  console.log("newCoords are " + newCoords);*/
   var newCoords = "-96.340379,30.620167;-96.323706,30.609521";
   getMatch(newCoords);
 }

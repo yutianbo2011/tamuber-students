@@ -414,7 +414,37 @@ function addRoute (coords) {
       }
     });
     
-   
+    var start = [-96.340379, 30.620167]
+      var end = [-96.323706,30.609521]
+    var message = null;
+          if(start!=null){
+            strtMessage = "Start:"+"HRBB"
+            strtAddress = "Harvey R. \"Bum\" Bright Building, College Station, TX 77840..";
+          }
+          if(end!=null){
+            endMessage = "End:"+"ZACH"
+            endAddress = "Zachry Engineering Education Complex, College Station, TX 77840..";
+          }
+          var contentStartString = '<h5>'+strtMessage+"</h5>"
+          contentStartString = contentStartString + "<p>Details : "+strtAddress+"</p>"
+          var contenEndString = '<h5>'+endMessage+"</h5>"
+          contenEndString = contenEndString + "<p>Details : "+strtAddress+"</p>"
+          
+          var popStart = new mapboxgl.Popup().setHTML(contentStartString);
+          var popEnd = new mapboxgl.Popup().setHTML(contenEndString);
+          
+          var markerStart = new mapboxgl.Marker()
+                .setLngLat(start)
+                .setPopup(popStart)
+                .addTo(map);
+          var markerEnd = new mapboxgl.Marker()
+                .setLngLat(end)
+                .setPopup(popEnd)
+                .addTo(map);
+          
+        
+    
+   /*
      var el = document.createElement('div');
       el.className = 'marker';
       
@@ -424,7 +454,7 @@ function addRoute (coords) {
                 .addTo(map);
     
     
-  /*  console.log("marker prop " + marker.geometry.coordinates)
+    console.log("marker prop " + marker.geometry.coordinates)
     var mar = new mapboxgl.Marker()
   .setLngLat([-96.340379, 30.620167])
   .setPopup(new mapboxgl.Popup({ offset: 25 }) // add popups

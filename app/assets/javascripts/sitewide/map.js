@@ -415,7 +415,7 @@ function addRoute (coords) {
         "line-opacity": 0.8
       }
     });
-    console.log("before markers " + coords);
+    console.log("before markers " + coords[0] + ',' + coords[1]);
     var el = document.createElement('div');
       el.className = 'marker';
     var start = [-96.340379, 30.620167]

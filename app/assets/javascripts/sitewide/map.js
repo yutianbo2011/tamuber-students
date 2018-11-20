@@ -413,6 +413,8 @@ function addRoute (coords) {
         "line-opacity": 0.8
       }
     });
+    
+    /*
      var el = document.createElement('div');
       el.className = 'marker';
     
@@ -421,6 +423,7 @@ function addRoute (coords) {
   .setPopup(new mapboxgl.Popup({ offset: 25 }) // add popups
   .setHTML('<h3>' + marker.properties.title + '</h3><p>' + marker.properties.description + '</p>'))
   .addTo(map);
+  */
 
 
     

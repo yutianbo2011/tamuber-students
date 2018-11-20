@@ -428,7 +428,7 @@ function addRoute (coords) {
     var mar = new mapboxgl.Marker()
   .setLngLat([-96.340379, 30.620167])
   .setPopup(new mapboxgl.Popup({ offset: 25 }) // add popups
-  .setHTML('<h3>' + hello + '</h3><p>' + how is this + '</p>'))
+  .setHTML('<h3>' + hello + '</h3><p>' + how is + '</p>'))
   .addTo(map);
   
 

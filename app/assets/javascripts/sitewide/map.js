@@ -418,10 +418,11 @@ function addRoute (coords) {
      var el = document.createElement('div');
       el.className = 'marker';
       
-       /*var markerStart = new mapboxgl.Marker()
-                .setLngLat(start)
-                .setPopup(popStart)
-                .addTo(map);*/
+       var markerStart = new mapboxgl.Marker()
+                .setLngLat([-96.340379, 30.620167])
+                .setPopup(new mapboxgl.Popup({ offset: 25 }))
+                .setHTML('<h3>hello</h3>')
+                .addTo(map);
     
     
   /*  console.log("marker prop " + marker.geometry.coordinates)

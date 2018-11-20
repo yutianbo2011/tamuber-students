@@ -22,7 +22,8 @@
   </header>
   <!--<body onload='initMap();updateSelectedRoute(<%= @routeData.to_json.html_safe %>);'>-->
   <!--<body onload='initMapWithMarker([-96.3425741, 30.6213251], [-96.3425741, 30.6213251])'> -->
-  <body onload = 'newInitMapWithMarker();updateRoute();'>
+  <!-- have to pass start and end coordinates from here-->
+  <body onload = 'newInitMapWithMarker();updateRoute([-96.3425741, 30.6213251], [-96.3425741, 30.6213251]);'>
   <main>
     <h1>Selected Route</h1>
     <div id="mapid" name='mapid'></div>

@@ -334,7 +334,7 @@ function selectRoute(route) {
 // Manvitha changes 
 
 
-function updateRoute() {
+function updateRoute(source, destination) {
   console.log("invoked update route");
   removeRoute(); // overwrite any existing layers
   var data = draw.getAll();
@@ -344,7 +344,9 @@ function updateRoute() {
   var coords = data.features[lastFeature].geometry.coordinates;
   var newCoords = coords.join(';')
   console.log("newCoords are " + newCoords);*/
-  var newCoords = "-96.340379,30.620167;-96.323706,30.609521";
+  var newCoords = source[0]+','+source[1]+';'+destination[0]+','+destination[1];
+   console.log("newCoords are " + newCoords);
+  //var newCoords = "-96.340379,30.620167;-96.323706,30.609521";
   getMatch(newCoords);
 }
 
@@ -372,12 +374,12 @@ function getMatch(e) {
     req.open('GET', url, true);
     req.onload  = function() {
       var jsonResponse = req.response;
-      var distance = jsonResponse.routes[0].distance*0.001; // convert to km
+      var distance = jsonResponse.routes[0].distance*0.001*0.621371; // convert to km
       var duration = jsonResponse.routes[0].duration/60; // convert to minutes
       console.log("distance is " + distance)
       console.log("duration is " + duration)
       // add results to info box
-      document.getElementById('calculated-line').innerHTML = 'Distance: ' + distance.toFixed(2) + ' km<br>Duration: ' + duration.toFixed(2) + ' minutes';
+      document.getElementById('calculated-line').innerHTML = 'Distance: ' + distance.toFixed(2) + ' mi<br>Duration: ' + duration.toFixed(2) + ' minutes';
       var coords = jsonResponse.routes[0].geometry;
       // add the route to the map
       addRoute(coords);
@@ -413,6 +415,7 @@ function addRoute (coords) {
         "line-opacity": 0.8
       }
     });
+    console.log("before markers " + coords);
     var el = document.createElement('div');
       el.className = 'marker';
     var start = [-96.340379, 30.620167]

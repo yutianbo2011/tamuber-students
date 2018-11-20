@@ -424,12 +424,12 @@ function addRoute (coords) {
                 .addTo(map);*/
     
     
-    console.log("marker prop " + marker.geometry.coordinates)
+  /*  console.log("marker prop " + marker.geometry.coordinates)
     var mar = new mapboxgl.Marker()
   .setLngLat([-96.340379, 30.620167])
   .setPopup(new mapboxgl.Popup({ offset: 25 }) // add popups
   .setHTML('<h3>hello</h3>')
-  .addTo(map)
+  .addTo(map)*/
   
   }
 }

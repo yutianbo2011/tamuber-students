@@ -1,6 +1,7 @@
 
 var directionsService;
 var map = null;
+var draw = null;
 var infowindow;
 var marker;
 var stmarker;
@@ -353,7 +354,9 @@ function removeRoute () {
     map.removeLayer('route');
     map.removeSource('route');
     document.getElementById('calculated-line').innerHTML = '';
+    console.log("route blah");
   } else  {
+    console.log("route ex blah");
     return;
   }
   console.log("couldn't find map variable2")
@@ -433,7 +436,7 @@ function newInitMapWithMarker() {
       console.log("map is " + map);
       
       
-      var draw = new MapboxDraw({
+      draw = new MapboxDraw({
           displayControlsDefault: false,
           controls: {
               line_string: true,

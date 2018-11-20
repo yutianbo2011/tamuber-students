@@ -413,6 +413,17 @@ function addRoute (coords) {
         "line-opacity": 0.8
       }
     });
+     var el = document.createElement('div');
+      el.className = 'marker';
+    
+    var mar = new mapboxgl.Marker(el)
+  .setLngLat(marker.geometry.coordinates)
+  .setPopup(new mapboxgl.Popup({ offset: 25 }) // add popups
+  .setHTML('<h3>' + marker.properties.title + '</h3><p>' + marker.properties.description + '</p>'))
+  .addTo(map);
+
+
+    
   };
 }
 
@@ -453,7 +464,7 @@ function newInitMapWithMarker() {
           "line-join": "round"
       },
       "paint": {
-        "line-color": "#3b9ddd",
+        "line-color": "#5184e1",
         "line-dasharray": [0.2, 2],
         "line-width": 4,
         "line-opacity": 0.7

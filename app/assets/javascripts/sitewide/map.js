@@ -348,6 +348,7 @@ function updateRoute() {
 
 function removeRoute () {
   console.log("invoked remove route");
+  console.log("couldn't find map variable")
   if (map.getSource('route')) {
     map.removeLayer('route');
     map.removeSource('route');
@@ -355,6 +356,7 @@ function removeRoute () {
   } else  {
     return;
   }
+  console.log("couldn't find map variable2")
 }
 
 function getMatch(e) {

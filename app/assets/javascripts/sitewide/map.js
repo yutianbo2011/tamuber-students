@@ -434,11 +434,11 @@ function addRoute (coords) {
           var popStart = new mapboxgl.Popup().setHTML(contentStartString);
           var popEnd = new mapboxgl.Popup().setHTML(contenEndString);
           
-          var markerStart = new mapboxgl.Marker()
+          var markerStart = new mapboxgl.Marker('#ff0000')
                 .setLngLat(start)
                 .setPopup(popStart)
                 .addTo(map);
-          var markerEnd = new mapboxgl.Marker()
+          var markerEnd = new mapboxgl.Marker('#ff0000')
                 .setLngLat(end)
                 .setPopup(popEnd)
                 .addTo(map);

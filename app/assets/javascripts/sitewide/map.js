@@ -475,7 +475,7 @@ function newInitMapWithMarker() {
     },
   ]
 });
-console.add("problem arose after this");
+console.log("problem arose after this");
 map.addControl(draw);
 console.log("control has been added");
 map.on('draw.create', updateRoute);

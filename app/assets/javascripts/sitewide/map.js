@@ -414,10 +414,10 @@ function addRoute (coords) {
       }
     });
     
-    /*
+   
      var el = document.createElement('div');
       el.className = 'marker';
-    
+    /*
     var mar = new mapboxgl.Marker(el)
   .setLngLat(marker.geometry.coordinates)
   .setPopup(new mapboxgl.Popup({ offset: 25 }) // add popups

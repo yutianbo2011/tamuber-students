@@ -413,7 +413,8 @@ function addRoute (coords) {
         "line-opacity": 0.8
       }
     });
-    
+    var el = document.createElement('div');
+      el.className = 'marker';
     var start = [-96.340379, 30.620167]
       var end = [-96.323706,30.609521]
     var message = null;
@@ -433,7 +434,7 @@ function addRoute (coords) {
           var popStart = new mapboxgl.Popup().setHTML(contentStartString);
           var popEnd = new mapboxgl.Popup().setHTML(contenEndString);
           
-          var markerStart = new mapboxgl.Marker()
+          var markerStart = new mapboxgl.Marker(e1)
                 .setLngLat(start)
                 .setPopup(popStart)
                 .addTo(map);

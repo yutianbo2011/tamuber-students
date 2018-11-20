@@ -434,7 +434,7 @@ function addRoute (coords) {
           var popStart = new mapboxgl.Popup().setHTML(contentStartString);
           var popEnd = new mapboxgl.Popup().setHTML(contenEndString);
           
-          var markerStart = new mapboxgl.Marker(e1)
+          var markerStart = new mapboxgl.Marker(el)
                 .setLngLat(start)
                 .setPopup(popStart)
                 .addTo(map);

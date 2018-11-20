@@ -439,7 +439,7 @@ function addRoute (coords) {
                 .setPopup(popStart)
                 .addTo(map);*/
                 
-          var circle = L.circle(start, {
+          var circle =  new mapboxgl.circle(start, {
     color: 'red',
     fillColor: '#f03',
     fillOpacity: 0.5,

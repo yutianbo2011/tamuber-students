@@ -428,12 +428,29 @@ function getMatch(e) {
 */
       
       
+     
+req.onreadystatechange = function () {
+    var DONE = this.DONE || 4;
+    var jsonResponse = req.response;
+      var distance = jsonResponse.routes[0].distance*0.001*0.621371; // convert to km
+      var duration = jsonResponse.routes[0].duration/60; // convert to minutes
+      console.log("distance is " + distance)
+      console.log("duration is " + duration)
+      // add results to info box
+      document.getElementById('calculated-line').innerHTML = 'Distance: ' + distance.toFixed(2) + ' mi<br>Duration: ' + duration.toFixed(2) + ' minutes';
+      var coords = jsonResponse.routes[0].geometry;
+    if (this.readyState === DONE){
+      addRoute(coords);  
+    }
+};    
+req.send();
+      
     
     
     
     
     
-    
+    /*
     req.onload  = function() {
       var jsonResponse = req.response;
       var distance = jsonResponse.routes[0].distance*0.001*0.621371; // convert to km
@@ -450,6 +467,7 @@ function getMatch(e) {
     };
     
     req.send();
+    */
 }
 
 

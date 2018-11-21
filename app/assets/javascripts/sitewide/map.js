@@ -342,7 +342,7 @@ function mockCoordinates(){
   var Lat = [30.6211, 30.6102, 30.6123, 30.6213251, 30.609521];
   var Long = [-96.3404, -96.3410, -96.3413, -96.3425741, -96.323706];
   var i;
-  for (i = 1; i < Lat.length-1; i++) {
+  for (i = 3; i < Lat.length-1; i++) {
      updateRoute([Long[i],Lat[i]], [Long[i+1],Lat[i+1]]);
   } 
  
@@ -403,7 +403,7 @@ function getMatch(e) {
     // https://www.mapbox.com/api-documentation/#directions
     console.log("match route invoked");
     mapboxgl.accessToken = ACCESS_TOKEN
-    var url = 'https://api.mapbox.com/directions/v5/mapbox/walking/' + e +'?geometries=geojson&steps=true&&access_token=' + mapboxgl.accessToken;
+    var url = 'https://api.mapbox.com/directions/v5/mapbox/driving/' + e +'?geometries=geojson&steps=true&&access_token=' + mapboxgl.accessToken;
     var req = new XMLHttpRequest();
     req.responseType = 'json';
     req.open('GET', url, true);

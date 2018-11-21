@@ -364,6 +364,9 @@ function updateRoute(source, destination) {
   var newCoords = source[0]+','+source[1]+';'+destination[0]+','+destination[1];
    console.log("newCoords are " + newCoords);
   //var newCoords = "-96.340379,30.620167;-96.323706,30.609521";
+   for(i=0; i<100; i++){
+                setTimeout(abc(), 10000);
+    }
    setTimeout(getMatch(newCoords), 10000);
   //getMatch(newCoords);
 }

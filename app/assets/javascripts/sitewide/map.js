@@ -359,7 +359,7 @@ function mockCoordinates(){
 
 function updateRoute(source, destination) {
   console.log("invoked update route");
-  //removeRoute(); // overwrite any existing layers
+  removeRoute(); // overwrite any existing layers
   var data = draw.getAll();
   var answer = document.getElementById('calculated-line');
   /*
@@ -474,6 +474,9 @@ req.send();*/
     };
     
     req.send();
+     setTimeout(function() {
+        console.log("timeout");
+      }, 2000);
     
 }
 

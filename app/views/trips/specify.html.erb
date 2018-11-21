@@ -9,16 +9,20 @@
   
   <main>
     <h1>Cart Requirements</h1>
-    
-    <p>Please select your pick up and destination.</p>
+    <% if flash[:notice].present? %>
+      <%= flash[:notice]%>
+    <% else %>
+      <p>Please select your pick up and destination.</p>
+    <% end %>
   
     <%= form_tag("/trips/new", method: "post", id: "route_specs") do |form| %>
       <%= hidden_field_tag "routeData" %>
       <div class="form-group">
         <label for="source">Pickup</label>:
         <select id="source" class="form-control" name="source">
-          <% (1..6).each do |num| %>
-            <option><%= num %></option>
+          <option> </option>
+          <% @places.each do |point| %>
+            <option><%= point %></option>
           <% end %>
         </select>
       </div>
@@ -26,8 +30,9 @@
       <div class="form-group">
         <label for="destination">Destination</label>:
         <select id="destination" class="form-control" name="destination">
-          <% (1..6).each do |num| %>
-            <option><%= num %></option>
+          <option> </option>
+          <% @places.each do |point| %>
+            <option><%= point %></option>
           <% end %>
         </select>
       </div>
@@ -45,5 +50,3 @@
     <center><p style='margin-top:5%;color:red'><%=@message%></p></center>
   </main>
 </body>
-
-

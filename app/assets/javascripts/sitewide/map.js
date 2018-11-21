@@ -339,18 +339,12 @@ function selectRoute(route) {
 
 function mockCoordinates(){
   console.log("mock invoked");
-  var Lat = [28.6139,30.6211, 30.6102, 30.6123, 30.6213251, 30.609521];
-  var Long = [77.2090,-96.3404, -96.3410, -96.3413, -96.3425741, -96.323706];
+  var Lat = [30.6211, 30.6102, 30.6123, 30.6213251, 30.609521];
+  var Long = [-96.3404, -96.3410, -96.3413, -96.3425741, -96.323706];
   var i;
  
     for (i = 0; i < Lat.length-1; i++) {
-      updateRoute([Long[i],Lat[i]], [Long[i+1],Lat[i+1]]);
-
-      setTimeout(function() {
-        console.log("timeout");
-      }, 2000);
-      console.log("not timeout");
-      
+      updateRoute([Long[i],Lat[i]], [Long[i+1],Lat[i+1]])
     } 
 
   
@@ -435,7 +429,7 @@ function getMatch(e) {
             start = geo.coordinates[0];
             end = geo.coordinates[geo.coordinates.length-1];
             console.log(route);
-            setTimeout(getMatch(e), 10000);
+            //setTimeout(getMatch(e), 10000);
           }
         })
 }

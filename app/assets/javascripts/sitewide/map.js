@@ -342,10 +342,14 @@ function mockCoordinates(){
   var Lat = [30.6211, 30.6102, 30.6123, 30.6213251, 30.609521];
   var Long = [-96.3404, -96.3410, -96.3413, -96.3425741, -96.323706];
   var i;
-  for (i = 0; i < Lat.length-1; i++) {
-     updateRoute([Long[i],Lat[i]], [Long[i+1],Lat[i+1]]);
-  } 
  
+    for (i = 0; i < Lat.length-1; i++) {
+       setTimeout(function() {
+     updateRoute([Long[i],Lat[i]], [Long[i+1],Lat[i+1]]);
+       }, 5000);
+  
+  } 
+
   
 }
 
@@ -429,7 +433,7 @@ function getMatch(e) {
       
       
      
-req.onreadystatechange = function () {
+/*req.onreadystatechange = function () {
     var DONE = this.DONE || 4;
     var jsonResponse = req.response;
       var distance = jsonResponse.routes[0].distance*0.001*0.621371; // convert to km
@@ -443,14 +447,14 @@ req.onreadystatechange = function () {
       addRoute(coords);  
     }
 };    
-req.send();
+req.send();*/
       
     
     
     
     
     
-    /*
+    
     req.onload  = function() {
       var jsonResponse = req.response;
       var distance = jsonResponse.routes[0].distance*0.001*0.621371; // convert to km
@@ -467,7 +471,7 @@ req.send();
     };
     
     req.send();
-    */
+    
 }
 
 

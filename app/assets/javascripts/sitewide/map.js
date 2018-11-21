@@ -418,35 +418,37 @@ function addRoute (coords) {
     console.log("before markers " + coords[0] + ',' + coords[1]);
     var el = document.createElement('div');
       el.className = 'marker';
+      
     var start = [-96.340379, 30.620167]
-      var end = [-96.323706,30.609521]
+    var end = [-96.323706,30.609521]
+    
     var message = null;
-          if(start!=null){
-            strtMessage = "Start:"+"HRBB"
-            strtAddress = "Harvey R. \"Bum\" Bright Building, College Station, TX 77840..";
-          }
-          if(end!=null){
-            endMessage = "End:"+"ZACH"
-            endAddress = "Zachry Engineering Education Complex, College Station, TX 77840..";
-          }
-          var contentStartString = '<h5>'+strtMessage+"</h5>"
-          contentStartString = contentStartString + "<p>Details : "+strtAddress+"</p>"
-          var contenEndString = '<h5>'+endMessage+"</h5>"
-          contenEndString = contenEndString + "<p>Details : "+strtAddress+"</p>"
+    if(start!=null){
+      strtMessage = "Start:"+"HRBB"
+      strtAddress = "Harvey R. \"Bum\" Bright Building, College Station, TX 77840..";
+    }
+    if(end!=null){
+      endMessage = "End:"+"ZACH"
+      endAddress = "Zachry Engineering Education Complex, College Station, TX 77840..";
+    }
+    var contentStartString = '<h5>'+strtMessage+"</h5>"
+    contentStartString = contentStartString + "<p>Details : "+strtAddress+"</p>"
+    var contenEndString = '<h5>'+endMessage+"</h5>"
+    contenEndString = contenEndString + "<p>Details : "+strtAddress+"</p>"
+    
+    var popStart = new mapboxgl.Popup().setHTML(contentStartString);
+    var popEnd = new mapboxgl.Popup().setHTML(contenEndString);
+    
+    var markerStart = new mapboxgl.Marker()
+          .setLngLat(start)
+          .setPopup(popStart)
+          .addTo(map);
           
-          var popStart = new mapboxgl.Popup().setHTML(contentStartString);
-          var popEnd = new mapboxgl.Popup().setHTML(contenEndString);
-          
-          var markerStart = new mapboxgl.Marker()
-                .setLngLat(start)
-                .setPopup(popStart)
-                .addTo(map);
-                
-  
-          var markerEnd = new mapboxgl.Marker()
-                .setLngLat(end)
-                .setPopup(popEnd)
-                .addTo(map);
+
+    var markerEnd = new mapboxgl.Marker()
+          .setLngLat(end)
+          .setPopup(popEnd)
+          .addTo(map);
           
         
     
@@ -498,42 +500,42 @@ function newInitMapWithMarker() {
               trash: true
       },
       styles: [
-      {
-        "id": "gl-draw-line",
-        "type": "line",
-        "filter": ["all", ["==", "$type", "LineString"], ["!=", "mode", "static"]],
-        "layout": {
-          "line-cap": "round",
-          "line-join": "round"
-      },
-      "paint": {
-        "line-color": "#5184e1",
-        "line-dasharray": [0.2, 2],
-        "line-width": 4,
-        "line-opacity": 0.7
-      }
-    },
-    // vertex point halos
-    {
-      "id": "gl-draw-polygon-and-line-vertex-halo-active",
-      "type": "circle",
-      "filter": ["all", ["==", "meta", "vertex"], ["==", "$type", "Point"], ["!=", "mode", "static"]],
-      "paint": {
-        "circle-radius": 10,
-        "circle-color": "#FFF"
-      }
-    },
-    // vertex points
-    {
-      "id": "gl-draw-polygon-and-line-vertex-active",
-      "type": "circle",
-      "filter": ["all", ["==", "meta", "vertex"], ["==", "$type", "Point"], ["!=", "mode", "static"]],
-      "paint": {
-        "circle-radius": 6,
-        "circle-color": "#3b9ddd",
-      }
-    },
-  ]
+        {
+            "id": "gl-draw-line",
+            "type": "line",
+            "filter": ["all", ["==", "$type", "LineString"], ["!=", "mode", "static"]],
+            "layout": {
+              "line-cap": "round",
+              "line-join": "round"
+            },
+            "paint": {
+              "line-color": "#5184e1",
+              "line-dasharray": [0.2, 2],
+              "line-width": 4,
+              "line-opacity": 0.7
+            }
+        },
+        // vertex point halos
+        {
+          "id": "gl-draw-polygon-and-line-vertex-halo-active",
+          "type": "circle",
+          "filter": ["all", ["==", "meta", "vertex"], ["==", "$type", "Point"], ["!=", "mode", "static"]],
+          "paint": {
+            "circle-radius": 10,
+            "circle-color": "#FFF"
+          }
+        },
+        // vertex points
+        {
+          "id": "gl-draw-polygon-and-line-vertex-active",
+          "type": "circle",
+          "filter": ["all", ["==", "meta", "vertex"], ["==", "$type", "Point"], ["!=", "mode", "static"]],
+          "paint": {
+            "circle-radius": 6,
+            "circle-color": "#3b9ddd",
+          }
+        },
+      ]
 });
 console.log("problem arose after this");
 map.addControl(draw);

@@ -112,7 +112,8 @@ class TripsController < ApplicationController
                 and dropoff point"
             elsif @src == @dest
                 fault = true
-                warn_string = "pickup and drop off point are same"
+                warn_string = "pickup and drop off point are same. Please selec
+                t again"
             end
             
             if fault == true

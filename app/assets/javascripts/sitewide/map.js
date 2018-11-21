@@ -347,8 +347,10 @@ function mockCoordinates(){
       updateRoute([Long[i],Lat[i]], [Long[i+1],Lat[i+1]]);
 
       setTimeout(function() {
-      }, 500);
-  
+        console.log("timeout");
+      }, 2000);
+      console.log("not timeout");
+      
     } 
 
   

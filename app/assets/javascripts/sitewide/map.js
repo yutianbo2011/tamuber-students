@@ -463,7 +463,7 @@ function addRoute (coords) {
     map.removeLayer('route')
     map.removeSource('route')
   }
-  else{
+  /*else*/{
     map.addLayer({
       "id": "route",
       "type": "line",

@@ -342,7 +342,7 @@ function mockCoordinates(){
   var Lat = [30.6211, 30.6102, 30.6123, 30.6213251, 30.609521];
   var Long = [-96.3404, -96.3410, -96.3413, -96.3425741, -96.323706];
   var i;
-  for (i = 0; i < Lat.length-1; i++) {
+  for (i = 0; i < 1; i++) {
      updateRoute([Long[i],Lat[i]], [Long[i+1],Lat[i+1]]);
   } 
  

@@ -412,7 +412,7 @@ function getMatch(e) {
           url: directionsRequest,
         }).done(function(data) {
             var geo = data.routes[0].geometry;
-            addRoute(geo);
+            //addRoute(geo);
             var distancebtw = data.routes[0].distance*0.001;
             var durationbtw = data.routes[0].duration*60;
             
@@ -421,15 +421,9 @@ function getMatch(e) {
             
             var route = geo;
             if(geo!=null && geo.coordinates.length!=0){
-            console.log("data " +geo);
-            console.log("data " + geo.coordinates[0])
-            console.log("fsdfsd"+geo.coordinates.length);
-            console.log("travel time invoked from outside");
-            
-            start = geo.coordinates[0];
-            end = geo.coordinates[geo.coordinates.length-1];
-            console.log(route);
-            setTimeout(abc(), 10000);
+              start = geo.coordinates[0];
+              end = geo.coordinates[geo.coordinates.length-1];
+              setTimeout(addRoute(geo), 10000);
           }
         })
 }

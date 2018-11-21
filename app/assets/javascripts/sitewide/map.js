@@ -345,8 +345,8 @@ function mockCoordinates(){
  
     for (i = 0; i < Lat.length-1; i++) {
        setTimeout(function() {
-     updateRoute([Long[i],Lat[i]], [Long[i+1],Lat[i+1]]);
-       }, 5000);
+        updateRoute([Long[i],Lat[i]], [Long[i+1],Lat[i+1]]);
+       }, 500);
   
   } 
 

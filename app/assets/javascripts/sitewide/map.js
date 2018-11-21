@@ -433,7 +433,8 @@ function addRoute (coords) {
     console.log("In add route if part");
     map.removeLayer('route')
     map.removeSource('route')
-  } else{
+  }
+  /*else*/{
     map.addLayer({
       "id": "route",
       "type": "line",

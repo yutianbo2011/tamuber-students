@@ -423,7 +423,10 @@ function getMatch(e) {
             if(geo!=null && geo.coordinates.length!=0){
               start = geo.coordinates[0];
               end = geo.coordinates[geo.coordinates.length-1];
-              setTimeout(addRoute(geo), 10000);
+              // setTimeout(addRoute(geo), 10000);
+              for(i=0; i<100; i++){
+                setTimeout(abc(), 10000);
+              }
           }
         })
 }

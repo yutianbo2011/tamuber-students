@@ -342,7 +342,7 @@ function mockCoordinates(){
   var Lat = [30.6211, 30.6102, 30.6123, 30.6213251, 30.609521];
   var Long = [-96.3404, -96.3410, -96.3413, -96.3425741, -96.323706];
   var i;
-  for (i = 1; i < 2; i++) {
+  for (i = 1; i < Lat.length-1; i++) {
      updateRoute([Long[i],Lat[i]], [Long[i+1],Lat[i+1]]);
   } 
  
@@ -433,7 +433,7 @@ function getMatch(e) {
     
     
     
-  /*  
+    
     req.onload  = function() {
       var jsonResponse = req.response;
       var distance = jsonResponse.routes[0].distance*0.001*0.621371; // convert to km
@@ -448,7 +448,7 @@ function getMatch(e) {
       
       addRoute(coords);
     };
-    */
+    
     req.send();
 }
 

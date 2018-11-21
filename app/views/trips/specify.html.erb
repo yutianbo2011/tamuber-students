@@ -11,8 +11,11 @@
   </header>
   <main>
     <h1>Cart Requirements</h1>
-    <%= flash[:notice]%>
-    <p>Please select your pick up and destination.</p>
+    <% if flash[:notice].present? %>
+      <%= flash[:notice]%>
+    <% else %>
+      <p>Please select your pick up and destination.</p>
+    <% end %>
   
     <%= form_tag("/trips/new", method: "post", id: "route_specs") do |form| %>
       <%= hidden_field_tag "routeData" %>

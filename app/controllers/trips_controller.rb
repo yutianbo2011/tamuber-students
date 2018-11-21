@@ -104,10 +104,12 @@ class TripsController < ApplicationController
             fault = false
             if @src == ""
                 fault = true
-                warn_string = "Please select a pickup point"
+                warn_string = "Pickup not specified. Please select both pickup 
+                and dropoff point"
             elsif @dest == ""
                 fault = true
-                warn_string = "Please select a drop off point"
+                warn_string = "Drop off not specified. Please select both pickup 
+                and dropoff point"
             elsif @src == @dest
                 fault = true
                 warn_string = "pickup and drop off point are same"

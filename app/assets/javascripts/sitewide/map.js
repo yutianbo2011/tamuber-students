@@ -344,11 +344,12 @@ function mockCoordinates(){
   var i;
  
     for (i = 0; i < Lat.length-1; i++) {
-       setTimeout(function() {
-        updateRoute([Long[i],Lat[i]], [Long[i+1],Lat[i+1]]);
-       }, 500);
+      updateRoute([Long[i],Lat[i]], [Long[i+1],Lat[i+1]]);
+
+      setTimeout(function() {
+      }, 500);
   
-  } 
+    } 
 
   
 }

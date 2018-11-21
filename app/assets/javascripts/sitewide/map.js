@@ -403,7 +403,7 @@ function getMatch(e) {
     // https://www.mapbox.com/api-documentation/#directions
     console.log("match route invoked");
     mapboxgl.accessToken = ACCESS_TOKEN
-    var url = 'https://api.mapbox.com/directions/v5/mapbox/driving/' + e +'?geometries=geojson&steps=true&&access_token=' + mapboxgl.accessToken;
+    var url = 'https://api.mapbox.com/directions/v5/mapbox/walking/' + e +'?geometries=geojson&steps=true&&access_token=' + mapboxgl.accessToken;
     var req = new XMLHttpRequest();
     req.responseType = 'json';
     req.open('GET', url, true);

@@ -22,7 +22,7 @@
         <select id="source" class="form-control" name="source">
           <option> </option>
           <% @places.each do |point| %>
-            <option><%= point %></option>
+            <option><%= point.name %></option>
           <% end %>
         </select>
       </div>
@@ -32,7 +32,7 @@
         <select id="destination" class="form-control" name="destination">
           <option> </option>
           <% @places.each do |point| %>
-            <option><%= point %></option>
+            <option><%= point.name %></option>
           <% end %>
         </select>
       </div>

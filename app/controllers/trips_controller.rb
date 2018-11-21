@@ -147,8 +147,9 @@ class TripsController < ApplicationController
     # end
     
     def specify
-        @places = ["ETB", "HRBB", "MSC", "Evans Library", "Kyle Field", "REC",
-        "EA", "EB", "EC", "ED"]
+        # @places = ["ETB", "HRBB", "MSC", "Evans Library", "Kyle Field", "REC",
+        # "EA", "EB", "EC", "ED"]
+        @places = Cart.all()
     end
     
     def create

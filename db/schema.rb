@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20181106053206) do
+ActiveRecord::Schema.define(version: 20181121203741) do
 
   create_table "cart_routes", force: :cascade do |t|
     t.decimal "length"
@@ -41,6 +41,12 @@ ActiveRecord::Schema.define(version: 20181106053206) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["cart_route_id"], name: "index_coordinates_on_cart_route_id"
+  end
+
+  create_table "locations", force: :cascade do |t|
+    t.string "name"
+    t.float "latitude"
+    t.float "longitude"
   end
 
   create_table "trips", force: :cascade do |t|

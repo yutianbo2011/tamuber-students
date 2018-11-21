@@ -352,7 +352,7 @@ function mockCoordinates(){
 
 function updateRoute(source, destination) {
   console.log("invoked update route");
-  removeRoute(); // overwrite any existing layers
+  //removeRoute(); // overwrite any existing layers
   var data = draw.getAll();
   var answer = document.getElementById('calculated-line');
   /*
@@ -430,6 +430,7 @@ function addRoute (coords) {
   console.log('route addition has been invoked ');
   
   if (map.getSource('route')) {
+    console.log("In add route if part");
     map.removeLayer('route')
     map.removeSource('route')
   } else{
@@ -582,9 +583,9 @@ function newInitMapWithMarker() {
 console.log("problem arose after this");
 map.addControl(draw);
 console.log("control has been added");
-map.on('draw.create', updateRoute);
-map.on('draw.update', updateRoute);
-map.on('draw.delete', removeRoute);
+//map.on('draw.create', updateRoute);
+//map.on('draw.update', updateRoute);
+//map.on('draw.delete', removeRoute);
     
 }    
 

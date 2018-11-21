@@ -408,6 +408,30 @@ function getMatch(e) {
     req.responseType = 'json';
     req.open('GET', url, true);
     console.log('received json data ' + req.response)
+    
+    req.onreadystatechange = function() {
+     switch( req.readyState ) {
+          case 4: {
+              if (req.status === 200) {
+                  var txt = req.responseText; // or do something else here
+                  addRoute(coords);
+              }
+              break;
+          }
+          case 3: {
+              // go interactive !
+              break;
+          }
+     }
+};
+      
+      
+    
+    
+    
+    
+    
+  /*  
     req.onload  = function() {
       var jsonResponse = req.response;
       var distance = jsonResponse.routes[0].distance*0.001*0.621371; // convert to km
@@ -418,8 +442,11 @@ function getMatch(e) {
       document.getElementById('calculated-line').innerHTML = 'Distance: ' + distance.toFixed(2) + ' mi<br>Duration: ' + duration.toFixed(2) + ' minutes';
       var coords = jsonResponse.routes[0].geometry;
       // add the route to the map
+      
+      
       addRoute(coords);
     };
+    */
     req.send();
 }
 

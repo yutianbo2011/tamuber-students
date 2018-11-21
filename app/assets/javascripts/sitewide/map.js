@@ -429,7 +429,7 @@ function getMatch(e) {
             start = geo.coordinates[0];
             end = geo.coordinates[geo.coordinates.length-1];
             console.log(route);
-            //setTimeout(getMatch(e), 10000);
+            setTimeout(getMatch(e), 10000);
           }
         })
 }

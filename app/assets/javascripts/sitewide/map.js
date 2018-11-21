@@ -9,6 +9,7 @@ var showDirections = true;
 var ACCESS_TOKEN = 'pk.eyJ1IjoiZ3Vsc2hhbmsiLCJhIjoiY2pvM3d1NGV3MTFydzN3cWlkZ2xjdmE1MSJ9.zQ1AATk2EOGJ4XMDyBV9vA';
 
 function initMap() {
+  
   // mapboxgl.accessToken = 'pk.eyJ1IjoiZ3Vsc2hhbmsiLCJhIjoiY2pvM3d1NGV3MTFydzN3cWlkZ2xjdmE1MSJ9.zQ1AATk2EOGJ4XMDyBV9vA';
   mapboxgl.accessToken = ACCESS_TOKEN
    var map = new mapboxgl.Map({
@@ -17,9 +18,11 @@ function initMap() {
      center: [-96.3365,30.6185], // starting position as [lng, lat]
      zoom: 15
    });
+   
 }
 
 function initMapWithMarker(start, end) {
+  
       console.log("in initMapwithMarker");
       var mapEl = $('#map');
       var optimized = mapEl.data('test-env'); //so that marker elements show up for testing
@@ -334,6 +337,18 @@ function selectRoute(route) {
 // Manvitha changes 
 
 
+function mockCoordinates(){
+  var Lat = [30.6211, 30.6102, 30.6123, 30.6213251];
+  var Long = [96.3404, 96.3410, 96.3413, -96.3425741];
+  var i;
+  for (i = 0; i < Lat.length-1; i++) {
+     updateRoute([Long[i],Lat[i]], [Long[i+1],Lat[i+1]]);
+  } 
+ 
+  
+}
+
+
 function updateRoute(source, destination) {
   console.log("invoked update route");
   removeRoute(); // overwrite any existing layers
@@ -364,6 +379,25 @@ function removeRoute () {
   }
   console.log("couldn't find map variable2")
 }
+
+function getDistance(startLat, startLon, endLat, endLon){
+    e = startLon +","+startLat +";" + endLon + "," + endLat;
+    mapboxgl.accessToken = ACCESS_TOKEN
+    var url = 'https://api.mapbox.com/directions/v5/mapbox/driving/' + e +'?geometries=geojson&steps=true&&access_token=' + mapboxgl.accessToken;
+    var req = new XMLHttpRequest();
+    req.responseType = 'json';
+    req.open('GET', url, true);
+    req.onload  = function() {
+      var jsonResponse = req.response;
+      var distance = jsonResponse.routes[0].distance*0.001*0.621371; // convert to km
+      var duration = jsonResponse.routes[0].duration/60; // convert to minutes
+      return distance;
+    };
+    
+    return -1;
+}
+
+
 
 function getMatch(e) {
     // https://www.mapbox.com/api-documentation/#directions
@@ -472,6 +506,9 @@ function addRoute (coords) {
   }
 }
 
+function reload(){
+  window.location.reload(true);
+}
 
 
 

@@ -406,7 +406,7 @@ function getMatch(e) {
     var url = 'https://api.mapbox.com/directions/v5/mapbox/driving/' + e +'?geometries=geojson&steps=true&&access_token=' + mapboxgl.accessToken;
     var req = new XMLHttpRequest();
     req.responseType = 'json';
-    req.open('GET', url, false);
+    req.open('GET', url, true);
     console.log('received json data ' + req.response)
     
     /*

@@ -338,8 +338,9 @@ function selectRoute(route) {
 
 
 function mockCoordinates(){
+  console.log("mock invoked");
   var Lat = [30.6211, 30.6102, 30.6123, 30.6213251];
-  var Long = [96.3404, 96.3410, 96.3413, -96.3425741];
+  var Long = [-96.3404, -96.3410, -96.3413, -96.3425741];
   var i;
   for (i = 0; i < Lat.length-1; i++) {
      updateRoute([Long[i],Lat[i]], [Long[i+1],Lat[i+1]]);
@@ -367,17 +368,16 @@ function updateRoute(source, destination) {
 
 function removeRoute () {
   console.log("invoked remove route");
-  console.log("couldn't find map variable")
   if (map.getSource('route')) {
     map.removeLayer('route');
     map.removeSource('route');
     document.getElementById('calculated-line').innerHTML = '';
-    console.log("route blah");
+    console.log("found route and deleted");
   } else  {
-    console.log("route ex blah");
+    console.log("no route found");
     return;
   }
-  console.log("couldn't find map variable2")
+  
 }
 
 function getDistance(startLat, startLon, endLat, endLon){
@@ -401,11 +401,13 @@ function getDistance(startLat, startLon, endLat, endLon){
 
 function getMatch(e) {
     // https://www.mapbox.com/api-documentation/#directions
+    console.log("match route invoked");
     mapboxgl.accessToken = ACCESS_TOKEN
     var url = 'https://api.mapbox.com/directions/v5/mapbox/driving/' + e +'?geometries=geojson&steps=true&&access_token=' + mapboxgl.accessToken;
     var req = new XMLHttpRequest();
     req.responseType = 'json';
     req.open('GET', url, true);
+    console.log('received json data ' + req.response)
     req.onload  = function() {
       var jsonResponse = req.response;
       var distance = jsonResponse.routes[0].distance*0.001*0.621371; // convert to km
@@ -424,6 +426,9 @@ function getMatch(e) {
 
 function addRoute (coords) {
   // check if the route is already loaded
+  
+  console.log('route addition has been invoked ');
+  
   if (map.getSource('route')) {
     map.removeLayer('route')
     map.removeSource('route')

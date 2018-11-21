@@ -12,18 +12,30 @@
   <main>
     <h1>Cart Requirements</h1>
     
-    <p>Before we start, please specify your requirements for the cart.</p>
+    <p>Please select your pick up and destination.</p>
   
     <%= form_tag("/trips/new", method: "post", id: "route_specs") do |form| %>
       <%= hidden_field_tag "routeData" %>
       <div class="form-group">
-        <label for="seat_count">Seats required</label>:
-        <select id="seat_count" class="form-control" name="seat_count">
-          <% (1..6).each do |num| %>
-            <option><%= num %></option>
+        <label for="source">Pickup</label>:
+        <select id="source" class="form-control" name="source">
+          <option> </option>
+          <% @places.each do |point| %>
+            <option><%= point %></option>
           <% end %>
         </select>
       </div>
+      
+      <div class="form-group">
+        <label for="destination">Destination</label>:
+        <select id="destination" class="form-control" name="destination">
+          <option> </option>
+          <% @places.each do |point| %>
+            <option><%= point %></option>
+          <% end %>
+        </select>
+      </div>
+      
       <div class="form-group">
         <div class="form-check">
           <label for="handicap_access" class="form-check-label">
@@ -37,5 +49,3 @@
     <center><p style='margin-top:5%;color:red'><%=@message%></p></center>
   </main>
 </body>
-
-

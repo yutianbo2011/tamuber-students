@@ -10,6 +10,7 @@
   </header>
   <body onload='initMap();updateSelectedRoute(<%= @routeData.to_json.html_safe %>);'>
   <main>
+    <% if false %>
     <h1>Select Route</h1>
     <div id="mapid" name='mapid'></div>
 
@@ -49,7 +50,11 @@
       <input type='submit' value="Start Trip", id='startTrip' class="btn btn-primary" style="display:none", onclick="formCheck('" + <%=form.options[:html][:id]%> + "');"></input>
       
     <% end %>
+    <% end %>
+    
+    <p>Pickup: <%= @src %></p>
+    <p>Drop off: <%= @dest %></p>
+    <p>handicap access: <%= @needs_assist %></p>
+    
   </main>
 </body>
-
-

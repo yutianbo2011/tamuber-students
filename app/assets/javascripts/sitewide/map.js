@@ -476,7 +476,7 @@ req.send();*/
     req.send();
      setTimeout(function() {
         console.log("timeout");
-      }, 2000);
+      }, 10000);
     
 }
 

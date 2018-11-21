@@ -1,5 +1,6 @@
 class User < ApplicationRecord
-    attr_accessor :remember_token
+    
+    attr_accessor :remember_token, :activation_token, :reset_token
     before_save { self.email = email.downcase }
     validates :firstname, presence: true, length: { maximum: 50 }
     validates :lastname, presence: true, length: { maximum: 50 }
@@ -10,6 +11,10 @@ class User < ApplicationRecord
     has_secure_password
     validates :password, presence: true, length: { minimum: 6 }
    
+   # Returns true if a password reset has expired.
+    def password_reset_expired?
+        reset_sent_at < 2.hours.ago
+    end
     # Returns the hash digest of the given string.
     def User.digest(string)
         cost = ActiveModel::SecurePassword.min_cost ? BCrypt::Engine::MIN_COST :
@@ -37,4 +42,16 @@ class User < ApplicationRecord
     def forget
         update_attribute(:remember_digest, nil)
     end
+    # Sets the password reset attributes.
+  def create_reset_digest
+    self.reset_token = User.new_token
+    update_attribute(:reset_digest,  User.digest(reset_token))
+    update_attribute(:reset_sent_at, Time.zone.now)
+  end
+
+  # Sends password reset email.
+  def send_password_reset_email
+    UserMailer.password_reset(self).deliver_now
+  end
+
 end

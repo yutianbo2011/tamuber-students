@@ -1,4 +1,5 @@
 # Be sure to restart your server when you modify this file.
+#bundle exec rake assets:precompile
 
 # Version of your assets, change this if you want to expire all your assets.
 Rails.application.config.assets.version = '1.0'
@@ -35,6 +36,9 @@ Rails.application.config.assets.precompile += %w( pickup.js )
 
 #Javascript for "transit" view
 Rails.application.config.assets.precompile += %w( transit.js )
-
+# Edit Manish start
+#Javascript for "login and signup" view
+Rails.application.config.assets.precompile += %w( sessions.css users.css )
+# Edit Manish end
 #Javascript for "end" view
 Rails.application.config.assets.precompile += %w( end.js )

@@ -55,10 +55,11 @@
           <td>Cart 21</td>
         </tr>
     </table>
-    <button onclick="window.history.go(-2);">Go Back Location</button>
+    <button onclick="goBack();">Go Back Location</button>
       <script>
         function goBack() {
           console.log("%%%%%%%----------------------------------------------------------Rohan");
+          console.log(window.history);
             window.history.back();
         }
       </script>

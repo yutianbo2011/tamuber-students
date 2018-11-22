@@ -161,11 +161,11 @@ function initMapWithMarker(start, end, liveLocation) {
           // //     window.alert(marker.properties.message);
           // // });
           
-          // var e2 = document.createElement('div');
-          // e2.className = 'marker';
-          // e2.style.backgroundColor = "red"
-          // e2.style.width = marker.properties.iconSize[0] + 'px';
-          // e2.style.height = marker.properties.iconSize[1] + 'px';
+          var e2 = document.createElement('div12');
+          e2.className = 'marker';
+          e2.style.backgroundColor = "red"
+          e2.style.width = marker.properties.iconSize[0] + 'px';
+          e2.style.height = marker.properties.iconSize[1] + 'px';
       
           
           
@@ -174,10 +174,6 @@ function initMapWithMarker(start, end, liveLocation) {
           // e3.style.backgroundImage = 'images/cart.png';
           // e3.style.width = marker.properties.iconSize[0] + 'px';
           // e3.style.height = marker.properties.iconSize[1] + 'px';
-      
-          var my = document.createElement('div11')
-          my.className = 'marker';
-          my.style.backgroundColor = "red"
           
           // var markerStart = new mapboxgl.Marker()
           //       .setLngLat(start)

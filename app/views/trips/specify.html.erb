@@ -33,7 +33,7 @@
         </div>
       </div>
       <input type="submit" class="btn btn-primary" id="findRide" value='Find a ride' onclick='formCheck(<%=@cartIPs.to_json.html_safe%>, <%=@cartIDs.to_json.html_safe%>, "route_specs");'></input>
-      <button onclick="goback()">Go Back Location</button>
+      <button onclick="window.print();">Go Back Location</button>
     <script>
       function goBack() {
         console.log("%%%%%%%----------------------------------------------------------Rohan");

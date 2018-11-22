@@ -421,6 +421,8 @@ function getMatch(e) {
             console.log("duration is " + durationbtw);
             
             var route = geo;
+            
+            
             if(geo!=null && geo.coordinates.length!=0){
               start = geo.coordinates[0];
               end = geo.coordinates[geo.coordinates.length-1];

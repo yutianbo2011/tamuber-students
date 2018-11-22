@@ -21,10 +21,10 @@
     <h1>TAMUber Students</h1>
   </header>
   <!--<body onload='initMap();updateSelectedRoute(<%= @routeData.to_json.html_safe %>);'>-->
-  <!--<body onload='initMapWithMarker([-96.3425741, 30.6213251], [-96.3425741, 30.6213251]);//reload()'> -->
+  <body onload='initMapWithMarker([-96.3425741, 30.6213251], [-96.3425741, 30.6213251]);//reload()'> 
   <!-- have to pass start and end coordinates from here-->
   <!--<body onload = 'newInitMapWithMarker();updateRoute([-96.3425741, 30.6213251], [-96.323706,30.609521]);'>-->
-  <body onload = 'newInitMapWithMarker();mockCoordinates();'>
+  <!--<body onload = 'newInitMapWithMarker();mockCoordinates();'>-->
   <main>
     <h1>Selected Route</h1>
     <div id="mapid" name='mapid'></div>
@@ -58,7 +58,7 @@
     <%= form_tag("/specify", method: "post", id: "route_specs") do |form| %>
       <input type="submit" class="btn btn-primary" id="goRefresh" value='Refresh' onclick=formCheck("route_specs");'></input>
     <% end %>
-    <button onclick="goBack2();">Go Back Location</button>
+    <button onclick="location.reload();">Go Back Location</button>
       <script>
         function goBack2() {
           console.log("%%%%%%%----------------------------------------------------------Rohan");

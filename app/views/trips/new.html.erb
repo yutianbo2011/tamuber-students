@@ -5,9 +5,6 @@
   <%= javascript_include_tag "new" %>
   
 </head>
-  <header>
-    <h1>TAMUber Students</h1>
-  </header>
   <body onload='initMap();updateSelectedRoute(<%= @routeData.to_json.html_safe %>);'>
   <main>
     <% if false %>

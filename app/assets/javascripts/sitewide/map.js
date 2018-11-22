@@ -80,12 +80,13 @@ function initMapWithMarker(start, end, liveLocation) {
           url: directionsRequest,
         }).done(function(data) {
             var geo = data.routes[0].geometry;
-            var distancebtw = data.routes[0].distance*0.001;
+            var distancebtw = data.routes[0].distance*0.001*0.621371;
             var durationbtw = data.routes[0].duration*60;
-            
+            getDistanceDuration()
             console.log("distance is " + distancebtw);
             console.log("duration is " + durationbtw);
             document.getElementById('ETA').innerHTML = distancebtw;
+            document.getElementById('ETT').innerHTML = durationbtw;
             
             var route = geo;
             if(geo!=null && geo.coordinates.length!=0){
@@ -130,9 +131,14 @@ function initMapWithMarker(start, end, liveLocation) {
           var popStart = new mapboxgl.Popup().setHTML(contentStartString);
           var popEnd = new mapboxgl.Popup().setHTML(contenEndString);
           
+          var myNewIcon = map.icon({
+              iconUrl: '../../stylesheets/images/mapbox-icon.png'
+          });
+          
           var markerStart = new mapboxgl.Marker()
                 .setLngLat(start)
                 .setPopup(popStart)
+                .setIcon(myNewIcon)
                 .addTo(map);
           var markerEnd = new mapboxgl.Marker()
                 .setLngLat(end)
@@ -405,8 +411,8 @@ function removeRoute () {
   
 }
 
-function getDistance(startLat, startLon, endLat, endLon){
-    e = startLon +","+startLat +";" + endLon + "," + endLat;
+function getDistanceDuration(startLat, startLon, endLat, endLon){
+    var e = startLon +","+startLat +";" + endLon + "," + endLat;
     mapboxgl.accessToken = ACCESS_TOKEN
     var url = 'https://api.mapbox.com/directions/v5/mapbox/driving/' + e +'?geometries=geojson&steps=true&&access_token=' + mapboxgl.accessToken;
     var req = new XMLHttpRequest();
@@ -416,7 +422,7 @@ function getDistance(startLat, startLon, endLat, endLon){
       var jsonResponse = req.response;
       var distance = jsonResponse.routes[0].distance*0.001*0.621371; // convert to km
       var duration = jsonResponse.routes[0].duration/60; // convert to minutes
-      return distance;
+      return [distance,duration];
     };
     
     return -1;

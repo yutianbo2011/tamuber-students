@@ -143,35 +143,20 @@ function initMapWithMarker(start, end, liveLocation) {
                       "properties": {
                           "message": "Foo",
                           "iconSize": [60, 60]
-                      },
-                      "geometry": {
-                          "type": "Point",
-                          "coordinates": [
-                              -66.324462890625,
-                              -16.024695711685304
-                          ]
                       }
                   }
               ]
           };
           var marker = geojson.features[0];
-          // geojson.features.forEach(function(marker) {
-              // create a DOM element for the marker
-              var e1 = document.createElement('div');
-              e1.className = 'marker';
-              e1.style.backgroundImage = 'url(https://placekitten.com/g/' + marker.properties.iconSize.join('/') + '/)';
-              e1.style.width = marker.properties.iconSize[0] + 'px';
-              e1.style.height = marker.properties.iconSize[1] + 'px';
-          
-              e1.addEventListener('click', function() {
-                  window.alert(marker.properties.message);
-              });
-          
-              // // add marker to map
-              // new mapboxgl.Marker(el)
-              //     .setLngLat(marker.geometry.coordinates)
-              //     .addTo(map);
-          // });
+          var e1 = document.createElement('div');
+          e1.className = 'marker';
+          e1.style.backgroundImage = 'url(https://placekitten.com/g/' + marker.properties.iconSize.join('/') + '/)';
+          e1.style.width = marker.properties.iconSize[0] + 'px';
+          e1.style.height = marker.properties.iconSize[1] + 'px';
+      
+          e1.addEventListener('click', function() {
+              window.alert(marker.properties.message);
+          });
           
           var markerStart = new mapboxgl.Marker(e1)
                 .setLngLat(start)

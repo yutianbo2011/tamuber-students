@@ -149,7 +149,7 @@ class TripsController < ApplicationController
     def specify
         # @places = ["ETB", "HRBB", "MSC", "Evans Library", "Kyle Field", "REC",
         # "EA", "EB", "EC", "ED"]
-        @places = Location.all()
+        @places = Location.all.select(:name)
     end
     
     def create

@@ -221,6 +221,12 @@ function initMapWithMarker(start, end, liveLocation) {
       }
       while(1){
         console.log("Hello!!!!!!!")
+        setTimeout(function() {
+
+           alert();
+           test(true);
+
+        },10000)
       }
 }    
 
@@ -502,7 +508,7 @@ function getMatch(e) {
           }
         })
 }
-    
+ /   
 function abc(){
   console.log("hello hello");
 }

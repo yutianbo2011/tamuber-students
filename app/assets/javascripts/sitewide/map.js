@@ -1,4 +1,3 @@
-
 var directionsService;
 var map = null;
 var draw = null;
@@ -12,12 +11,12 @@ function initMap() {
   
   // mapboxgl.accessToken = 'pk.eyJ1IjoiZ3Vsc2hhbmsiLCJhIjoiY2pvM3d1NGV3MTFydzN3cWlkZ2xjdmE1MSJ9.zQ1AATk2EOGJ4XMDyBV9vA';
   mapboxgl.accessToken = ACCESS_TOKEN
-  var map = new mapboxgl.Map({
-    container: 'mapid1', // HTML container id
-    style: 'mapbox://styles/mapbox/streets-v9', // style URL
-    center: [-96.3365,30.6185], // starting position as [lng, lat]
-    zoom: 15
-  });
+   var map = new mapboxgl.Map({
+     container: 'mapid1', // HTML container id
+     style: 'mapbox://styles/mapbox/streets-v9', // style URL
+     center: [-96.3365,30.6185], // starting position as [lng, lat]
+     zoom: 15
+   });
    
 }
 
@@ -219,15 +218,6 @@ function initMapWithMarker(start, end, liveLocation) {
                     // map.setPaintProperty('end', 'fill-color', '#ff0000');
         });
       }
-      // var i = 0;
-      // while(i<5){
-      //   console.log("Hello!!!!!!!");
-      //   setTimeout(function() {
-      //     console.log("Bye!!!!!!!");
-      //   },10000);
-      //   console.log("nikhil off")
-      //   i+=1;
-      // }
 }    
 
 function removeDirections() {
@@ -368,7 +358,47 @@ function selectRoute(route) {
 	$('#selectedRoute').text(route);
 }
 
+// function getCartLiveLoc(){q
+  
+// }
 
+// function getTravelTime(startGPSLat, startGPSLon,endGPSLat, endGPSLon){
+//   console.log("travel time invoked")
+//   startGPS = [startGPSLat,startGPSLon];
+//   console.log("travel time invoked2")
+//   endGPS = [endGPSLat,endGPSLon];
+//   console.log("travel time invoked3")
+//   listOfPoints = startGPS + ";" + endGPS;
+//   pointList = new ArrayList<>();
+//   console.log("travel time invoked4")
+//   var directionsMatrixClient = MapboxMatrix.builder()
+//     .accessToken('pk.eyJ1IjoiZ3Vsc2hhbmsiLCJhIjoiY2pvM3d1NGV3MTFydzN3cWlkZ2xjdmE1MSJ9.zQ1AATk2EOGJ4XMDyBV9vA')
+//     .profile(DirectionsCriteria.PROFILE_DRIVING)
+//     .coordinates(listOfPoints)
+//     .build()
+       
+//     //console.log( "My travel times are:", directionsMatrixClient[0][0], directionsMatrixClient[0][1], directionsMatrixClient[1][0], directionsMatrixClient[1][1])
+// }
+
+// // function calculateDistance(strtLat, strtLong, endLat, endLong){
+ 
+// // }
+
+
+// function calculateEstimatedArrival(startGPSLat, startGPSLon){
+//   // getTravelTime()
+// }
+
+// //Public API
+// function plotMap( start_id, end_id){
+  
+// }
+// function getClosestVehicleCartID(start_id){
+  
+// }
+// function getVehicleGPS(cart_id){
+  
+// }
 
 
 // Manvitha changes 
@@ -399,10 +429,10 @@ function updateRoute(source, destination) {
   var newCoords = coords.join(';')
   console.log("newCoords are " + newCoords);*/
   var newCoords = source[0]+','+source[1]+';'+destination[0]+','+destination[1];
-  console.log("newCoords are " + newCoords);
+   console.log("newCoords are " + newCoords);
   //var newCoords = "-96.340379,30.620167;-96.323706,30.609521";
    
-  setTimeout(getMatch, 10000, newCoords);
+   setTimeout(getMatch, 10000, newCoords);
   //getMatch(newCoords);
 }
 
@@ -468,10 +498,53 @@ function getMatch(e) {
           }
         })
 }
-
+    
 function abc(){
   console.log("hello hello");
 }
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    /*
+    var req = new XMLHttpRequest();
+    req.responseType = 'json';
+    req.open('GET', url, true);
+    console.log('received json data ' + req.response)
+    
+   
+    req.onload  = function() {
+      var jsonResponse = req.response;
+      var distance = jsonResponse.routes[0].distance*0.001*0.621371; // convert to km
+      var duration = jsonResponse.routes[0].duration/60; // convert to minutes
+      console.log("distance is " + distance)
+      console.log("duration is " + duration)
+      // add results to info box
+      document.getElementById('calculated-line').innerHTML = 'Distance: ' + distance.toFixed(2) + ' mi<br>Duration: ' + duration.toFixed(2) + ' minutes';
+      var coords = jsonResponse.routes[0].geometry;
+      // add the route to the map
+      
+      
+      addRoute(coords);
+    };
+    
+    req.send();
+     setTimeout(function() {
+        console.log("timeout");
+      }, 10000);
+    
+}*/
+
 
 function addRoute (coords) {
   // check if the route is already loaded
@@ -542,11 +615,11 @@ function addRoute (coords) {
           
         
     
-  /*
-    var el = document.createElement('div');
+   /*
+     var el = document.createElement('div');
       el.className = 'marker';
       
-      var markerStart = new mapboxgl.Marker()
+       var markerStart = new mapboxgl.Marker()
                 .setLngLat([-96.340379, 30.620167])
                 .setPopup(new mapboxgl.Popup({ offset: 25 }))
                 .addTo(map);
@@ -639,4 +712,4 @@ console.log("control has been added");
     
 }    
 
-//Manvitha changes 
+//Manvitha changes

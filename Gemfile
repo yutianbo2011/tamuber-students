@@ -7,7 +7,8 @@ end
 
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'ruby', '~>2.4.5'
+#gem 'ruby', '~>2.4.5'
+ruby '2.4.5'
 gem 'rails', '~> 5.1.5'
 # Use Puma as the app server
 gem 'puma', '~> 3.7'

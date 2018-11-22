@@ -105,11 +105,29 @@ main {
   height:440px;
 }
 
-.marker {
-  // background-image: url('/images/mapbox-icon.png');
+.markerStart {
+  background-image: url('/images/blueMarker.png');
   background-size: cover;
-  // width: 50px;
-  // height: 50px;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+.markerEnd {
+  background-image: url('/images/redMarker.png');
+  background-size: cover;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+.markerLive {
+  background-image: url('/images/cart.png');
+  background-size: cover;
+  width: 30px;
+  height: 30px;
   border-radius: 50%;
   cursor: pointer;
 }

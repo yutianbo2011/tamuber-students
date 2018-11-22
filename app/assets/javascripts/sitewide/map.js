@@ -2,8 +2,8 @@ var directionsService;
 var map = null;
 var draw = null;
 var infowindow;
-var marker;
-var stmarker;
+// var marker;
+// var stmarker;
 var showDirections = true;
 var ACCESS_TOKEN = 'pk.eyJ1IjoiZ3Vsc2hhbmsiLCJhIjoiY2pvM3d1NGV3MTFydzN3cWlkZ2xjdmE1MSJ9.zQ1AATk2EOGJ4XMDyBV9vA';
 
@@ -161,7 +161,7 @@ function initMapWithMarker(start, end, liveLocation) {
           // // });
           
           var e2 = document.createElement('div12');
-          e2.className = 'marker';
+          // e2.className = 'marker';
           //e2.style.backgroundImage = 'redMarker.png';
           e2.style.width = marker2.properties.iconSize[0] + 'px';
           e2.style.height = marker2.properties.iconSize[1] + 'px';
@@ -608,16 +608,16 @@ function addRoute (coords) {
     var popStart = new mapboxgl.Popup().setHTML(contentStartString);
     var popEnd = new mapboxgl.Popup().setHTML(contenEndString);
     
-    var markerStart = new mapboxgl.Marker()
-          .setLngLat(start)
-          .setPopup(popStart)
-          .addTo(map);
+    // var markerStart = new mapboxgl.Marker()
+    //       .setLngLat(start)
+    //       .setPopup(popStart)
+    //       .addTo(map);
           
 
-    var markerEnd = new mapboxgl.Marker()
-          .setLngLat(end)
-          .setPopup(popEnd)
-          .addTo(map);
+    // var markerEnd = new mapboxgl.Marker()
+    //       .setLngLat(end)
+    //       .setPopup(popEnd)
+    //       .addTo(map);
           
         
     

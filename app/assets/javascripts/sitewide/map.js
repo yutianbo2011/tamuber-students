@@ -149,7 +149,7 @@ function initMapWithMarker(start, end, liveLocation) {
                   }
               ]
           };
-          var marker = geojson.features[0];
+          var marker2 = geojson.features[0];
           var e1 = document.createElement('div');
           // e1.className = 'marker';
           // e1.style.backgroundImage = 'images/mapbox-icon.png';
@@ -162,9 +162,9 @@ function initMapWithMarker(start, end, liveLocation) {
           
           var e2 = document.createElement('div12');
           e2.className = 'marker';
-          e2.style.backgroundImage = 'redMarker.png';
-          e2.style.width = marker.properties.iconSize[0] + 'px';
-          e2.style.height = marker.properties.iconSize[1] + 'px';
+          //e2.style.backgroundImage = 'redMarker.png';
+          e2.style.width = marker2.properties.iconSize[0] + 'px';
+          e2.style.height = marker2.properties.iconSize[1] + 'px';
       
           
           

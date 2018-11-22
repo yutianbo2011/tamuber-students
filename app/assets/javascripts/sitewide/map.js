@@ -85,6 +85,7 @@ function initMapWithMarker(start, end, liveLocation) {
             
             console.log("distance is " + distancebtw);
             console.log("duration is " + durationbtw);
+            document.getElementById('ETA').innerHTML = distancebtw;
             
             var route = geo;
             if(geo!=null && geo.coordinates.length!=0){

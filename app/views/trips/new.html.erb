@@ -52,8 +52,8 @@
     <% end %>
     <% end %>
     
-    <p>Pickup: <%= @src %></p>
-    <p>Drop off: <%= @dest %></p>
+    <p>Pickup: <%= @source.name %> , Coordinates: <%= @source.latitude %> , <%= @source.longitude %></p>
+    <p>Drop off: <%= @destination.name %> , Coordinates: <%= @destination.latitude %> , <%= @destination.longitude %></p>
     <p>handicap access: <%= @needs_assist %></p>
     
   </main>

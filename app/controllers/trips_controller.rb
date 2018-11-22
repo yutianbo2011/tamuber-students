@@ -137,6 +137,13 @@ class TripsController < ApplicationController
         else
             @needs_assist = false
         end
+        
+        # find sourcce and destination dropoff
+        @source = Location.where(invite_code: src)
+        @destination = Location.where(invite_code: dest)
+        
+        # if @source == nil
+            
     end
     
     # def specify

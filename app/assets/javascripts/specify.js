@@ -25,12 +25,6 @@ function formCheck(form_id) {
     	alert("Same pickup and dropoff selected. Please select again");
     	return false;
 	} else {
-	    // Query each cart for their available routes
-	    // var routeData = getRoutes( cartIPs, cartIDs );
-	    
-	    // Add routeData into the form hidden field with jQuery
-	    // $('#routeData').val( JSON.stringify(routeData) );
-	    
 	    // Submit the form
         document.getElementById(form_id).submit();
 	}

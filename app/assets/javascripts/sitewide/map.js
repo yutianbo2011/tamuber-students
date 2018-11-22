@@ -218,6 +218,9 @@ function initMapWithMarker(start, end, liveLocation) {
                     // map.setPaintProperty('end', 'fill-color', '#ff0000');
         });
       }
+      setInterval(function(){
+        console.log("Hello");
+      }, 3000);
 }    
 
 function removeDirections() {

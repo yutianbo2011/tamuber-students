@@ -219,15 +219,15 @@ function initMapWithMarker(start, end, liveLocation) {
                     // map.setPaintProperty('end', 'fill-color', '#ff0000');
         });
       }
-      i = 0;
-      while(i<5){
-        console.log("Hello!!!!!!!");
-        setTimeout(function() {
-           console.log("Bye!!!!!!!");
-        },10000);
-        console.log("nikhil off")
-        i+=1;
-      }
+      // var i = 0;
+      // while(i<5){
+      //   console.log("Hello!!!!!!!");
+      //   setTimeout(function() {
+      //     console.log("Bye!!!!!!!");
+      //   },10000);
+      //   console.log("nikhil off")
+      //   i+=1;
+      // }
 }    
 
 function removeDirections() {

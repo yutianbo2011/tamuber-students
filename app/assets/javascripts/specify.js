@@ -19,9 +19,11 @@ function formCheck(form_id) {
     if (document.getElementById("source").value == '' || 
     document.getElementById("destination").value == '') {
 		alert("Please select both the pickup and dropoff locations ");
+		return false;
 	} else if (document.getElementById("source").value == 
 	document.getElementById("destination").value) {
     	alert("Same pickup and dropoff selected. Please select again");
+    	return false;
 	} else {
 	    // Query each cart for their available routes
 	    // var routeData = getRoutes( cartIPs, cartIDs );

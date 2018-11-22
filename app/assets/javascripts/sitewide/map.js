@@ -179,7 +179,7 @@ function initMapWithMarker(start, end, liveLocation) {
                 .setLngLat(start)
                 .setPopup(popStart)
                 .addTo(map);
-          var markerEnd = new mapboxgl.Marker()
+          var markerEnd = new mapboxgl.Marker(e2)
                 .setLngLat(end)
                 .setPopup(popEnd)
                 .addTo(map);

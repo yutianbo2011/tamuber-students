@@ -58,7 +58,7 @@
     <%= form_tag("/specify", method: "post", id: "route_specs") do |form| %>
       <input type="submit" class="btn btn-primary" id="goRefresh" value='Refresh' onclick= 'formCheck("route_specs");'></input>
     <% end %>
-    <button onclick="location.reload();">Go Back Location</button>
+    <button onclick="window.location.reload();">Go Back Location</button>
       <script>
         function goBack2() {
           console.log("%%%%%%%----------------------------------------------------------Rohan");

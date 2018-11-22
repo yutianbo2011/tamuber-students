@@ -150,7 +150,7 @@ function initMapWithMarker(start, end, liveLocation) {
           var marker = geojson.features[0];
           var e1 = document.createElement('div');
           e1.className = 'marker';
-          e1.style.backgroundImage = 'url(https://placekitten.com/g/' + marker.properties.iconSize.join('/') + '/)';
+          e1.style.backgroundImage = '../../stylesheets/images/mapbox-icon.png';
           e1.style.width = marker.properties.iconSize[0] + 'px';
           e1.style.height = marker.properties.iconSize[1] + 'px';
       

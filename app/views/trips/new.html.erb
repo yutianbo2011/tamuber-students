@@ -56,7 +56,7 @@
         </tr>
     </table>
     <%= form_tag("/specify", method: "post", id: "route_specs") do |form| %>
-      <input type="submit" class="btn btn-primary" id="goRefresh" value='Refresh' onclick=formCheck("route_specs");'></input>
+      <input type="submit" class="btn btn-primary" id="goRefresh" value='Refresh' onclick= 'formCheck("route_specs");'></input>
     <% end %>
     <button onclick="location.reload();">Go Back Location</button>
       <script>

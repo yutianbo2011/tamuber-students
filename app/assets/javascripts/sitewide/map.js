@@ -21,6 +21,25 @@ function initMap() {
    
 }
 
+
+function findMidPoint(start,end) {
+  var lat1= start[1];
+  var lon1= start[0];
+  var lat2 = end[1];
+  var lon2 = end[0];
+  var dLon = (function (x) { return x * Math.PI / 180; })(lon2 - lon1);
+  lat1 = (function (x) { return x * Math.PI / 180; })(lat1);
+  lat2 = (function (x) { return x * Math.PI / 180; })(lat2);
+  lon1 = (function (x) { return x * Math.PI / 180; })(lon1);
+  var Bx = Math.cos(lat2) * Math.cos(dLon);
+  var By = Math.cos(lat2) * Math.sin(dLon);
+  var lat3 = Math.atan2(Math.sin(lat1) + Math.sin(lat2), Math.sqrt((Math.cos(lat1) + Bx) * (Math.cos(lat1) + Bx) + By * By));
+  var lon3 = lon1 + Math.atan2(By, Math.cos(lat1) + Bx);
+  console.info(/* toDegrees */ (function (x) { return x * 180 / Math.PI; })(lat3) + " " + (function (x) { return x * 180 / Math.PI; })(lon3));
+  return [lon3,lat3];
+}
+
+
 function initMapWithMarker(start, end) {
   
       console.log("in initMapwithMarker");
@@ -33,7 +52,7 @@ function initMapWithMarker(start, end) {
       map = new mapboxgl.Map({
         container: 'mapid1', // HTML container id
         style: 'mapbox://styles/mapbox/streets-v9', // style URL
-        center: start,//[-96.3365,30.6185],
+        center: findMidPoint(start,end),//[-96.3365,30.6185],
         //center: //[lat,lng], // starting position as [lng, lat]
         zoom: 13
       });

@@ -175,15 +175,15 @@ function initMapWithMarker(start, end, liveLocation) {
           e3.style.width = marker.properties.iconSize[0] + 'px';
           e3.style.height = marker.properties.iconSize[1] + 'px';
       
-          var markerStart = new mapboxgl.Marker(e1)
+          var markerStart = new mapboxgl.Marker()
                 .setLngLat(start)
                 .setPopup(popStart)
                 .addTo(map);
-          var markerEnd = new mapboxgl.Marker(e2)
+          var markerEnd = new mapboxgl.Marker()
                 .setLngLat(end)
                 .setPopup(popEnd)
                 .addTo(map);
-          var markerLive = new mapboxgl.Marker(e3)
+          var markerLive = new mapboxgl.Marker()
                 .setLngLat(end)
                 .addTo(map);
           

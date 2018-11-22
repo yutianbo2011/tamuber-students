@@ -138,19 +138,19 @@ function initMapWithMarker(start, end, liveLocation) {
           //     iconUrl: '../../stylesheets/images/mapbox-icon.png'
           // });  
           
-          var geojson = {
-              "type": "FeatureCollection",
-              "features": [
-                  {
-                      "type": "Feature",
-                      "properties": {
-                          "iconSize": [15, 15]
-                      }
-                  }
-              ]
-          };
-          var marker2 = geojson.features[0];
-          var e1 = document.createElement('div');
+          // var geojson = {
+          //     "type": "FeatureCollection",
+          //     "features": [
+          //         {
+          //             "type": "Feature",
+          //             "properties": {
+          //                 "iconSize": [15, 15]
+          //             }
+          //         }
+          //     ]
+          // };
+          // var marker2 = geojson.features[0];
+          // var e1 = document.createElement('div');
           // e1.className = 'marker';
           // e1.style.backgroundImage = 'images/mapbox-icon.png';
           // e1.style.width = marker.properties.iconSize[0] + 'px';
@@ -160,8 +160,12 @@ function initMapWithMarker(start, end, liveLocation) {
           // //     window.alert(marker.properties.message);
           // // });
           
-          var e2 = document.createElement('div12');
-          e2.className = 'markerEnd';
+          var startDiv = document.createElement('div');
+          startDiv.className = 'markerStart';
+          var endDiv = document.createElement('div');
+          endDiv.className = 'markerEnd';
+          var liveDiv = document.createElement('div');
+          liveDiv.className = 'markerLive';
       
           
           
@@ -171,17 +175,17 @@ function initMapWithMarker(start, end, liveLocation) {
           // e3.style.width = marker.properties.iconSize[0] + 'px';
           // e3.style.height = marker.properties.iconSize[1] + 'px';
           
-          // var markerStart = new mapboxgl.Marker()
-          //       .setLngLat(start)
-          //       .setPopup(popStart)
-          //       .addTo(map);
-          var markerEnd = new mapboxgl.Marker(e2)
+          var markerStart = new mapboxgl.Marker(startDiv)
+                .setLngLat(start)
+                .setPopup(popStart)
+                .addTo(map);
+          var markerEnd = new mapboxgl.Marker(endDiv)
                 .setLngLat(end)
                 .setPopup(popEnd)
                 .addTo(map);
-          // var markerLive = new mapboxgl.Marker()
-          //       .setLngLat(end)
-          //       .addTo(map);
+          var markerLive = new mapboxgl.Marker(liveDiv)
+                .setLngLat(liveLocation)
+                .addTo(map);
           
         }).always(function(){
                     // map.addLayer({

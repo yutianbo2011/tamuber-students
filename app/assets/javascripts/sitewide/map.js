@@ -154,9 +154,9 @@ function initMapWithMarker(start, end, liveLocation) {
           e1.style.width = marker.properties.iconSize[0] + 'px';
           e1.style.height = marker.properties.iconSize[1] + 'px';
       
-          e1.addEventListener('click', function() {
-              window.alert(marker.properties.message);
-          });
+          // e1.addEventListener('click', function() {
+          //     window.alert(marker.properties.message);
+          // });
           
           var e2 = document.createElement('div');
           e2.className = 'marker';
@@ -218,6 +218,9 @@ function initMapWithMarker(start, end, liveLocation) {
                     // });
                     // map.setPaintProperty('end', 'fill-color', '#ff0000');
         });
+      }
+      while(1){
+        console.log("Hello!!!!!!!")
       }
 }    
 

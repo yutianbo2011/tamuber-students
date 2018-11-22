@@ -38,8 +38,8 @@ function initMapWithMarker(start, end) {
         zoom: 15
       });
       
-      var start = [-96.340379, 30.620167]
-      var end = [-96.323706,30.609521]
+      //var start = [-96.340379, 30.620167]
+      //var end = [-96.323706,30.609521]
       
       //var start = [-96.3409565,30.6189768];//start;
       //var end = [ -96.3425741,30.6213251];//end;
@@ -421,8 +421,6 @@ function getMatch(e) {
             console.log("duration is " + durationbtw);
             
             var route = geo;
-            
-            
             if(geo!=null && geo.coordinates.length!=0){
               start = geo.coordinates[0];
               end = geo.coordinates[geo.coordinates.length-1];

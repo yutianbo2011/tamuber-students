@@ -144,8 +144,7 @@ function initMapWithMarker(start, end, liveLocation) {
                   {
                       "type": "Feature",
                       "properties": {
-                          "message": "Foo",
-                          "iconSize": [60, 60]
+                          "iconSize": [35, 35]
                       }
                   }
               ]

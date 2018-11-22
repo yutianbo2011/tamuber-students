@@ -220,7 +220,7 @@ function initMapWithMarker(start, end, liveLocation) {
         });
       }
       while(1){
-        console.log("Hello!!!!!!!")
+        console.log("Hello!!!!!!!");
         setTimeout(function() {
            console.log("Bye!!!!!!!");
         },10000);

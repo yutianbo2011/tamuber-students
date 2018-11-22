@@ -84,8 +84,10 @@ function initMapWithMarker(start, end, liveLocation) {
             var distDur = getDistanceDuration(start,end)
             console.log("distance is " + distancebtw);
             console.log("duration is " + durationbtw);
-            console.log("Live distance is " + distDur[0]);
-            console.log("Live duration is " + distDur[1]);
+            if(distDur!=nil){
+              console.log("Live distance is " + distDur[0]);
+              console.log("Live duration is " + distDur[1]);
+            }
             document.getElementById('ETA').innerHTML = distancebtw;
             document.getElementById('ETT').innerHTML = durationbtw;
             

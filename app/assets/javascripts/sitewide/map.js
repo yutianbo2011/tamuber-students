@@ -35,8 +35,8 @@ function findMidPoint(start,end) {
   var By = Math.cos(lat2) * Math.sin(dLon);
   var lat3 = Math.atan2(Math.sin(lat1) + Math.sin(lat2), Math.sqrt((Math.cos(lat1) + Bx) * (Math.cos(lat1) + Bx) + By * By));
   var lon3 = lon1 + Math.atan2(By, Math.cos(lat1) + Bx);
-  lat3 = x * 180 / Math.PI;
-  lon3 = x * 180 / Math.PI;
+  lat3 = lat3 * 180 / Math.PI;
+  lon3 = lon3 * 180 / Math.PI;
   console.log("My lat long are:", lat3, lon3);
   return [lon3,lat3];
 }

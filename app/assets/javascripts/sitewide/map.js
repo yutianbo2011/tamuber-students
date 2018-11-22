@@ -79,11 +79,13 @@ function initMapWithMarker(start, end, liveLocation) {
           url: directionsRequest,
         }).done(function(data) {
             var geo = data.routes[0].geometry;
-            var distancebtw = data.routes[0].distance*0.001*0.621371;
+            var distancebtw = data.routes[0].distance*0.001*0.621371;//km to miles
             var durationbtw = data.routes[0].duration*60;
-            getDistanceDuration()
+            var distDur = getDistanceDuration(start,end)
             console.log("distance is " + distancebtw);
             console.log("duration is " + durationbtw);
+            console.log("Live distance is " + distDur[0]);
+            console.log("Live duration is " + distDur[1]);
             document.getElementById('ETA').innerHTML = distancebtw;
             document.getElementById('ETT').innerHTML = durationbtw;
             
@@ -218,9 +220,10 @@ function initMapWithMarker(start, end, liveLocation) {
                     // map.setPaintProperty('end', 'fill-color', '#ff0000');
         });
       }
-      setInterval(function(){
-        console.log("Hello");
-      }, 3000);
+      // setInterval(function(map){
+      //   console.log("Hello");
+      // }, 3000);
+      // console.log("Hi!!!");
 }    
 
 function removeDirections() {
@@ -453,8 +456,8 @@ function removeRoute () {
   
 }
 
-function getDistanceDuration(startLat, startLon, endLat, endLon){
-    var e = startLon +","+startLat +";" + endLon + "," + endLat;
+function getDistanceDuration(start, end){
+    var e = start[0] +","+start[1] +";" + end[0] + "," + end[1];
     mapboxgl.accessToken = ACCESS_TOKEN
     var url = 'https://api.mapbox.com/directions/v5/mapbox/driving/' + e +'?geometries=geojson&steps=true&&access_token=' + mapboxgl.accessToken;
     var req = new XMLHttpRequest();

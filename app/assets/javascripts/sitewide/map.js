@@ -133,14 +133,51 @@ function initMapWithMarker(start, end, liveLocation) {
           
           // var myNewIcon = map.icon({
           //     iconUrl: '../../stylesheets/images/mapbox-icon.png'
+          // });  
+          
+          var geojson = {
+              "type": "FeatureCollection",
+              "features": [
+                  {
+                      "type": "Feature",
+                      "properties": {
+                          "message": "Foo",
+                          "iconSize": [60, 60]
+                      },
+                      "geometry": {
+                          "type": "Point",
+                          "coordinates": [
+                              -66.324462890625,
+                              -16.024695711685304
+                          ]
+                      }
+                  }
+              ]
+          };
+          var marker = geojson.features[0];
+          // geojson.features.forEach(function(marker) {
+              // create a DOM element for the marker
+              var el = document.createElement('div');
+              el.className = 'marker';
+              el.style.backgroundImage = 'url(https://placekitten.com/g/' + marker.properties.iconSize.join('/') + '/)';
+              el.style.width = marker.properties.iconSize[0] + 'px';
+              el.style.height = marker.properties.iconSize[1] + 'px';
+          
+              el.addEventListener('click', function() {
+                  window.alert(marker.properties.message);
+              });
+          
+              // // add marker to map
+              // new mapboxgl.Marker(el)
+              //     .setLngLat(marker.geometry.coordinates)
+              //     .addTo(map);
           // });
           
-          var markerStart = new mapboxgl.Marker()
+          var markerStart = new mapboxgl.Marker(e1)
                 .setLngLat(start)
                 .setPopup(popStart)
-                .setIcon('../../stylesheets/images/mapbox-icon.png')
                 .addTo(map);
-          var markerEnd = new mapboxgl.Marker()
+          var markerEnd = new mapboxgl.Marker(e1)
                 .setLngLat(end)
                 .setPopup(popEnd)
                 .addTo(map);

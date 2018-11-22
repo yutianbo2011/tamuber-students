@@ -35,7 +35,7 @@ function initMapWithMarker(start, end) {
         style: 'mapbox://styles/mapbox/streets-v9', // style URL
         center: start,//[-96.3365,30.6185],
         //center: //[lat,lng], // starting position as [lng, lat]
-        zoom: 10
+        zoom: 13
       });
       
       //var start = [-96.340379, 30.620167]

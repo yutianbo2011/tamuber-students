@@ -469,8 +469,8 @@ function getDistanceDuration(start, end){
       var duration = jsonResponse.routes[0].duration/60; // convert to minutes
       return [distance,duration];
     };
-    
-    return -1;
+    var data = req.send();
+    return data;
 }
 
 

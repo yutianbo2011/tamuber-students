@@ -185,7 +185,6 @@ function initMapWithMarker(start, end, liveLocation) {
                 .addTo(map);
           var markerLive = new mapboxgl.Marker(e3)
                 .setLngLat(end)
-                .setPopup(liveLocation)
                 .addTo(map);
           
         }).always(function(){

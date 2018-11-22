@@ -7,8 +7,9 @@
 </head>
   <body onload='initMap();updateSelectedRoute(<%= @routeData.to_json.html_safe %>);'>
   <main>
-    <% if false %>
+    
     <h1>Select Route</h1>
+    <% if false %>
     <div id="mapid" name='mapid'></div>
 
     <%= form_for @trip, url: {action: "create"}, method: "POST" do |form| %>

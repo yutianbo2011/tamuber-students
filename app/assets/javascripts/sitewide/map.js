@@ -131,14 +131,14 @@ function initMapWithMarker(start, end, liveLocation) {
           var popStart = new mapboxgl.Popup().setHTML(contentStartString);
           var popEnd = new mapboxgl.Popup().setHTML(contenEndString);
           
-          var myNewIcon = map.icon({
-              iconUrl: '../../stylesheets/images/mapbox-icon.png'
-          });
+          // var myNewIcon = map.icon({
+          //     iconUrl: '../../stylesheets/images/mapbox-icon.png'
+          // });
           
           var markerStart = new mapboxgl.Marker()
                 .setLngLat(start)
                 .setPopup(popStart)
-                .setIcon(myNewIcon)
+                .setIcon('../../stylesheets/images/mapbox-icon.png')
                 .addTo(map);
           var markerEnd = new mapboxgl.Marker()
                 .setLngLat(end)

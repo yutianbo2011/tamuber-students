@@ -162,7 +162,7 @@ function initMapWithMarker(start, end, liveLocation) {
           
           var e2 = document.createElement('div12');
           e2.className = 'marker';
-          e2.style.backgroundColor = "red"
+          e2.style.backgroundColor = "yellow"
           e2.style.width = marker.properties.iconSize[0] + 'px';
           e2.style.height = marker.properties.iconSize[1] + 'px';
       

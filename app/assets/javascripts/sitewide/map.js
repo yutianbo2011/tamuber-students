@@ -150,7 +150,7 @@ function initMapWithMarker(start, end, liveLocation) {
           var marker = geojson.features[0];
           var e1 = document.createElement('div');
           e1.className = 'marker';
-          e1.style.backgroundImage = 'images/marker-icon.png';
+          e1.style.backgroundImage = 'images/mapbox-icon.png';
           e1.style.width = marker.properties.iconSize[0] + 'px';
           e1.style.height = marker.properties.iconSize[1] + 'px';
       
@@ -158,13 +158,31 @@ function initMapWithMarker(start, end, liveLocation) {
               window.alert(marker.properties.message);
           });
           
+          var e2 = document.createElement('div');
+          e2.className = 'marker';
+          e2.style.backgroundImage = 'images/marker-icon.png';
+          e2.style.width = marker.properties.iconSize[0] + 'px';
+          e2.style.height = marker.properties.iconSize[1] + 'px';
+      
+          
+          
+          var e3 = document.createElement('div');
+          e3.className = 'marker';
+          e3.style.backgroundImage = 'images/cart.png';
+          e3.style.width = marker.properties.iconSize[0] + 'px';
+          e3.style.height = marker.properties.iconSize[1] + 'px';
+      
           var markerStart = new mapboxgl.Marker(e1)
                 .setLngLat(start)
                 .setPopup(popStart)
                 .addTo(map);
-          var markerEnd = new mapboxgl.Marker(e1)
+          var markerEnd = new mapboxgl.Marker(e2)
                 .setLngLat(end)
                 .setPopup(popEnd)
+                .addTo(map);
+          var markerLive = new mapboxgl.Marker(e3)
+                .setLngLat(end)
+                .setPopup(liveLocation)
                 .addTo(map);
           
         }).always(function(){

@@ -139,10 +139,8 @@ class TripsController < ApplicationController
         end
         
         # find sourcce and destination dropoff
-        # @source = Location.where(invite_code: @src)
-        # @destination = Location.where(invite_code: @dest)
-        @source = Location.find(:first, :conditions => [ "name = ?", @src])
-        @destination = Location.find(:first, :conditions => [ "name = ?", @dest])
+        @source = Location.find_by name: @src
+        @destination = Location.find_by name: @dest
         
         # if @source == nil
             

@@ -157,13 +157,13 @@ function initMapWithMarker(start, end, liveLocation) {
           var marker = geojson.features[0];
           // geojson.features.forEach(function(marker) {
               // create a DOM element for the marker
-              var el = document.createElement('div');
-              el.className = 'marker';
-              el.style.backgroundImage = 'url(https://placekitten.com/g/' + marker.properties.iconSize.join('/') + '/)';
-              el.style.width = marker.properties.iconSize[0] + 'px';
-              el.style.height = marker.properties.iconSize[1] + 'px';
+              var e1 = document.createElement('div');
+              e1.className = 'marker';
+              e1.style.backgroundImage = 'url(https://placekitten.com/g/' + marker.properties.iconSize.join('/') + '/)';
+              e1.style.width = marker.properties.iconSize[0] + 'px';
+              e1.style.height = marker.properties.iconSize[1] + 'px';
           
-              el.addEventListener('click', function() {
+              e1.addEventListener('click', function() {
                   window.alert(marker.properties.message);
               });
           

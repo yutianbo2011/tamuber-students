@@ -2,6 +2,7 @@ var directionsService;
 var map = null;
 var draw = null;
 var infowindow;
+var markerLive;
 // var marker;
 // var stmarker;
 var showDirections = true;
@@ -91,7 +92,6 @@ function initMapWithMarker(start, end, liveLocation) {
             document.getElementById('ETA').innerHTML = distancebtw;
             document.getElementById('ETT').innerHTML = durationbtw;
             
-            var route = geo;
             if(geo!=null && geo.coordinates.length!=0){
             console.log("data " +geo);
             console.log("data " + geo.coordinates[0])
@@ -99,6 +99,7 @@ function initMapWithMarker(start, end, liveLocation) {
             console.log("travel time invoked from outside");
             
             start = geo.coordinates[0];
+            markerLive.setLngLat(geo.coordinates[1]);
             end = geo.coordinates[geo.coordinates.length-1];
             console.log(route);
           }
@@ -109,7 +110,7 @@ function initMapWithMarker(start, end, liveLocation) {
               type: 'geojson',
               data: {
                 type: 'Feature',
-                geometry: route
+                geometry: geo
               }
             },
             paint: {
@@ -201,10 +202,9 @@ function initMapWithMarker(start, end, liveLocation) {
                 .setLngLat(end)
                 .setPopup(popEnd)
                 .addTo(map);
-          var markerLive = new mapboxgl.Marker()
+          markerLive = new mapboxgl.Marker(liveDiv)
                 .setLngLat(liveLocation)
-          // markerLive.feature.anchor("[15,15]"); 
-          markerLive.addTo(map);
+                .addTo(map);
           
         }).always(function(){
                     // map.addLayer({

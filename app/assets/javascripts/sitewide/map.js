@@ -246,7 +246,7 @@ function initMapWithMarker(start, end, liveLocation) {
       }
       setInterval(function(){
         console.log("Hello");
-        if(markerLive!= null && stepSize>=route.coordinates.length){
+        if(markerLive!= null && stepSize<=route.coordinates.length){
           markerLive.setLngLat(route.coordinates[stepSize++]);
           console.log("Change");
         }

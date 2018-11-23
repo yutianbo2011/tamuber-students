@@ -250,6 +250,7 @@ function initMapWithMarker(start, end, liveLocation) {
         if(markerLive!= null && stepSize>=0){
           markerLive.setLngLat(route.coordinates[stepSize]);
           stepSize--;
+          console.log("Change");
         }
       }, 3000);
       console.log("Hi!!!");

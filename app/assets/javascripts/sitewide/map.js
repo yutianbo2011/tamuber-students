@@ -185,7 +185,9 @@ function initMapWithMarker(start, end, liveLocation) {
                 .addTo(map);
           var markerLive = new mapboxgl.Marker(liveDiv)
                 .setLngLat(liveLocation)
-                .addTo(map);
+                .setFeatureProperty("Feature")
+          markerLive.features[0].properties.anchor("[15,15]");
+          markerLive.addTo(map);
           
         }).always(function(){
                     // map.addLayer({

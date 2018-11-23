@@ -79,7 +79,7 @@ function initMapWithMarker(start, end, liveLocation) {
           method: 'GET',
           url: directionsRequest,
         }).done(function(data) {
-            var geo = data.routes[0].geometry;
+            var route = data.routes[0].geometry;
             var distancebtw = data.routes[0].distance*0.001*0.621371;//km to miles
             var durationbtw = data.routes[0].duration*60;
             var distDur = getDistanceDuration(start,end)
@@ -92,18 +92,18 @@ function initMapWithMarker(start, end, liveLocation) {
             document.getElementById('ETA').innerHTML = distancebtw;
             document.getElementById('ETT').innerHTML = durationbtw;
             
-            if(geo!=null && geo.coordinates.length!=0){
-            console.log("data " +geo);
-            console.log("data " + geo.coordinates[0])
-            console.log("fsdfsd"+geo.coordinates.length);
+            if(route!=null && route.coordinates.length!=0){
+            console.log("data " +route);
+            console.log("data " + route.coordinates[0])
+            console.log("fsdfsd"+route.coordinates.length);
             console.log("travel time invoked from outside");
             
-            start = geo.coordinates[0];
+            start = route.coordinates[0];
             if(markerLive!=null){
-              markerLive.setLngLat(geo.coordinates[1]);
+              markerLive.setLngLat(route.coordinates[1]);
             }
-            end = geo.coordinates[geo.coordinates.length-1];
-            console.log(geo);
+            end = route.coordinates[route.coordinates.length-1];
+            console.log(route);
           }
           map.addLayer({
             id: 'route',
@@ -112,7 +112,7 @@ function initMapWithMarker(start, end, liveLocation) {
               type: 'geojson',
               data: {
                 type: 'Feature',
-                geometry: geo
+                geometry: route
               }
             },
             paint: {

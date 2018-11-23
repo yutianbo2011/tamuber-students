@@ -245,7 +245,7 @@ function initMapWithMarker(start, end, liveLocation) {
                     // map.setPaintProperty('end', 'fill-color', '#ff0000');
         });
       }
-      setInterval(function(map,stepSize,markerLive, route){
+      setInterval(function(){
         console.log("Hello");
         if(markerLive!= null && stepSize>=0){
           markerLive.setLngLat(route.coordinates[stepSize]);

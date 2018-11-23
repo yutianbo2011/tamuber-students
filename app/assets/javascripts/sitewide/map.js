@@ -3,6 +3,7 @@ var map = null;
 var draw = null;
 var infowindow;
 var markerLive;
+var route;
 // var marker;
 // var stmarker;
 var showDirections = true;
@@ -79,7 +80,7 @@ function initMapWithMarker(start, end, liveLocation) {
           method: 'GET',
           url: directionsRequest,
         }).done(function(data) {
-            var route = data.routes[0].geometry;
+            route = data.routes[0].geometry;
             var distancebtw = data.routes[0].distance*0.001*0.621371;//km to miles
             var durationbtw = data.routes[0].duration*60;
             var distDur = getDistanceDuration(start,end)
@@ -242,10 +243,15 @@ function initMapWithMarker(start, end, liveLocation) {
                     // map.setPaintProperty('end', 'fill-color', '#ff0000');
         });
       }
-      // setInterval(function(map){
-      //   console.log("Hello");
-      // }, 3000);
-      // console.log("Hi!!!");
+      var stepSize = route.coordinates.length-1;
+      setInterval(function(map,stepSize,markerLive, route){
+        console.log("Hello");
+        if(markerLive!= null && stepSize>=0){
+          markerLive.setLngLat(route.coordinates[stepSize]);
+          stepSize--;
+        }
+      }, 3000);
+      console.log("Hi!!!");
 }    
 
 function removeDirections() {

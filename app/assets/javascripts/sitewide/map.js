@@ -138,17 +138,35 @@ function initMapWithMarker(start, end, liveLocation) {
           //     iconUrl: '../../stylesheets/images/mapbox-icon.png'
           // });  
           
+          var geojson = {
+              "type": "FeatureCollection",
+              "features": [
+                  {
+                      "type": "Feature",
+                      "properties": {
+                          "iconSize": [15, 15]
+                      }
+                  }
+              ]
+          };
           // var geojson = {
-          //     "type": "FeatureCollection",
-          //     "features": [
-          //         {
-          //             "type": "Feature",
-          //             "properties": {
-          //                 "iconSize": [15, 15]
-          //             }
-          //         }
-          //     ]
-          // };
+          //       "type": "circle",
+          //       "features": [
+          //           {
+          //               "type": "Feature",
+          //               "properties": {
+          //                   width: 30px,
+          //                   height: 22px,
+          //                   icon: {
+          //                     iconUrl: '/images/cart2.png',
+          //                     iconSize: [30, 22], // size of the icon
+          //                     iconAnchor: [15, 15], // point of the icon which will correspond to marker's location
+          //                     className: 'dot'  
+          //                   }
+          //               }
+          //           }
+          //       ]
+          //   };
           // var marker2 = geojson.features[0];
           // var e1 = document.createElement('div');
           // e1.className = 'marker';
@@ -185,8 +203,8 @@ function initMapWithMarker(start, end, liveLocation) {
                 .addTo(map);
           var markerLive = new mapboxgl.Marker(liveDiv)
                 .setLngLat(liveLocation)
-          // markerLive.feature.anchor("[15,15]");
-          markerLive.addTo(map);
+          // markerLive.feature.anchor("[15,15]"); 
+          // markerLive.addTo(map);
           
         }).always(function(){
                     // map.addLayer({

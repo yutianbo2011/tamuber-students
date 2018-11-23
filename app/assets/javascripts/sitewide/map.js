@@ -103,7 +103,7 @@ function initMapWithMarker(start, end, liveLocation) {
               markerLive.setLngLat(geo.coordinates[1]);
             }
             end = geo.coordinates[geo.coordinates.length-1];
-            console.log(route);
+            console.log(geo);
           }
           map.addLayer({
             id: 'route',

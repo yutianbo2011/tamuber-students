@@ -99,7 +99,9 @@ function initMapWithMarker(start, end, liveLocation) {
             console.log("travel time invoked from outside");
             
             start = geo.coordinates[0];
-            markerLive.setLngLat(geo.coordinates[1]);
+            if(markerLive!=null){
+              markerLive.setLngLat(geo.coordinates[1]);
+            }
             end = geo.coordinates[geo.coordinates.length-1];
             console.log(route);
           }

@@ -201,7 +201,7 @@ function initMapWithMarker(start, end, liveLocation) {
                 .setLngLat(end)
                 .setPopup(popEnd)
                 .addTo(map);
-          var markerLive = new mapboxgl.Marker(liveDiv)
+          var markerLive = new mapboxgl.Marker()
                 .setLngLat(liveLocation)
           // markerLive.feature.anchor("[15,15]"); 
           markerLive.addTo(map);

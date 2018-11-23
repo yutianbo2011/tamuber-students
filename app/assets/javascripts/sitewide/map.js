@@ -4,7 +4,7 @@ var draw = null;
 var infowindow;
 var markerLive;
 var route;
-var stepSize;
+var stepSize = 0;
 // var marker;
 // var stmarker;
 var showDirections = true;
@@ -105,7 +105,6 @@ function initMapWithMarker(start, end, liveLocation) {
               markerLive.setLngLat(route.coordinates[1]);
             }
             end = route.coordinates[route.coordinates.length-1];
-            stepSize = route.coordinates.length-1;
             console.log(route);
           }
           map.addLayer({
@@ -247,9 +246,8 @@ function initMapWithMarker(start, end, liveLocation) {
       }
       setInterval(function(){
         console.log("Hello");
-        if(markerLive!= null && stepSize>=0){
-          markerLive.setLngLat(route.coordinates[stepSize]);
-          stepSize--;
+        if(markerLive!= null && stepSize>=route.coordinates.length){
+          markerLive.setLngLat(route.coordinates[stepSize++]);
           console.log("Change");
         }
       }, 3000);

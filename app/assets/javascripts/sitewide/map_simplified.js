@@ -182,14 +182,13 @@ function initMapMarkerCart(start, end, liveLocation) {
             // markerLive.setLngLat(route.coordinates[stepSize++]);
             var fetchLiveUrl = 'https://raw.githubusercontent.com/rohan54/tamuber-students/master/myjson.json';
             console.log("Iteration "+stepSize);
-            console.log("Coordinates:"+route.coordinates[stepSize])
             $.getJSON(fetchLiveUrl, function(vehicle) {
               var liveLong = vehicle.currentLocation.longitude;
               var liveLat = vehicle.currentLocation.lattitude;
               liveLocation = [liveLong,liveLat];
-              
-              markerLive.setLngLat(liveLocation);
             });
+            console.log("Coordinates:"+liveLocation)
+            markerLive.setLngLat(liveLocation);
             console.log("Change");
         }
     }, 3000);

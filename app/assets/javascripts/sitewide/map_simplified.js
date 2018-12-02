@@ -41,27 +41,27 @@ function initMapMarkerCart3(start,end){
         method: 'GET',
         url: getNearestVehicleUrl,
     }).done(function(nearestVehicle) {
-          if(nearestVehicle == null){
+        if(nearestVehicle == null){
             return;
-          }
-          var nearLong = nearestVehicle.currentLocation.longitude;
-          var nearLat = nearestVehicle.currentLocation.lattitude;
-          var nearLoc = [nearLong,nearLat];
-          var nearId = nearestVehicle.id;
-          // var fetchLiveUrl = 'https://api.myjson.com/bins/o0td6';
-          // // 'https://jsonbin.io/5c03821b1deea01014bbb72f';
-          // //'http://tamuber-mock-server.herokuapp.com/api/vehicles/'+vehicleId;
-          var fetchLiveUrl = 'https://raw.githubusercontent.com/rohan54/tamuber-students/master/myjson.json';
-          $.getJSON(fetchLiveUrl, function(vehicle){
-              // vehicle = JSON.parse(vehicle);
-              console.log("vehicle");
-              console.log(vehicle);
-              var liveLong = vehicle.currentLocation.longitude;
-              var liveLat = vehicle.currentLocation.lattitude;
-              var liveLoc = [liveLong,liveLat];
-              initMapMarkerCart(start,end,liveLoc,nearId)
-          }).always(function(){
-          });
+        }
+        var nearLong = nearestVehicle.currentLocation.longitude;
+        var nearLat = nearestVehicle.currentLocation.lattitude;
+        var nearLoc = [nearLong,nearLat];
+        var nearId = nearestVehicle.id;
+        // var fetchLiveUrl = 'https://api.myjson.com/bins/o0td6';
+        // // 'https://jsonbin.io/5c03821b1deea01014bbb72f';
+        // //'http://tamuber-mock-server.herokuapp.com/api/vehicles/'+vehicleId;
+        var fetchLiveUrl = 'https://raw.githubusercontent.com/rohan54/tamuber-students/master/myjson.json';
+        $.getJSON(fetchLiveUrl, function(vehicle){
+            // vehicle = JSON.parse(vehicle);
+            console.log("vehicle");
+            console.log(vehicle);
+            var liveLong = vehicle.currentLocation.longitude;
+            var liveLat = vehicle.currentLocation.lattitude;
+            var liveLoc = [liveLong,liveLat];
+            initMapMarkerCart(start,end,liveLoc,nearId)
+        }).always(function(){
+        });
     });
 }
 
@@ -88,6 +88,23 @@ function initMapMarkerCart2(start,end,vehicleId){
         initMapMarkerCart(start,end,liveLoc,liveId)
     }).always(function(){
     });
+}
+
+function updateTripTimeById(dist,time,id) {
+    console.log(id+"distance is " + dist);
+    console.log(id+"duration is " + time);
+    document.getElementById(id).innerHTML = time + " minutes";
+}
+
+function updateETA(liveLocation, start) {
+    var distDur = getDistanceDuration(liveLocation, start);
+    updateTripTimeById(distDur[0], distDur[1], 'ETA');
+}
+
+function updateETT(data) {
+    var dist = (data.routes[0].distance * 0.001 * 0.621371).toFixed(2);//km to miles
+    var time = (data.routes[0].duration / 60).toFixed(2);
+    updateTripTimeById(dist, time, 'ETT');
 }
 
 function initMapMarkerCart(start, end, liveLocation, liveId) {
@@ -119,17 +136,8 @@ function initMapMarkerCart(start, end, liveLocation, liveId) {
             url: directionsRequest,
         }).done(function(data) {
             route = data.routes[0].geometry;
-            var distancebtw = (data.routes[0].distance*0.001*0.621371).toFixed(2);//km to miles
-            var durationbtw = (data.routes[0].duration/60).toFixed(2);
-            var distDur = getDistanceDuration(start,end)
-            console.log("distance is " + distancebtw);
-            console.log("duration is " + durationbtw);
-            if(distDur!=null){
-                console.log("Live distance is " + distDur[0]);
-                console.log("Live duration is " + distDur[1]);
-            }
-            document.getElementById('ETA').innerHTML = distancebtw+" miles";
-            document.getElementById('ETT').innerHTML = durationbtw+" minutes";
+            updateETT(data);
+            updateETA(liveLocation, start);
 
             if(route!=null && route.coordinates.length!=0){
                 console.log("data " +route);
@@ -218,11 +226,11 @@ function initMapMarkerCart(start, end, liveLocation, liveId) {
             var fetchLiveUrl = 'https://raw.githubusercontent.com/rohan54/tamuber-students/master/myjson.json';
             console.log("Iteration "+stepSize);
             $.getJSON(fetchLiveUrl, function(vehicle) {
-              var liveLong = vehicle.currentLocation.longitude;
-              var liveLat = vehicle.currentLocation.lattitude;
-              var liveLoc = [liveLong,liveLat];
-              console.log("Coordinates inside:"+liveLoc);
-              markerLive.setLngLat(liveLoc);
+                var liveLong = vehicle.currentLocation.longitude;
+                var liveLat = vehicle.currentLocation.lattitude;
+                var liveLoc = [liveLong,liveLat];
+                console.log("Coordinates inside:"+liveLoc);
+                markerLive.setLngLat(liveLoc);
             });
             console.log("Change");
         }
@@ -252,7 +260,7 @@ function getDistanceDuration(start, end){
     };
     var data = req.send();
     return data;
-} 
+}
 
 
 

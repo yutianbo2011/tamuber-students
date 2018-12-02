@@ -39,7 +39,7 @@ function initMapMarkerCart2(start,end,vehicleId){
     // var fetchLiveUrl = 'https://api.myjson.com/bins/o0td6';
     // // 'https://jsonbin.io/5c03821b1deea01014bbb72f';
     // //'http://tamuber-mock-server.herokuapp.com/api/vehicles/'+vehicleId;
-    var fetchLiveUrl = 'https://raw.githubusercontent.com/rohan54/tamuber-students/master/myjson.json';
+    var fetchLiveUrl = 'https://raw.githubusercontent.com/rohan54/tamuber-students/master/package.json';
     $.ajax({
         method: 'GET',
         url: fetchLiveUrl,

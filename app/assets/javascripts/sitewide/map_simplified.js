@@ -100,7 +100,7 @@ function initMapWithMarker(start, end, liveLocation) {
                 start = route.coordinates[0];
                 if(markerLive!=null){
                     // markerLive.setLngLat(route.coordinates[1]);
-                    markerLive.setLngLat('['+liveLocation.toString()+']');
+                    markerLive.setLngLat(liveLocation);
                 }
                 end = route.coordinates[route.coordinates.length-1];
                 console.log(route);
@@ -165,7 +165,7 @@ function initMapWithMarker(start, end, liveLocation) {
                 .setPopup(popEnd)
                 .addTo(map);
             markerLive = new mapboxgl.Marker(liveDiv)
-                .setLngLat(liveLocation)
+                .setLngLat('['+liveLocation.toString()+']')
                 .addTo(map);
 
         }).always(function(){

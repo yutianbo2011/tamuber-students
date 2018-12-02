@@ -99,8 +99,8 @@ function initMapWithMarker(start, end, liveLocation) {
 
                 start = route.coordinates[0];
                 if(markerLive!=null){
-                    // markerLive.setLngLat(route.coordinates[1]);
-                    markerLive.setLngLat(liveLocation);
+                    markerLive.setLngLat(route.coordinates[1]);
+                    //markerLive.setLngLat(liveLocation);
                 }
                 end = route.coordinates[route.coordinates.length-1];
                 console.log(route);

@@ -99,7 +99,7 @@ function updateTripTimeById(dist,time,id) {
 function updateETA(liveLocation, start) {
     if(liveLocation!=null && start!=null){
         //var distDur =
-            getDistanceDuration(liveLocation, start);
+            getDistanceDuration(liveLocation, start,updateTripTimeById);
         //updateTripTimeById(distDur[0], distDur[1], 'ETA');
     } else{
         console.log("ETA cant be updated");
@@ -258,16 +258,16 @@ function calcRoute(lat, lng) {
 function calculateAndDisplayRoute(request, startPointName, endPointName, routeId) {
 }
 
-function getDistanceDuration(start, end){
+function getDistanceDuration(start, end, updateFunction){
     var e = start[0] +","+start[1] +";" + end[0] + "," + end[1];
     mapboxgl.accessToken = ACCESS_TOKEN
     var url = 'https://api.mapbox.com/directions/v5/mapbox/driving/' + e +'?geometries=geojson&steps=true&&access_token=' + mapboxgl.accessToken;
     console.log("eta url:"+url);
     var output;
     $.getJSON(url, function(jsonResponse) {
-        var distance = jsonResponse.routes[0].distance*0.001*0.621371; // convert to km
-        var duration = jsonResponse.routes[0].duration/60; // convert to minutes
-        updateTripTimeById(distance, duration, 'ETA');
+        var distance = (jsonResponse.routes[0].distance*0.001*0.621371).toFixed(2); // convert to km
+        var duration = (jsonResponse.routes[0].duration/60).toFixed(2); // convert to minutes
+        updateFunction(distance, duration, 'ETA');
         // output = [distance,duration];
     });
     // return output;

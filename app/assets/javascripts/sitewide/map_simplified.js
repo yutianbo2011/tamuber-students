@@ -45,7 +45,7 @@ function initMapWithMarker2(start,end,vehicleId){
         console.log("vehicle");
         console.log(vehicle);
         var liveLong = vehicle.currentLocation.longitude;
-        var liveLat = vehicle.currentLocation.latitude;
+        var liveLat = vehicle.currentLocation.lattitude;
         var liveLoc = [liveLong,liveLat];
         initMapWithMarker(start,end,liveLoc)
     }).always(function(){

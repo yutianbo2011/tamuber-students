@@ -91,11 +91,11 @@ function updateTripTimeById(dist,time,id) {
     document.getElementById(id).innerHTML = time + " minutes";
 }
 
-function updateETA(liveLocation, start) {
+function updateEstimatedTimes(liveLocation, start, labelId) {
     if(liveLocation!=null && start!=null){
-        getDistanceDuration(liveLocation, start,updateTripTimeById, 'ETA');
+        getDistanceDuration(liveLocation, start,updateTripTimeById, labelId);
     } else{
-        console.log("ETA cant be updated");
+        console.log(labelId + " cant be updated");
         console.log("liveLoc :"+liveLocation);
         console.log("start :"+start);
     }
@@ -191,7 +191,7 @@ function initMapMarkerCart(start, end, liveLocation, liveId) {
         }).done(function(data) {
             route = data.routes[0].geometry;
             updateETT(data);
-            updateETA(liveLocation, start);
+            updateEstimatedTimes(liveLocation, start, 'ETA');
 
             if(route!=null && route.coordinates.length!=0){
                 console.log("data " +route);
@@ -239,8 +239,8 @@ function initMapMarkerCart(start, end, liveLocation, liveId) {
                 var liveLoc = [liveLong,liveLat];
                 console.log("Coordinates inside:"+liveLoc);
                 markerLive.setLngLat(liveLoc);
-                // updateETA(liveLoc, start);
-                // updateETT()
+                updateEstimatedTimes(liveLoc, start, 'ETA');
+                updateEstimatedTimes(liveLoc, end, 'ETT');
             });
             console.log("Change");
         }

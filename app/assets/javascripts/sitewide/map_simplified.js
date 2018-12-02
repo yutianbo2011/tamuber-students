@@ -206,3 +206,214 @@ function getMatch(e) {
 function abc(){
   console.log("hello hello");
 }
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    /*
+    var req = new XMLHttpRequest();
+    req.responseType = 'json';
+    req.open('GET', url, true);
+    console.log('received json data ' + req.response)
+    
+   
+    req.onload  = function() {
+      var jsonResponse = req.response;
+      var distance = jsonResponse.routes[0].distance*0.001*0.621371; // convert to km
+      var duration = jsonResponse.routes[0].duration/60; // convert to minutes
+      console.log("distance is " + distance)
+      console.log("duration is " + duration)
+      // add results to info box
+      document.getElementById('calculated-line').innerHTML = 'Distance: ' + distance.toFixed(2) + ' mi<br>Duration: ' + duration.toFixed(2) + ' minutes';
+      var coords = jsonResponse.routes[0].geometry;
+      // add the route to the map
+      
+      
+      addRoute(coords);
+    };
+    
+    req.send();
+     setTimeout(function() {
+        console.log("timeout");
+      }, 10000);
+    
+}*/
+
+
+function addRoute (coords) {
+  // check if the route is already loaded
+  
+  console.log('route addition has been invoked ');
+  
+  if (map.getSource('route')) {
+    console.log("In add route if part");
+    map.removeLayer('route')
+    map.removeSource('route')
+  }
+  /*else*/{
+    map.addLayer({
+      "id": "route",
+      "type": "line",
+      "source": {
+        "type": "geojson",
+        "data": {
+          "type": "Feature",
+          "properties": {},
+          "geometry": coords
+        }
+      },
+      "layout": {
+        "line-join": "round",
+        "line-cap": "round"
+      },
+      "paint": {
+        "line-color": "#3b9ddd",
+        "line-width": 8,
+        "line-opacity": 0.8
+      }
+    });
+    console.log("before markers " + coords[0] + ',' + coords[1]);
+    var el = document.createElement('div');
+      el.className = 'marker';
+      
+    var start = [-96.340379, 30.620167]
+    var end = [-96.323706,30.609521]
+    
+    var message = null;
+    if(start!=null){
+      strtMessage = "Start:"+"HRBB"
+      strtAddress = "Harvey R. \"Bum\" Bright Building, College Station, TX 77840..";
+    }
+    if(end!=null){
+      endMessage = "End:"+"ZACH"
+      endAddress = "Zachry Engineering Education Complex, College Station, TX 77840..";
+    }
+    var contentStartString = '<h5>'+strtMessage+"</h5>"
+    contentStartString = contentStartString + "<p>Details : "+strtAddress+"</p>"
+    var contenEndString = '<h5>'+endMessage+"</h5>"
+    contenEndString = contenEndString + "<p>Details : "+strtAddress+"</p>"
+    
+    var popStart = new mapboxgl.Popup().setHTML(contentStartString);
+    var popEnd = new mapboxgl.Popup().setHTML(contenEndString);
+    
+    // var markerStart = new mapboxgl.Marker()
+    //       .setLngLat(start)
+    //       .setPopup(popStart)
+    //       .addTo(map);
+          
+
+    // var markerEnd = new mapboxgl.Marker()
+    //       .setLngLat(end)
+    //       .setPopup(popEnd)
+    //       .addTo(map);
+          
+        
+    
+   /*
+     var el = document.createElement('div');
+      el.className = 'marker';
+      
+       var markerStart = new mapboxgl.Marker()
+                .setLngLat([-96.340379, 30.620167])
+                .setPopup(new mapboxgl.Popup({ offset: 25 }))
+                .addTo(map);
+    
+    
+    console.log("marker prop " + marker.geometry.coordinates)
+    var mar = new mapboxgl.Marker()
+  .setLngLat([-96.340379, 30.620167])
+  .setPopup(new mapboxgl.Popup({ offset: 25 }) // add popups
+  .setHTML('<h3>hello</h3>')
+  .addTo(map)*/
+  
+  }
+}
+
+function reload(){
+  window.location.reload(true);
+}
+
+
+
+
+
+
+function newInitMapWithMarker() {
+      
+      console.log("in new initMapwithMarker");
+      mapboxgl.accessToken = ACCESS_TOKEN
+      map = new mapboxgl.Map({
+        container: 'mapid1',
+        style: 'mapbox://styles/mapbox/streets-v9', 
+        center: [-96.3365,30.6185],
+        zoom: 15,
+        minZoom: 11
+      });
+      
+      console.log("map is " + map);
+      
+      
+      draw = new MapboxDraw({
+          displayControlsDefault: false,
+          controls: {
+              line_string: true,
+              trash: true
+      },
+      styles: [
+        {
+            "id": "gl-draw-line",
+            "type": "line",
+            "filter": ["all", ["==", "$type", "LineString"], ["!=", "mode", "static"]],
+            "layout": {
+              "line-cap": "round",
+              "line-join": "round"
+            },
+            "paint": {
+              "line-color": "#5184e1",
+              "line-dasharray": [0.2, 2],
+              "line-width": 4,
+              "line-opacity": 0.7
+            }
+        },
+        // vertex point halos
+        {
+          "id": "gl-draw-polygon-and-line-vertex-halo-active",
+          "type": "circle",
+          "filter": ["all", ["==", "meta", "vertex"], ["==", "$type", "Point"], ["!=", "mode", "static"]],
+          "paint": {
+            "circle-radius": 10,
+            "circle-color": "#FFF"
+          }
+        },
+        // vertex points
+        {
+          "id": "gl-draw-polygon-and-line-vertex-active",
+          "type": "circle",
+          "filter": ["all", ["==", "meta", "vertex"], ["==", "$type", "Point"], ["!=", "mode", "static"]],
+          "paint": {
+            "circle-radius": 6,
+            "circle-color": "#3b9ddd",
+          }
+        },
+      ]
+});
+console.log("problem arose after this");
+map.addControl(draw);
+console.log("control has been added");
+//map.on('draw.create', updateRoute);
+//map.on('draw.update', updateRoute);
+//map.on('draw.delete', removeRoute);
+    
+}    
+
+//Manvitha changes

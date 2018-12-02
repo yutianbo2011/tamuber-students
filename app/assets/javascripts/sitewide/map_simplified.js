@@ -45,7 +45,7 @@ function initMapWithMarker2(start,end,vehicleId){
         console.log(vehicle);
         var liveLong = vehicle.currentLocation.longitude;
         var liveLat = vehicle.currentLocation.latitude;
-        var liveLoc = "["+ liveLong + "," + liveLat + "]";
+        var liveLoc = [liveLong,liveLat];
         initMapWithMarker(start,end,liveLoc)
     }).always(function(){
     });
@@ -100,7 +100,7 @@ function initMapWithMarker(start, end, liveLocation) {
                 start = route.coordinates[0];
                 if(markerLive!=null){
                     // markerLive.setLngLat(route.coordinates[1]);
-                    markerLive.setLngLat(liveLocation);
+                    markerLive.setLngLat('['+liveLocation.toString()+']');
                 }
                 end = route.coordinates[route.coordinates.length-1];
                 console.log(route);

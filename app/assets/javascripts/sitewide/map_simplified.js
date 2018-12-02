@@ -186,6 +186,7 @@ function initMapMarkerCart(start, end, liveLocation) {
               var liveLong = vehicle.currentLocation.longitude;
               var liveLat = vehicle.currentLocation.lattitude;
               liveLocation = [liveLong,liveLat];
+              console.log("Coordinates inside:"+liveLocation)
             });
             console.log("Coordinates:"+liveLocation)
             markerLive.setLngLat(liveLocation);

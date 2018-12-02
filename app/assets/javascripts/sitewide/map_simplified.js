@@ -35,7 +35,7 @@ function findMidPoint(start,end) {
     return [lon3,lat3];
 }
 
-function initMapWithMarker(start,end,vehicleId){
+function initMapWithMarker2(start,end,vehicleId){
     var fetchLiveUrl = 'http://tamuber-mock-server.herokuapp.com/api/vehicles/'+vehicleId;
     $.ajax({
         method: 'GET',

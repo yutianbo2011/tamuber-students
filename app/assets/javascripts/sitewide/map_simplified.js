@@ -120,7 +120,7 @@ function initMapMarkerCart(start, end, liveLocation, liveId) {
         }).done(function(data) {
             route = data.routes[0].geometry;
             var distancebtw = data.routes[0].distance*0.001*0.621371;//km to miles
-            var durationbtw = data.routes[0].duration*60;
+            var durationbtw = data.routes[0].duration/3600;
             var distDur = getDistanceDuration(start,end)
             console.log("distance is " + distancebtw);
             console.log("duration is " + durationbtw);
@@ -128,8 +128,8 @@ function initMapMarkerCart(start, end, liveLocation, liveId) {
                 console.log("Live distance is " + distDur[0]);
                 console.log("Live duration is " + distDur[1]);
             }
-            document.getElementById('ETA').innerHTML = distancebtw;
-            document.getElementById('ETT').innerHTML = durationbtw;
+            document.getElementById('ETA').innerHTML = distancebtw+" miles";
+            document.getElementById('ETT').innerHTML = durationbtw+" minutes";
 
             if(route!=null && route.coordinates.length!=0){
                 console.log("data " +route);

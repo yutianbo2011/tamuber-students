@@ -73,12 +73,7 @@ function initMapMarkerCart2(start,end,vehicleId){
     // // 'https://jsonbin.io/5c03821b1deea01014bbb72f';
     // //'http://tamuber-mock-server.herokuapp.com/api/vehicles/'+vehicleId;
     var fetchLiveUrl = 'https://raw.githubusercontent.com/rohan54/tamuber-students/master/myjson.json';
-    // $.ajax({
-    //     method: 'GET',
-    //     url: fetchLiveUrl,
-    // }).done(function(vehicle) {
     $.getJSON(fetchLiveUrl, function(vehicle) {
-        // vehicle = JSON.parse(vehicle);
         console.log("vehicle");
         console.log(vehicle);
         var liveLong = vehicle.currentLocation.longitude;
@@ -98,9 +93,7 @@ function updateTripTimeById(dist,time,id) {
 
 function updateETA(liveLocation, start) {
     if(liveLocation!=null && start!=null){
-        //var distDur =
-            getDistanceDuration(liveLocation, start,updateTripTimeById);
-        //updateTripTimeById(distDur[0], distDur[1], 'ETA');
+        getDistanceDuration(liveLocation, start,updateTripTimeById);
     } else{
         console.log("ETA cant be updated");
         console.log("liveLoc :"+liveLocation);
@@ -263,25 +256,11 @@ function getDistanceDuration(start, end, updateFunction){
     mapboxgl.accessToken = ACCESS_TOKEN
     var url = 'https://api.mapbox.com/directions/v5/mapbox/driving/' + e +'?geometries=geojson&steps=true&&access_token=' + mapboxgl.accessToken;
     console.log("eta url:"+url);
-    var output;
     $.getJSON(url, function(jsonResponse) {
         var distance = (jsonResponse.routes[0].distance*0.001*0.621371).toFixed(2); // convert to km
         var duration = (jsonResponse.routes[0].duration/60).toFixed(2); // convert to minutes
         updateFunction(distance, duration, 'ETA');
-        // output = [distance,duration];
     });
-    // return output;
-    // var req = new XMLHttpRequest();
-    // req.responseType = 'json';
-    // req.open('GET', url, true);
-    // req.onload  = function() {
-    //     var jsonResponse = req.response;
-    //     var distance = jsonResponse.routes[0].distance*0.001*0.621371; // convert to km
-    //     var duration = jsonResponse.routes[0].duration/60; // convert to minutes
-    //     return [distance,duration];
-    // };
-    // var data = req.send();
-    // return data;
 }
 
 

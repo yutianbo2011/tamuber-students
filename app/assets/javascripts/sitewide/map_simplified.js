@@ -111,6 +111,56 @@ function updateETT(data) {
     }
 }
 
+function addMarkers(start, end, liveLocation) {
+    var message = null;
+    if (start != null) {
+        var strtMessage = "Start:" + "HRBB"
+        var strtAddress = "Harvey R. \"Bum\" Bright Building, College Station, TX 77840..";
+    }
+    if (end != null) {
+        var endMessage = "End:" + "ZACH"
+        var endAddress = "Zachry Engineering Education Complex, College Station, TX 77840..";
+    }
+    var contentStartString = '<h5>' + strtMessage + "</h5>"
+    contentStartString = contentStartString + "<p>Details : " + strtAddress + "</p>"
+    var contenEndString = '<h5>' + endMessage + "</h5>"
+    contenEndString = contenEndString + "<p>Details : " + strtAddress + "</p>"
+
+    var popStart = new mapboxgl.Popup().setHTML(contentStartString);
+    var popEnd = new mapboxgl.Popup().setHTML(contenEndString);
+
+    var geojson = {
+        "type": "FeatureCollection",
+        "features": [
+            {
+                "type": "Feature",
+                "properties": {
+                    "iconSize": [15, 15]
+                }
+            }
+        ]
+    };
+
+    var startDiv = document.createElement('div');
+    startDiv.className = 'markerStart';
+    var endDiv = document.createElement('div');
+    endDiv.className = 'markerEnd';
+    var liveDiv = document.createElement('div');
+    liveDiv.className = 'markerLive';
+
+    var markerStart = new mapboxgl.Marker(startDiv)
+        .setLngLat(start)
+        .setPopup(popStart)
+        .addTo(map);
+    var markerEnd = new mapboxgl.Marker(endDiv)
+        .setLngLat(end)
+        .setPopup(popEnd)
+        .addTo(map);
+    markerLive = new mapboxgl.Marker(liveDiv)
+        .setLngLat(liveLocation)
+        .addTo(map);
+}
+
 function initMapMarkerCart(start, end, liveLocation, liveId) {
 
     console.log("in initMapwithMarker");
@@ -150,11 +200,11 @@ function initMapMarkerCart(start, end, liveLocation, liveId) {
                 console.log("travel time invoked from outside");
 
                 start = route.coordinates[0];
+                end = route.coordinates[route.coordinates.length-1];
                 if(markerLive!=null){
                     // markerLive.setLngLat(route.coordinates[1]);
                     markerLive.setLngLat(liveLocation);
                 }
-                end = route.coordinates[route.coordinates.length-1];
                 console.log(route);
             }
             map.addLayer({
@@ -172,53 +222,7 @@ function initMapMarkerCart(start, end, liveLocation, liveId) {
                 }
             });
             // this is where the code from the next step will go
-            var message = null;
-            if(start!=null){
-                strtMessage = "Start:"+"HRBB"
-                strtAddress = "Harvey R. \"Bum\" Bright Building, College Station, TX 77840..";
-            }
-            if(end!=null){
-                endMessage = "End:"+"ZACH"
-                endAddress = "Zachry Engineering Education Complex, College Station, TX 77840..";
-            }
-            var contentStartString = '<h5>'+strtMessage+"</h5>"
-            contentStartString = contentStartString + "<p>Details : "+strtAddress+"</p>"
-            var contenEndString = '<h5>'+endMessage+"</h5>"
-            contenEndString = contenEndString + "<p>Details : "+strtAddress+"</p>"
-
-            var popStart = new mapboxgl.Popup().setHTML(contentStartString);
-            var popEnd = new mapboxgl.Popup().setHTML(contenEndString);
-
-            var geojson = {
-                "type": "FeatureCollection",
-                "features": [
-                    {
-                        "type": "Feature",
-                        "properties": {
-                            "iconSize": [15, 15]
-                        }
-                    }
-                ]
-            };
-
-            var startDiv = document.createElement('div');
-            startDiv.className = 'markerStart';
-            var endDiv = document.createElement('div');
-            endDiv.className = 'markerEnd';
-            var liveDiv = document.createElement('div');
-            liveDiv.className = 'markerLive';
-
-            var markerStart = new mapboxgl.Marker(startDiv)
-                .setLngLat(start)
-                .setPopup(popStart)
-                .addTo(map);
-            var markerEnd = new mapboxgl.Marker(endDiv)
-                .setLngLat(end)
-                .setPopup(popEnd)
-                .addTo(map);
-            markerLive = new mapboxgl.Marker(liveDiv)
-                .setLngLat(liveLocation)
-                .addTo(map);
+            addMarkers(start, end, liveLocation);
 
         }).always(function(){
         });

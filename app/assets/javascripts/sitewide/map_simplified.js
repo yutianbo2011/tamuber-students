@@ -41,7 +41,11 @@ function initMapWithMarker(start,end,vehicleId){
         method: 'GET',
         url: fetchLiveUrl,
     }).done(function(vehicle) {
-        initMapWithMarker(start,end,[vehicle.currentLocation.longitude,vehicle.currentLocation.latitude])
+        
+        var liveLong = vehicle.currentLocation.longitude;
+        var liveLat = vehicle.currentLocation.latitude;
+        var liveLoc = [liveLong,liveLat];
+        initMapWithMarker(start,end,liveLoc)
     }).always(function(){
     });
 }

@@ -49,7 +49,7 @@ function initMapMarkerCart2(start,end,vehicleId){
         var liveLong = vehicle.currentLocation.longitude;
         var liveLat = vehicle.currentLocation.lattitude;
         var liveLoc = [liveLong,liveLat];
-        initMapWithMarker(start,end,liveLoc)
+        initMapMarkerCart(start,end,liveLoc)
     }).always(function(){
     });
 }

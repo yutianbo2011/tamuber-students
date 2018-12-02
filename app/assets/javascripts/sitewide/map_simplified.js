@@ -85,82 +85,6 @@ function initMapMarkerCart2(start,end,vehicleId){
     });
 }
 
-function updateTripTimeById(dist,time,id) {
-    console.log(id+"distance is " + dist);
-    console.log(id+"duration is " + time);
-    document.getElementById(id).innerHTML = time + " minutes";
-}
-
-function updateEstimatedTimes(liveLocation, start, labelId) {
-    if(liveLocation!=null && start!=null){
-        getDistanceDuration(liveLocation, start,updateTripTimeById, labelId);
-    } else{
-        console.log(labelId + " cant be updated");
-        console.log("liveLoc :"+liveLocation);
-        console.log("start :"+start);
-    }
-}
-
-function updateETT(data) {
-    if(data!=null) {
-        var dist = (data.routes[0].distance * 0.001 * 0.621371).toFixed(2);//km to miles
-        var time = (data.routes[0].duration / 60).toFixed(2);
-        updateTripTimeById(dist, time, 'ETT');
-    } else{
-        console.log("ETT cant be updated. data is null");
-    }
-}
-
-function addMarkers(start, end, liveLocation) {
-    var message = null;
-    if (start != null) {
-        var strtMessage = "Start:" + "HRBB"
-        var strtAddress = "Harvey R. \"Bum\" Bright Building, College Station, TX 77840..";
-    }
-    if (end != null) {
-        var endMessage = "End:" + "ZACH"
-        var endAddress = "Zachry Engineering Education Complex, College Station, TX 77840..";
-    }
-    var contentStartString = '<h5>' + strtMessage + "</h5>"
-    contentStartString = contentStartString + "<p>Details : " + strtAddress + "</p>"
-    var contenEndString = '<h5>' + endMessage + "</h5>"
-    contenEndString = contenEndString + "<p>Details : " + strtAddress + "</p>"
-
-    var popStart = new mapboxgl.Popup().setHTML(contentStartString);
-    var popEnd = new mapboxgl.Popup().setHTML(contenEndString);
-
-    var geojson = {
-        "type": "FeatureCollection",
-        "features": [
-            {
-                "type": "Feature",
-                "properties": {
-                    "iconSize": [15, 15]
-                }
-            }
-        ]
-    };
-
-    var startDiv = document.createElement('div');
-    startDiv.className = 'markerStart';
-    var endDiv = document.createElement('div');
-    endDiv.className = 'markerEnd';
-    var liveDiv = document.createElement('div');
-    liveDiv.className = 'markerLive';
-
-    var markerStart = new mapboxgl.Marker(startDiv)
-        .setLngLat(start)
-        .setPopup(popStart)
-        .addTo(map);
-    var markerEnd = new mapboxgl.Marker(endDiv)
-        .setLngLat(end)
-        .setPopup(popEnd)
-        .addTo(map);
-    markerLive = new mapboxgl.Marker(liveDiv)
-        .setLngLat(liveLocation)
-        .addTo(map);
-}
-
 function initMapMarkerCart(start, end, liveLocation, liveId) {
 
     console.log("in initMapwithMarker");
@@ -246,6 +170,82 @@ function initMapMarkerCart(start, end, liveLocation, liveId) {
         }
     }, 3000);
     console.log("Hi!!!");
+}
+
+function updateTripTimeById(dist,time,id) {
+    console.log(id+"distance is " + dist);
+    console.log(id+"duration is " + time);
+    document.getElementById(id).innerHTML = time + " minutes";
+}
+
+function updateEstimatedTimes(liveLocation, start, labelId) {
+    if(liveLocation!=null && start!=null){
+        getDistanceDuration(liveLocation, start,updateTripTimeById, labelId);
+    } else{
+        console.log(labelId + " cant be updated");
+        console.log("liveLoc :"+liveLocation);
+        console.log("start :"+start);
+    }
+}
+
+function updateETT(data) {
+    if(data!=null) {
+        var dist = (data.routes[0].distance * 0.001 * 0.621371).toFixed(2);//km to miles
+        var time = (data.routes[0].duration / 60).toFixed(2);
+        updateTripTimeById(dist, time, 'ETT');
+    } else{
+        console.log("ETT cant be updated. data is null");
+    }
+}
+
+function addMarkers(start, end, liveLocation) {
+    var message = null;
+    if (start != null) {
+        var strtMessage = "Start:" + "HRBB"
+        var strtAddress = "Harvey R. \"Bum\" Bright Building, College Station, TX 77840..";
+    }
+    if (end != null) {
+        var endMessage = "End:" + "ZACH"
+        var endAddress = "Zachry Engineering Education Complex, College Station, TX 77840..";
+    }
+    var contentStartString = '<h5>' + strtMessage + "</h5>"
+    contentStartString = contentStartString + "<p>Details : " + strtAddress + "</p>"
+    var contenEndString = '<h5>' + endMessage + "</h5>"
+    contenEndString = contenEndString + "<p>Details : " + strtAddress + "</p>"
+
+    var popStart = new mapboxgl.Popup().setHTML(contentStartString);
+    var popEnd = new mapboxgl.Popup().setHTML(contenEndString);
+
+    var geojson = {
+        "type": "FeatureCollection",
+        "features": [
+            {
+                "type": "Feature",
+                "properties": {
+                    "iconSize": [15, 15]
+                }
+            }
+        ]
+    };
+
+    var startDiv = document.createElement('div');
+    startDiv.className = 'markerStart';
+    var endDiv = document.createElement('div');
+    endDiv.className = 'markerEnd';
+    var liveDiv = document.createElement('div');
+    liveDiv.className = 'markerLive';
+
+    var markerStart = new mapboxgl.Marker(startDiv)
+        .setLngLat(start)
+        .setPopup(popStart)
+        .addTo(map);
+    var markerEnd = new mapboxgl.Marker(endDiv)
+        .setLngLat(end)
+        .setPopup(popEnd)
+        .addTo(map);
+    markerLive = new mapboxgl.Marker(liveDiv)
+        .setLngLat(liveLocation)
+        .addTo(map);
 }
 
 function calcRoute(lat, lng) {

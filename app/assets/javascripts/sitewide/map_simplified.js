@@ -67,10 +67,10 @@ function initMapWithMarker(start, end, liveLocation) {
     console.log("travel time invoked from outside");
 
     map.on('load', function() {
-        getRoute(start,end,livelocation);
+        getRoute(start,end,liveLocation);
     });
 
-    function getRoute(start,end,livelocation) {
+    function getRoute(start,end,liveLocation) {
         console.log("route enter");
         var directionsRequest = 'https://api.mapbox.com/directions/v5/mapbox/driving/' + start[0] + ',' + start[1] + ';' + end[0] + ',' + end[1] + '?geometries=geojson&access_token=' + mapboxgl.accessToken;
         console.log(directionsRequest)
@@ -99,8 +99,8 @@ function initMapWithMarker(start, end, liveLocation) {
 
                 start = route.coordinates[0];
                 if(markerLive!=null){
-                    markerLive.setLngLat(route.coordinates[1]);
-                    //markerLive.setLngLat(liveLocation);
+                    // markerLive.setLngLat(route.coordinates[1]);
+                    markerLive.setLngLat(liveLocation);
                 }
                 end = route.coordinates[route.coordinates.length-1];
                 console.log(route);

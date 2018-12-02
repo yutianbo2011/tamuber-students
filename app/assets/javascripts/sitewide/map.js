@@ -5,11 +5,14 @@ var infowindow;
 var markerLive;
 var route;
 var stepSize = 0;
+// var marker;
+// var stmarker;
 var showDirections = true;
 var ACCESS_TOKEN = 'pk.eyJ1IjoiZ3Vsc2hhbmsiLCJhIjoiY2pvM3d1NGV3MTFydzN3cWlkZ2xjdmE1MSJ9.zQ1AATk2EOGJ4XMDyBV9vA';
 
 function initMap() {
   
+  // mapboxgl.accessToken = 'pk.eyJ1IjoiZ3Vsc2hhbmsiLCJhIjoiY2pvM3d1NGV3MTFydzN3cWlkZ2xjdmE1MSJ9.zQ1AATk2EOGJ4XMDyBV9vA';
   mapboxgl.accessToken = ACCESS_TOKEN
    var map = new mapboxgl.Map({
      container: 'mapid1', // HTML container id
@@ -46,15 +49,26 @@ function initMapWithMarker(start, end, liveLocation) {
       console.log("in initMapwithMarker");
       var mapEl = $('#map');
       var optimized = mapEl.data('test-env'); //so that marker elements show up for testing
+      // var myLatLng = {lat: lat, lng: lng};
+     
+      // mapboxgl.accessToken = 'pk.eyJ1IjoiZ3Vsc2hhbmsiLCJhIjoiY2pvM3d1NGV3MTFydzN3cWlkZ2xjdmE1MSJ9.zQ1AATk2EOGJ4XMDyBV9vA';
       mapboxgl.accessToken = ACCESS_TOKEN
       map = new mapboxgl.Map({
         container: 'mapid1', // HTML container id
         style: 'mapbox://styles/mapbox/streets-v9', // style URL
         center: findMidPoint(start,end),//[-96.3365,30.6185],
+        //center: //[lat,lng], // starting position as [lng, lat]
         zoom: 14
       });
       
+      //var start = [-96.340379, 30.620167]
+      //var end = [-96.323706,30.609521]
+      
+      //var start = [-96.3409565,30.6189768];//start;
+      //var end = [ -96.3425741,30.6213251];//end;
       console.log("travel time invoked from outside");
+      // getTravelTime(start[1], start[0], end[1], end[0]);
+      
       map.on('load', function() {
         getRoute(start,end);
       });
@@ -125,6 +139,10 @@ function initMapWithMarker(start, end, liveLocation) {
           var popStart = new mapboxgl.Popup().setHTML(contentStartString);
           var popEnd = new mapboxgl.Popup().setHTML(contenEndString);
           
+          // var myNewIcon = map.icon({
+          //     iconUrl: '../../stylesheets/images/mapbox-icon.png'
+          // });  
+          
           var geojson = {
               "type": "FeatureCollection",
               "features": [
@@ -136,6 +154,34 @@ function initMapWithMarker(start, end, liveLocation) {
                   }
               ]
           };
+          // var geojson = {
+          //       "type": "circle",
+          //       "features": [
+          //           {
+          //               "type": "Feature",
+          //               "properties": {
+          //                   width: 30px,
+          //                   height: 22px,
+          //                   icon: {
+          //                     iconUrl: '/images/cart2.png',
+          //                     iconSize: [30, 22], // size of the icon
+          //                     iconAnchor: [15, 15], // point of the icon which will correspond to marker's location
+          //                     className: 'dot'  
+          //                   }
+          //               }
+          //           }
+          //       ]
+          //   };
+          // var marker2 = geojson.features[0];
+          // var e1 = document.createElement('div');
+          // e1.className = 'marker';
+          // e1.style.backgroundImage = 'images/mapbox-icon.png';
+          // e1.style.width = marker.properties.iconSize[0] + 'px';
+          // e1.style.height = marker.properties.iconSize[1] + 'px';
+      
+          // // e1.addEventListener('click', function() {
+          // //     window.alert(marker.properties.message);
+          // // });
           
           var startDiv = document.createElement('div');
           startDiv.className = 'markerStart';
@@ -143,6 +189,14 @@ function initMapWithMarker(start, end, liveLocation) {
           endDiv.className = 'markerEnd';
           var liveDiv = document.createElement('div');
           liveDiv.className = 'markerLive';
+      
+          
+          
+          // var e3 = document.createElement('div');
+          // e3.className = 'marker';
+          // e3.style.backgroundImage = 'images/cart.png';
+          // e3.style.width = marker.properties.iconSize[0] + 'px';
+          // e3.style.height = marker.properties.iconSize[1] + 'px';
           
           var markerStart = new mapboxgl.Marker(startDiv)
                 .setLngLat(start)
@@ -156,7 +210,39 @@ function initMapWithMarker(start, end, liveLocation) {
                 .setLngLat(liveLocation)
                 .addTo(map);
           
-        })
+        }).always(function(){
+                    // map.addLayer({
+                    //   id: 'start',
+                    //   type: 'circle',
+                    //   source: {
+                    //     type: 'geojson',
+                    //     data: {
+                    //       type: 'Feature',
+                    //       geometry: {
+                    //         type: 'Point',
+                    //         coordinates: start
+                    //       }
+                    //     }
+                    //   }
+                      
+                    // });
+                    // map.setPaintProperty('start', 'fill-color', '#ff0000');
+                    // map.addLayer({
+                    //   id: 'end',
+                    //   type: 'circle',
+                    //   source: {
+                    //     type: 'geojson',
+                    //     data: {
+                    //       type: 'Feature',
+                    //       geometry: {
+                    //         type: 'Point',
+                    //         coordinates: end
+                    //       }
+                    //     }
+                    //   }
+                    // });
+                    // map.setPaintProperty('end', 'fill-color', '#ff0000');
+        });
       }
       setInterval(function(){
         console.log("Hello");

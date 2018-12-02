@@ -1,11 +1,7 @@
-var directionsService;
 var map = null;
-var draw = null;
-var infowindow;
 var markerLive;
 var route;
 var stepSize = 0;
-var showDirections = true;
 var ACCESS_TOKEN = 'pk.eyJ1IjoiZ3Vsc2hhbmsiLCJhIjoiY2pvM3d1NGV3MTFydzN3cWlkZ2xjdmE1MSJ9.zQ1AATk2EOGJ4XMDyBV9vA';
 
 function initMap() {
@@ -174,20 +170,6 @@ function calcRoute(lat, lng) {
 
 
 function calculateAndDisplayRoute(request, startPointName, endPointName, routeId) {
-}
-
-function removeRoute () {
-  console.log("invoked remove route");
-  if (map.getSource('route')) {
-    map.removeLayer('route');
-    map.removeSource('route');
-    document.getElementById('calculated-line').innerHTML = '';
-    console.log("found route and deleted");
-  } else  {
-    console.log("no route found");
-    return;
-  }
-  
 }
 
 function getDistanceDuration(start, end){

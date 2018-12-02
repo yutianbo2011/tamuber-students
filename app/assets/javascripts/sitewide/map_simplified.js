@@ -182,7 +182,7 @@ function initMapMarkerCart(start, end, liveLocation) {
             // markerLive.setLngLat(route.coordinates[stepSize++]);
             var fetchLiveUrl = 'https://raw.githubusercontent.com/rohan54/tamuber-students/master/myjson.json';
             console.log("Iteration "+stepSize);
-            $.getJSON(fetchLiveUrl, function(vehicle) {
+            $.getJSON(fetchLiveUrl, function(vehicle,liveLocation) {
               var liveLong = vehicle.currentLocation.longitude;
               var liveLat = vehicle.currentLocation.lattitude;
               liveLocation = [liveLong,liveLat];

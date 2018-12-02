@@ -177,9 +177,9 @@ function initMapMarkerCart(start, end, liveLocation) {
     }
     setInterval(function(){
         console.log("Hello");
-        if(markerLive!= null && stepSize<=route.coordinates.length){
+        if(markerLive!= null && stepSize<route.coordinates.length){
             // markerLive.setLngLat(route.coordinates[stepSize++]);
-            // markerLive.setLngLat(liveLocation);
+            markerLive.setLngLat(liveLocation);
             console.log("Change");
         }
     }, 3000);

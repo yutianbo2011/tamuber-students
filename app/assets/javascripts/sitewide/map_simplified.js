@@ -99,7 +99,8 @@ function updateTripTimeById(dist,time,id) {
 function updateETA(liveLocation, start) {
     if(liveLocation!=null && start!=null){
         var distDur = getDistanceDuration(liveLocation, start);
-        updateTripTimeById(distDur[0], distDur[1], 'ETA');
+        console.log(distDur)
+        //updateTripTimeById(distDur[0], distDur[1], 'ETA');
     } else{
         console.log("ETA cant be updated");
         console.log("liveLoc :"+liveLocation);

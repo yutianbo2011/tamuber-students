@@ -97,14 +97,24 @@ function updateTripTimeById(dist,time,id) {
 }
 
 function updateETA(liveLocation, start) {
-    var distDur = getDistanceDuration(liveLocation, start);
-    updateTripTimeById(distDur[0], distDur[1], 'ETA');
+    if(liveLocation!=null && start!=null){
+        var distDur = getDistanceDuration(liveLocation, start);
+        updateTripTimeById(distDur[0], distDur[1], 'ETA');
+    } else{
+        console.log("ETA cant be updated");
+        console.log("liveLoc :"+liveLocation);
+        console.log("start :"+start);
+    }
 }
 
 function updateETT(data) {
-    var dist = (data.routes[0].distance * 0.001 * 0.621371).toFixed(2);//km to miles
-    var time = (data.routes[0].duration / 60).toFixed(2);
-    updateTripTimeById(dist, time, 'ETT');
+    if(data!=null) {
+        var dist = (data.routes[0].distance * 0.001 * 0.621371).toFixed(2);//km to miles
+        var time = (data.routes[0].duration / 60).toFixed(2);
+        updateTripTimeById(dist, time, 'ETT');
+    } else{
+        console.log("ETT cant be updated. data is null");
+    }
 }
 
 function initMapMarkerCart(start, end, liveLocation, liveId) {

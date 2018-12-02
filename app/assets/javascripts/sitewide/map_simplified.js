@@ -176,43 +176,6 @@ function calcRoute(lat, lng) {
 function calculateAndDisplayRoute(request, startPointName, endPointName, routeId) {
 }
 
-function selectRoute(route) {
-	$('#selectedRoute').text(route);
-}
-
-
-function mockCoordinates(){
-  console.log("mock invoked");
-  var Lat = [30.6211, 30.6102, 30.6123, 30.6213251, 30.609521];
-  var Long = [-96.3404, -96.3410, -96.3413, -96.3425741, -96.323706];
-  var i;
- 
-    for (i = 0; i < Lat.length-1; i++) {
-      updateRoute([Long[i],Lat[i]], [Long[i+1],Lat[i+1]])
-    } 
-
-  
-}
-
-
-function updateRoute(source, destination) {
-  console.log("invoked update route");
-  removeRoute(); // overwrite any existing layers
-  var data = draw.getAll();
-  var answer = document.getElementById('calculated-line');
-  /*
-  var lastFeature = data.features.length - 1;
-  var coords = data.features[lastFeature].geometry.coordinates;
-  var newCoords = coords.join(';')
-  console.log("newCoords are " + newCoords);*/
-  var newCoords = source[0]+','+source[1]+';'+destination[0]+','+destination[1];
-   console.log("newCoords are " + newCoords);
-  //var newCoords = "-96.340379,30.620167;-96.323706,30.609521";
-   
-   setTimeout(getMatch, 10000, newCoords);
-  //getMatch(newCoords);
-}
-
 function removeRoute () {
   console.log("invoked remove route");
   if (map.getSource('route')) {
@@ -247,7 +210,6 @@ function getDistanceDuration(start, end){
 
 
 function getMatch(e) {
-    // https://www.mapbox.com/api-documentation/#directions
     console.log("match route invoked");
     mapboxgl.accessToken = ACCESS_TOKEN
     var directionsRequest = 'https://api.mapbox.com/directions/v5/mapbox/driving/' + e +'?geometries=geojson&steps=true&&access_token=' + mapboxgl.accessToken;
@@ -257,14 +219,12 @@ function getMatch(e) {
           url: directionsRequest,
         }).done(function(data) {
             var geo = data.routes[0].geometry;
-            //addRoute(geo);
             var distancebtw = data.routes[0].distance*0.001;
             var durationbtw = data.routes[0].duration*60;
             
             console.log("distance is " + distancebtw);
             console.log("duration is " + durationbtw);
             
-            var route = geo;
             if(geo!=null && geo.coordinates.length!=0){
               start = geo.coordinates[0];
               end = geo.coordinates[geo.coordinates.length-1];

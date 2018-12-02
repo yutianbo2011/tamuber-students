@@ -36,14 +36,15 @@ function findMidPoint(start,end) {
 }
 
 function initMapMarkerCart2(start,end,vehicleId){
-    var fetchLiveUrl = 'https://api.myjson.com/bins/o0td6';
+    // var fetchLiveUrl = 'https://api.myjson.com/bins/o0td6';
     // // 'https://jsonbin.io/5c03821b1deea01014bbb72f';
     // //'http://tamuber-mock-server.herokuapp.com/api/vehicles/'+vehicleId;
-    // var fetchLiveUrl = 'https://raw.githubusercontent.com/rohan54/tamuber-students/master/myjson.json';
-    $.ajax({
-        method: 'GET',
-        url: fetchLiveUrl,
-    }).done(function(vehicle) {
+    var fetchLiveUrl = 'https://raw.githubusercontent.com/rohan54/tamuber-students/master/myjson.json';
+    // $.ajax({
+    //     method: 'GET',
+    //     url: fetchLiveUrl,
+    // }).done(function(vehicle) {
+    $.getJSON(fetchLiveUrl, function(vehicle) {
         // vehicle = JSON.parse(vehicle);
         console.log("vehicle");
         console.log(vehicle);

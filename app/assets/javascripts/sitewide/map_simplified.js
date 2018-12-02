@@ -40,11 +40,11 @@ function initMapMarkerCart2(start,end,vehicleId){
     // // 'https://jsonbin.io/5c03821b1deea01014bbb72f';
     // //'http://tamuber-mock-server.herokuapp.com/api/vehicles/'+vehicleId;
     var fetchLiveUrl = 'https://raw.githubusercontent.com/rohan54/tamuber-students/master/myjson.json';
-    $.ajax({
-        method: 'GET',
-        url: fetchLiveUrl,
-    }).done(function(vehicle) {
-    // $.getJSON(fetchLiveUrl, function(vehicle) {
+    // $.ajax({
+    //     method: 'GET',
+    //     url: fetchLiveUrl,
+    // }).done(function(vehicle) {
+    $.getJSON(fetchLiveUrl, function(vehicle) {
         // vehicle = JSON.parse(vehicle);
         console.log("vehicle");
         console.log(vehicle);

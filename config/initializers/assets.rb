@@ -19,7 +19,7 @@ Rails.application.config.assets.precompile += %w( jquery-3.3.1.js )
 #Rails.application.config.assets.precompile += %w( roslib.js )
 
 # Map display script for first page of site
-Rails.application.config.assets.precompile += %w( map.js )
+#Rails.application.config.assets.precompile += %w( map.js )
 
 # Map display script for first page of site
 Rails.application.config.assets.precompile += %w( map_simplified.js )

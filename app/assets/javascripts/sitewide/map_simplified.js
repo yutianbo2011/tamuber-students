@@ -44,7 +44,7 @@ function initMapMarkerCart2(start,end,vehicleId){
         method: 'GET',
         url: fetchLiveUrl,
     }).done(function(vehicle) {
-      vehicle = JSON.parse(vehicle);
+        vehicle = JSON.parse(vehicle);
         console.log("vehicle");
         console.log(vehicle);
         var liveLong = vehicle.currentLocation.longitude;

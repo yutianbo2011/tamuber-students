@@ -120,7 +120,7 @@ function initMapMarkerCart(start, end, liveLocation, liveId) {
         }).done(function(data) {
             route = data.routes[0].geometry;
             var distancebtw = data.routes[0].distance*0.001*0.621371;//km to miles
-            var durationbtw = data.routes[0].duration/3600;
+            var durationbtw = data.routes[0].duration/60;
             var distDur = getDistanceDuration(start,end)
             console.log("distance is " + distancebtw);
             console.log("duration is " + durationbtw);

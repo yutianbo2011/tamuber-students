@@ -35,6 +35,39 @@ function findMidPoint(start,end) {
     return [lon3,lat3];
 }
 
+function initMapMarkerCart3(start,end){
+    var getNearestVehicleUrl = 'http://tamuber-mock-server.herokuapp.com/api/vehicles/nearest?lattitude='+ start[1]+'&longitude='+start[0];
+    $.ajax({
+        method: 'GET',
+        url: getNearestVehicleUrl,
+    }).done(function(nearestVehicle) {
+          if(nearestVehicle == null){
+            return;
+          }
+          var nearLong = nearestVehicle.currentLocation.longitude;
+          var nearLat = nearestVehicle.currentLocation.lattitude;
+          var nearLoc = [nearLong,nearLat];
+          var nearId = nearestVehicle.id;
+          // var fetchLiveUrl = 'https://api.myjson.com/bins/o0td6';
+          // // 'https://jsonbin.io/5c03821b1deea01014bbb72f';
+          // //'http://tamuber-mock-server.herokuapp.com/api/vehicles/'+vehicleId;
+          var fetchLiveUrl = 'https://raw.githubusercontent.com/rohan54/tamuber-students/master/myjson.json';
+          $.getJSON(fetchLiveUrl, function(vehicle){
+              // vehicle = JSON.parse(vehicle);
+              console.log("vehicle");
+              console.log(vehicle);
+              var liveLong = vehicle.currentLocation.longitude;
+              var liveLat = vehicle.currentLocation.lattitude;
+              var liveLoc = [liveLong,liveLat];
+              initMapMarkerCart(start,end,liveLoc,nearId)
+          }).always(function(){
+          });
+    });
+}
+
+
+
+
 function initMapMarkerCart2(start,end,vehicleId){
     // var fetchLiveUrl = 'https://api.myjson.com/bins/o0td6';
     // // 'https://jsonbin.io/5c03821b1deea01014bbb72f';
@@ -51,12 +84,13 @@ function initMapMarkerCart2(start,end,vehicleId){
         var liveLong = vehicle.currentLocation.longitude;
         var liveLat = vehicle.currentLocation.lattitude;
         var liveLoc = [liveLong,liveLat];
-        initMapMarkerCart(start,end,liveLoc)
+        var liveId = vehicle.id;
+        initMapMarkerCart(start,end,liveLoc,liveId)
     }).always(function(){
     });
 }
 
-function initMapMarkerCart(start, end, liveLocation) {
+function initMapMarkerCart(start, end, liveLocation, liveId) {
 
     console.log("in initMapwithMarker");
     var mapEl = $('#map');
@@ -70,6 +104,7 @@ function initMapMarkerCart(start, end, liveLocation) {
     });
 
     console.log("travel time invoked from outside");
+    document.getElementById('CARD').innerHTML = liveId;
 
     map.on('load', function() {
         getRoute(start,end,liveLocation);

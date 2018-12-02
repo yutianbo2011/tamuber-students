@@ -35,7 +35,7 @@ function findMidPoint(start,end) {
     return [lon3,lat3];
 }
 
-function initMapWithMarker2(start,end,vehicleId){
+function initMapMarkerCart2(start,end,vehicleId){
     var fetchLiveUrl = 'https://api.myjson.com/bins/o0td6';
     // 'https://jsonbin.io/5c03821b1deea01014bbb72f';
     //'http://tamuber-mock-server.herokuapp.com/api/vehicles/'+vehicleId;
@@ -53,7 +53,7 @@ function initMapWithMarker2(start,end,vehicleId){
     });
 }
 
-function initMapWithMarker(start, end, liveLocation) {
+function initMapMarkerCart(start, end, liveLocation) {
 
     console.log("in initMapwithMarker");
     var mapEl = $('#map');

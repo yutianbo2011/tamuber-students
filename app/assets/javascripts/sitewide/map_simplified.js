@@ -4,6 +4,7 @@ var route;
 var stepSize = 0;
 var ACCESS_TOKEN = 'pk.eyJ1IjoiZ3Vsc2hhbmsiLCJhIjoiY2pvM3d1NGV3MTFydzN3cWlkZ2xjdmE1MSJ9.zQ1AATk2EOGJ4XMDyBV9vA';
 var booked = false;
+var started = false;
 
 function initMap() {
     mapboxgl.accessToken = ACCESS_TOKEN
@@ -303,4 +304,5 @@ function abc(){
 
 function book(){
     booked = true;
+    document.getElementById('bookB').setAttribute("disabled", "disabled"); 
 }

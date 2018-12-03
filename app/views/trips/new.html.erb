@@ -62,9 +62,9 @@
     </table>
     <%= form_tag("/specify", method: "post", id: "route_specs") do |form| %>
     <% end %>
-    <button onclick="initMapMarkerCart2([-96.3410, 30.6102], [-96.323706, 30.609521]);">Go Back Location</button>
+    <button id='go_bak_btn' onclick="initMapMarkerCart2([-96.3410, 30.6102], [-96.323706, 30.609521]);">Go Back Location</button>
 
-    <button id="bookB" style = "font-size: 10px;" onclick="book();getElementById('bookB').style.display = 'block';" >Book Trip</button>
+    <button id="bookB" style = "font-size: 10px;" onclick="book();" >Book Trip</button>
 
     <!--   <table style='margin-bottom:10px'>
         <tr>
@@ -80,7 +80,7 @@
                 <td><button type='button' id='routebut_<%= i %>' onclick='calculateAndDisplayRoute(<%= cart_route["waypoints"].to_json.html_safe %>, document.getElementById("row1_<%=i%>").innerHTML, document.getElementById("row2_<%=i%>").innerHTML), <%=i%>'>View</button></td>
               </tr>
           <% end %>
-          <div style="display:none">
+          <div style="display:none">f
             <%= form.text_field :cart_route_id, :id => 'trip_cart_route_id' %>
           </div>
         </div>

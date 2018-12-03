@@ -306,5 +306,7 @@ function book(){
     booked = true;
     $("#bookB").text("Booked");
     document.getElementById('bookB').style.display = 'block';
+    document.getElementById('go_bak_btn').style.display = 'block';
+    document.getElementById('go_bak_btn').style.visibility = 'hidden'
     // document.getElementById('bookB').disabled = true; 
 }

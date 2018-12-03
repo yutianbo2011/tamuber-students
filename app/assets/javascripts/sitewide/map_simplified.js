@@ -167,8 +167,9 @@ function initMapMarkerCart(start, end, liveLocation, liveId) {
                 markerLive.setLngLat(liveLoc);
                 
                 if(booked) {
-                    updateEstimatedTimes(liveLoc, end, 'ETT');
+                    //updateEstimatedTimes(liveLoc, end, 'ETT');
                     document.getElementById('ETA').innerHTML= 'Arrived!';
+                    document.getElementById('ETT').innerHTML= 'Arrived!';
                 }else{
                     updateEstimatedTimes(liveLoc, start, 'ETA');
                 }

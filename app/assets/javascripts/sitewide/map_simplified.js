@@ -165,9 +165,12 @@ function initMapMarkerCart(start, end, liveLocation, liveId) {
                 var liveLoc = [liveLong,liveLat];
                 console.log("Coordinates inside:"+liveLoc);
                 markerLive.setLngLat(liveLoc);
-                updateEstimatedTimes(liveLoc, start, 'ETA');
+                
                 if(booked) {
                     updateEstimatedTimes(liveLoc, end, 'ETT');
+                    document.getElementById('ETA').innerHTML= 'Arrived!';
+                }else{
+                    updateEstimatedTimes(liveLoc, start, 'ETA');
                 }
             });
             console.log("Change");

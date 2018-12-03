@@ -117,7 +117,7 @@ function initMapMarkerCart(start, end, liveLocation, liveId) {
         }).done(function(data) {
             route = data.routes[0].geometry;
             updateETT(data);
-            liveLocation = route.coordinates[coordinates.length-1];
+            liveLocation = route.coordinates[route.coordinates.length-1];
             updateEstimatedTimes(liveLocation, start, 'ETA');
 
             if(route!=null && route.coordinates.length!=0){

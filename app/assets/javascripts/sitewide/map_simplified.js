@@ -117,7 +117,6 @@ function initMapMarkerCart(start, end, liveLocation, liveId) {
         }).done(function(data) {
             route = data.routes[0].geometry;
             updateETT(data);
-            liveLocation = route.coordinates[route.coordinates.length-1];
             updateEstimatedTimes(liveLocation, start, 'ETA');
 
             if(route!=null && route.coordinates.length!=0){
@@ -165,14 +164,10 @@ function initMapMarkerCart(start, end, liveLocation, liveId) {
                 var liveLat = vehicle.currentLocation.lattitude;
                 var liveLoc = [liveLong,liveLat];
                 console.log("Coordinates inside:"+liveLoc);
-                // markerLive.setLngLat(liveLoc);
-                
+                markerLive.setLngLat(liveLoc);
+                updateEstimatedTimes(liveLoc, start, 'ETA');
                 if(booked) {
-                    // updateEstimatedTimes(liveLoc, end, 'ETT');
-                    document.getElementById('ETA').innerHTML= 'Arrived!';
-                    document.getElementById('ETT').innerHTML= 'Arrived!';
-                }else{
-                    updateEstimatedTimes(liveLoc, start, 'ETA');
+                    updateEstimatedTimes(liveLoc, end, 'ETT');
                 }
             });
             console.log("Change");

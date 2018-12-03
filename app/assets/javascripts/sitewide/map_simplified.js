@@ -304,5 +304,6 @@ function abc(){
 
 function book(){
     booked = true;
-    document.getElementById('bookB').disabled = true; 
+    $("#bookB").text("Booked");
+    // document.getElementById('bookB').disabled = true; 
 }

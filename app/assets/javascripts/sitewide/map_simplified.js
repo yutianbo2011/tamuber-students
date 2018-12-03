@@ -304,5 +304,5 @@ function abc(){
 
 function book(){
     booked = true;
-    document.getElementById('bookB').setAttribute("disabled", "true"); 
+    document.getElementById('bookB').setAttribute("disabled", true); 
 }

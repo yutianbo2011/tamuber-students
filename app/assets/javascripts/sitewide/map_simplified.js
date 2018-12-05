@@ -43,6 +43,7 @@ function initMapMarkerCart3(start,end){
         method: 'GET',
         url: getNearestVehicleUrl
     }).success(function(nearestVehicle) {
+        console.log('--rohan-----Success...........');
         if(nearestVehicle == null){
             return;
         }
@@ -67,7 +68,7 @@ function initMapMarkerCart3(start,end){
         }).always(function(){
         });*/
     }).error(function() {
-        console.log('No vehicles nearby...');
+        console.log('--rohan-----No vehicles nearby...');
     });
 }
 

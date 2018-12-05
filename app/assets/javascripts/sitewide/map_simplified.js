@@ -221,6 +221,18 @@ function updateEstimatedTimes(liveLocation, start, labelId) {
     }
 }
 
+function getDistanceDuration(start, end, updateFunction, labelId){
+    var e = start[0] +","+start[1] +";" + end[0] + "," + end[1];
+    mapboxgl.accessToken = ACCESS_TOKEN
+    var url = 'https://api.mapbox.com/directions/v5/mapbox/driving/' + e +'?geometries=geojson&steps=true&&access_token=' + mapboxgl.accessToken;
+    console.log("eta url:"+url);
+    $.getJSON(url, function(jsonResponse) {
+        var distance = (jsonResponse.routes[0].distance*0.001*0.621371).toFixed(2); // convert to km
+        var duration = (jsonResponse.routes[0].duration/60).toFixed(2); // convert to minutes
+        updateFunction(distance, duration, labelId);
+    });
+}
+
 function updateETT(data) {
     if(data!=null) {
         var dist = (data.routes[0].distance * 0.001 * 0.621371).toFixed(2);//km to miles
@@ -288,20 +300,6 @@ function calcRoute(lat, lng) {
 function calculateAndDisplayRoute(request, startPointName, endPointName, routeId) {
 }
 
-function getDistanceDuration(start, end, updateFunction, labelId){
-    var e = start[0] +","+start[1] +";" + end[0] + "," + end[1];
-    mapboxgl.accessToken = ACCESS_TOKEN
-    var url = 'https://api.mapbox.com/directions/v5/mapbox/driving/' + e +'?geometries=geojson&steps=true&&access_token=' + mapboxgl.accessToken;
-    console.log("eta url:"+url);
-    $.getJSON(url, function(jsonResponse) {
-        var distance = (jsonResponse.routes[0].distance*0.001*0.621371).toFixed(2); // convert to km
-        var duration = (jsonResponse.routes[0].duration/60).toFixed(2); // convert to minutes
-        updateFunction(distance, duration, labelId);
-    });
-}
-
-
-
 function getMatch(e) {
     console.log("match route invoked");
     mapboxgl.accessToken = ACCESS_TOKEN
@@ -337,7 +335,7 @@ function book(){
     document.getElementById('go_bak_btn').style.display = 'block';
     document.getElementById('go_bak_btn').style.visibility = 'hidden'
     // document.getElementById('bookB').disabled = true; 
-    var getNearestVehicleUrl = 'http://tamuber-mock-server.herokuapp.com/api/vehicles/'+vehicleId+'/book';
+    var getNearestVehicleUrl = 'https://tamuber-mock-server.herokuapp.com/api/vehicles/'+vehicleId+'/book';
     $.ajax({
         method: 'POST',
         url: getNearestVehicleUrl,

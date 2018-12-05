@@ -188,7 +188,7 @@ function initMapMarkerCart(start, end, liveLocation, liveVehicleId) {
                     var liveLoc = [liveLong,liveLat];
                     console.log("Coordinates inside:"+liveLoc);
                     markerLive.setLngLat(liveLoc);
-                    if(liveLoc == start){
+                    if(liveLoc[0] == start[0] && liveLoc[1] == start[1]){
                         started = true;
                     }
                     if(!started){

@@ -158,7 +158,7 @@ function initMapMarkerCart(start, end, liveLocation, liveId) {
         }).always(function(){
         });
     }
-    setInterval(function(){
+    /*setInterval(function(){
         console.log("Hello");
         if(markerLive!= null && stepSize<route.coordinates.length){
             // markerLive.setLngLat(route.coordinates[stepSize++]);
@@ -178,7 +178,7 @@ function initMapMarkerCart(start, end, liveLocation, liveId) {
             console.log("Change");
         }
     }, 3000);
-    console.log("Hi!!!");
+    console.log("Hi!!!");*/
 }
 
 function updateTripTimeById(dist,time,id) {

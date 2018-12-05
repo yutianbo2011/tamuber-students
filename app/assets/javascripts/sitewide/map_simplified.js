@@ -5,6 +5,7 @@ var stepSize = 0;
 var ACCESS_TOKEN = 'pk.eyJ1IjoiZ3Vsc2hhbmsiLCJhIjoiY2pvM3d1NGV3MTFydzN3cWlkZ2xjdmE1MSJ9.zQ1AATk2EOGJ4XMDyBV9vA';
 var booked = false;
 var started = false;
+var vehicleId = "";
 
 function initMap() {
     mapboxgl.accessToken = ACCESS_TOKEN
@@ -53,6 +54,7 @@ function initMapMarkerCart3(start,end){
         var nearLat = nearestVehicle.currentLocation.lattitude;
         var nearLoc = [nearLong,nearLat];
         var nearId = nearestVehicle.id;
+        vehicleId = nearId;
         initMapMarkerCart(start,end,nearLoc,nearId)
         // var fetchLiveUrl = 'https://api.myjson.com/bins/o0td6';
         // // 'https://jsonbin.io/5c03821b1deea01014bbb72f';
@@ -180,14 +182,21 @@ function initMapMarkerCart(start, end, liveLocation, liveVehicleId) {
                 }
             }).success(function(vehicle) {
             // $.getJSON(fetchLiveUrl, function(vehicle) {
-                var liveLong = vehicle.currentLocation.longitude;
-                var liveLat = vehicle.currentLocation.lattitude;
-                var liveLoc = [liveLong,liveLat];
-                console.log("Coordinates inside:"+liveLoc);
-                markerLive.setLngLat(liveLoc);
-                updateEstimatedTimes(liveLoc, start, 'ETA');
-                if(booked) {
-                    updateEstimatedTimes(liveLoc, end, 'ETT');
+                if(vehicle.isAvailable != true){
+                    var liveLong = vehicle.currentLocation.longitude;
+                    var liveLat = vehicle.currentLocation.lattitude;
+                    var liveLoc = [liveLong,liveLat];
+                    console.log("Coordinates inside:"+liveLoc);
+                    markerLive.setLngLat(liveLoc);
+                    if(liveLoc == start){
+                        started = true;
+                    }
+                    if(!started){
+                        updateEstimatedTimes(liveLoc, start, 'ETA');
+                    }
+                    if(booked) {
+                        updateEstimatedTimes(liveLoc, end, 'ETT');
+                    }
                 }
             });
             console.log("Change");
@@ -323,10 +332,19 @@ function abc(){
 }
 
 function book(){
-    booked = true;
     $("#bookB").text("Booked");
     document.getElementById('bookB').style.display = 'block';
     document.getElementById('go_bak_btn').style.display = 'block';
     document.getElementById('go_bak_btn').style.visibility = 'hidden'
     // document.getElementById('bookB').disabled = true; 
+    var getNearestVehicleUrl = 'http://tamuber-mock-server.herokuapp.com/api/vehicles/'+vehicleId+'/book';
+    $.ajax({
+        method: 'POST',
+        url: getNearestVehicleUrl,
+        error: function() {
+            console.log('Unable to book vehicle...');
+        }
+    }).done(function(nearestVehicle) {
+        booked = true;
+    });
 }

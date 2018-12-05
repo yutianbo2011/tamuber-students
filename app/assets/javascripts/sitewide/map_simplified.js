@@ -91,7 +91,7 @@ function initMapMarkerCart2(start,end,vehicleId){
     });
 }
 
-function initMapMarkerCart(start, end, liveLocation, liveVehicleId) {
+function initMapMarkerCart(start, end, liveLocation, liveId) {
 
     console.log("in initMapwithMarker");
     var mapEl = $('#map');
@@ -105,7 +105,7 @@ function initMapMarkerCart(start, end, liveLocation, liveVehicleId) {
     });
 
     console.log("travel time invoked from outside");
-    document.getElementById('CARD').innerHTML = liveVehicleId;
+    document.getElementById('CARD').innerHTML = liveId;
 
     map.on('load', function() {
         getRoute(start,end,liveLocation);
@@ -161,8 +161,7 @@ function initMapMarkerCart(start, end, liveLocation, liveVehicleId) {
         console.log("Hello");
         if(markerLive!= null && stepSize<route.coordinates.length){
             // markerLive.setLngLat(route.coordinates[stepSize++]);
-            var fetchLiveUrl = 'https://tamuber-mock-server.herokuapp.com/api/vehicles/'+liveVehicleId;
-            // var fetchLiveUrl = //'https://raw.githubusercontent.com/rohan54/tamuber-students/master/myjson.json';
+            var fetchLiveUrl = 'https://raw.githubusercontent.com/rohan54/tamuber-students/master/myjson.json';
             console.log("Iteration "+stepSize);
             $.getJSON(fetchLiveUrl, function(vehicle) {
                 var liveLong = vehicle.currentLocation.longitude;
@@ -180,7 +179,6 @@ function initMapMarkerCart(start, end, liveLocation, liveVehicleId) {
     }, 3000);
     console.log("Hi!!!");
 }
-
 
 function updateTripTimeById(dist,time,id) {
     console.log(id+"distance is " + dist);

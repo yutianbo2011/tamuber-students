@@ -41,8 +41,8 @@ function initMapMarkerCart3(start,end){
     var getNearestVehicleUrl = 'https://tamuber-mock-server.herokuapp.com/api/vehicles/nearest?lattitude='+ start[1]+'&longitude='+start[0];
     $.ajax({
         method: 'GET',
-        url: getNearestVehicleUrl,
-    }).done(function(nearestVehicle) {
+        url: getNearestVehicleUrl
+    }).success(function(nearestVehicle) {
         if(nearestVehicle == null){
             return;
         }

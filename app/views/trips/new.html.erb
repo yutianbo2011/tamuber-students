@@ -25,7 +25,8 @@
 <!--<body onload='initMap();updateSelectedRoute(<%= @routeData.to_json.html_safe %>);'>-->
 <!--<body onload='initMapWithMarker2([-96.3425741, 30.6213251], [-96.323706, 30.609521], "V1240");//reload()'>-->
 <!--<body onload='initMapWithMarker([-96.3425741, 30.6213251], [-96.323706, 30.609521], [-96.3285674, 30.6092349]);//reload()'>-->
-<body onload='initMapMarkerCart2([-96.3425741, 30.6213251], [-96.323706, 30.609521]);//, "V1240");//reload()'>
+<!--<body onload='initMapMarkerCart2([-96.3425741, 30.6213251], [-96.323706, 30.609521]);//, "V1240");//reload()'>-->
+<body onload='initMapMarkerCart3([-96.3425741, 30.6213251], [-96.323706, 30.609521]);//, "V1240");//reload()'>
 <!--<body onload='initMapMarkerCart([-96.3425741, 30.6213251], [-96.323706, 30.609521], [-96.3285674, 30.6092349]);//reload()'>-->
 <!-- have to pass start and end coordinates from here-->
 <!--<body onload = 'newInitMapWithMarker();updateRoute([-96.3425741, 30.6213251], [-96.323706,30.609521]);'>-->
@@ -57,7 +58,7 @@
       </tr>
       <tr>
         <td>Car Details:</td>
-        <td id ='CARD'>Cart 21</td>
+        <td id ='CARD'>No Cart</td>
       </tr>
     </table>
     <%= form_tag("/specify", method: "post", id: "route_specs") do |form| %>

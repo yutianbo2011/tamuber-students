@@ -42,7 +42,6 @@ function initMapMarkerCart3(start,end){
     $.ajax({
         method: 'GET',
         url: getNearestVehicleUrl,
-        dataType: 'jsonp',
         error: function() {
             console.log('No vehicles nearby...');
         }
@@ -84,8 +83,7 @@ function initMapMarkerCart2(start,end,vehicleId){
     var getNearestVehicleUrl = 'https://tamuber-mock-server.herokuapp.com/api/vehicles/nearest?lattitude='+ start[1]+'&longitude='+start[0];
     $.ajax({
         method: 'GET',
-        url: getNearestVehicleUrl,
-        dataType: 'jsonp'
+        url: getNearestVehicleUrl
     }).success(function(vehicle){
     // $.getJSON(fetchLiveUrl, function(vehicle) {
         console.log("vehicle");
@@ -177,7 +175,6 @@ function initMapMarkerCart(start, end, liveLocation, liveVehicleId) {
             $.ajax({
                 method: 'GET',
                 url: fetchLiveUrl,
-                dataType: 'jsonp',
                 error: function () {
                     console.log("Couldn't receive Live coordinates for vehicle:"+liveVehicleId);
                 }

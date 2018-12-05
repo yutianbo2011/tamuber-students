@@ -194,7 +194,7 @@ function initMapMarkerCart(start, end, liveLocation, liveVehicleId) {
                     if(!started){
                         updateEstimatedTimes(liveLoc, start, 'ETA');
                     }
-                    if(booked) {
+                    if(booked && started) {
                         updateEstimatedTimes(liveLoc, end, 'ETT');
                     }
                 }

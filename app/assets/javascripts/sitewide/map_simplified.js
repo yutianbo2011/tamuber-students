@@ -45,7 +45,7 @@ function initMapMarkerCart3(start,end){
         error: function() {
             console.log('No vehicles nearby...');
         }
-    }).success(function(nearestVehicle) {
+    }).done(function(nearestVehicle) {
         if(nearestVehicle == null){
             return;
         }
@@ -165,7 +165,7 @@ function initMapMarkerCart(start, end, liveLocation, liveVehicleId) {
         }).always(function(){
         });
     }
-    setInterval(function(){
+    /*setInterval(function(){
         console.log("Hello");
         if(markerLive!= null && stepSize<route.coordinates.length){
             // markerLive.setLngLat(route.coordinates[stepSize++]);
@@ -192,7 +192,7 @@ function initMapMarkerCart(start, end, liveLocation, liveVehicleId) {
             });
             console.log("Change");
         }
-    }, 3000);
+    }, 3000);*/
     console.log("Hi!!!");
 }
 

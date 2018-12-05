@@ -173,7 +173,7 @@ function initMapMarkerCart(start, end, liveLocation, liveVehicleId) {
             // markerLive.setLngLat(route.coordinates[stepSize++]);
             var fetchLiveUrl = 'https://tamuber-mock-server.herokuapp.com/api/vehicles/'+liveVehicleId;
             // var fetchLiveUrl = //'https://raw.githubusercontent.com/rohan54/tamuber-students/master/myjson.json';
-            console.log("--------Iteration "+stepSize+" Coordinates:"+route.coordinates);
+            // console.log("--------Iteration "+stepSize+" Coordinates:"+route.coordinates);
             $.ajax({
                 method: 'GET',
                 url: fetchLiveUrl,

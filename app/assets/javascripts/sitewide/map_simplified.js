@@ -41,9 +41,11 @@ function initMapMarkerCart3(start,end){
     var getNearestVehicleUrl = 'https://tamuber-mock-server.herokuapp.com/api/vehicles/nearest?lattitude='+ start[1]+'&longitude='+start[0];
     $.ajax({
         method: 'GET',
-        url: getNearestVehicleUrl
+        url: getNearestVehicleUrl,
+        error: function() {
+            console.log('No vehicles nearby...');
+        }
     }).success(function(nearestVehicle) {
-        console.log('--rohan-----Success...........');
         if(nearestVehicle == null){
             return;
         }
@@ -67,8 +69,6 @@ function initMapMarkerCart3(start,end){
             initMapMarkerCart(start,end,liveLoc,nearId)
         }).always(function(){
         });*/
-    }).error(function() {
-        console.log('--rohan-----No vehicles nearby...');
     });
 }
 
@@ -80,7 +80,12 @@ function initMapMarkerCart2(start,end,vehicleId){
     // // 'https://jsonbin.io/5c03821b1deea01014bbb72f';
     // //'http://tamuber-mock-server.herokuapp.com/api/vehicles/'+vehicleId;
     var fetchLiveUrl = 'https://raw.githubusercontent.com/rohan54/tamuber-students/master/myjson.json';
-    $.getJSON(fetchLiveUrl, function(vehicle) {
+    var getNearestVehicleUrl = 'https://tamuber-mock-server.herokuapp.com/api/vehicles/nearest?lattitude='+ start[1]+'&longitude='+start[0];
+    $.ajax({
+        method: 'GET',
+        url: getNearestVehicleUrl
+    }).success(function(vehicle){
+    // $.getJSON(fetchLiveUrl, function(vehicle) {
         console.log("vehicle");
         console.log(vehicle);
         var liveLong = vehicle.currentLocation.longitude;
@@ -88,11 +93,13 @@ function initMapMarkerCart2(start,end,vehicleId){
         var liveLoc = [liveLong,liveLat];
         var liveId = vehicle.id;
         initMapMarkerCart(start,end,liveLoc,liveId)
-    }).always(function(){
-    });
+    }).error(function(){
+        console.log('No vehicles nearby...');
+    }).
+    always(function(){});
 }
 
-function initMapMarkerCart(start, end, liveLocation, liveId) {
+function initMapMarkerCart(start, end, liveLocation, liveVehicleId) {
 
     console.log("in initMapwithMarker");
     var mapEl = $('#map');
@@ -106,7 +113,7 @@ function initMapMarkerCart(start, end, liveLocation, liveId) {
     });
 
     console.log("travel time invoked from outside");
-    document.getElementById('CARD').innerHTML = liveId;
+    document.getElementById('CARD').innerHTML = liveVehicleId;
 
     map.on('load', function() {
         getRoute(start,end,liveLocation);
@@ -158,13 +165,21 @@ function initMapMarkerCart(start, end, liveLocation, liveId) {
         }).always(function(){
         });
     }
-    /*setInterval(function(){
+    setInterval(function(){
         console.log("Hello");
         if(markerLive!= null && stepSize<route.coordinates.length){
             // markerLive.setLngLat(route.coordinates[stepSize++]);
-            var fetchLiveUrl = 'https://raw.githubusercontent.com/rohan54/tamuber-students/master/myjson.json';
+            var fetchLiveUrl = 'https://tamuber-mock-server.herokuapp.com/api/vehicles/'+liveVehicleId;
+            // var fetchLiveUrl = //'https://raw.githubusercontent.com/rohan54/tamuber-students/master/myjson.json';
             console.log("Iteration "+stepSize);
-            $.getJSON(fetchLiveUrl, function(vehicle) {
+            $.ajax({
+                method: 'GET',
+                url: fetchLiveUrl,
+                error: function () {
+                    console.log("Couldn't receive Live coordinates for vehicle:"+liveVehicleId);
+                }
+            }).success(function(vehicle) {
+            // $.getJSON(fetchLiveUrl, function(vehicle) {
                 var liveLong = vehicle.currentLocation.longitude;
                 var liveLat = vehicle.currentLocation.lattitude;
                 var liveLoc = [liveLong,liveLat];
@@ -178,7 +193,7 @@ function initMapMarkerCart(start, end, liveLocation, liveId) {
             console.log("Change");
         }
     }, 3000);
-    console.log("Hi!!!");*/
+    console.log("Hi!!!");
 }
 
 function updateTripTimeById(dist,time,id) {

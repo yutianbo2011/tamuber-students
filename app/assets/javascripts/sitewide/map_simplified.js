@@ -48,6 +48,10 @@ function initMapMarkerCart3(start,end){
             console.log('No vehicles nearby...');
             document.getElementById("ETA").innerHTML = "All vehicles busy. Reload!";
             document.getElementById("ETT").innerHTML = "All vehicles busy. Reload!";
+            document.getElementById('bookB').style.display = 'block';
+            // document.getElementById('go_bak_btn').style.display = 'block';
+            // document.getElementById('go_bak_btn').style.visibility = 'hidden'
+            document.getElementById('bookB').disabled = true; 
         }
     }).done(function(nearestVehicle) {
         if(nearestVehicle == null){
@@ -372,9 +376,9 @@ function abc(){
 function book(){
     $("#bookB").text("Booked");
     document.getElementById('bookB').style.display = 'block';
-    document.getElementById('go_bak_btn').style.display = 'block';
-    document.getElementById('go_bak_btn').style.visibility = 'hidden'
-    // document.getElementById('bookB').disabled = true; 
+    // document.getElementById('go_bak_btn').style.display = 'block';
+    // document.getElementById('go_bak_btn').style.visibility = 'hidden'
+    document.getElementById('bookB').disabled = true; 
     var getNearestVehicleUrl = 'https://tamuber-mock-server.herokuapp.com/api/vehicles/'+vehicleId+'/book';
     $.ajax({
         method: 'POST',

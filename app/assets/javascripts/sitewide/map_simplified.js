@@ -200,6 +200,7 @@ function initMapMarkerCart(start, end, liveLocation, liveVehicleId) {
                                 document.getElementById("ETA").innerHTML = "Arrived!";
                             }
                         },null);*/
+                        console.log(document.getElementById("ETA").innerHTML);
                         if(document.getElementById("ETA").innerHTML == 0.00){
                             started = true;
                             document.getElementById("ETA").innerHTML = "Arrived!";

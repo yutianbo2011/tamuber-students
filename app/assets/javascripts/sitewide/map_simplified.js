@@ -46,6 +46,8 @@ function initMapMarkerCart3(start,end){
         url: getNearestVehicleUrl,
         error: function() {
             console.log('No vehicles nearby...');
+            document.getElementById("ETA").innerHTML = "No vehicles nearby!";
+            document.getElementById("ETT").innerHTML = "No vehicles nearby!";
         }
     }).done(function(nearestVehicle) {
         if(nearestVehicle == null){
@@ -170,7 +172,7 @@ function initMapMarkerCart(start, end, liveLocation, liveVehicleId) {
     }
     setInterval(function(){
         console.log("Hello");
-        if(markerLive!= null && stepSize<route.coordinates.length){
+        if(markerLive!= null /*&& stepSize<route.coordinates.length*/){
             // markerLive.setLngLat(route.coordinates[stepSize++]);
             var fetchLiveUrl = 'https://tamuber-mock-server.herokuapp.com/api/vehicles/'+liveVehicleId;
             // var fetchLiveUrl = //'https://raw.githubusercontent.com/rohan54/tamuber-students/master/myjson.json';

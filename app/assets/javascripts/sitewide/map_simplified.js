@@ -46,8 +46,8 @@ function initMapMarkerCart3(start,end){
         url: getNearestVehicleUrl,
         error: function() {
             console.log('No vehicles nearby...');
-            document.getElementById("ETA").innerHTML = "No vehicles nearby!";
-            document.getElementById("ETT").innerHTML = "No vehicles nearby!";
+            document.getElementById("ETA").innerHTML = "All vehicles busy. Reload!";
+            document.getElementById("ETT").innerHTML = "All vehicles busy. Reload!";
         }
     }).done(function(nearestVehicle) {
         if(nearestVehicle == null){

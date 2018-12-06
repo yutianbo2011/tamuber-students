@@ -192,7 +192,7 @@ function initMapMarkerCart(start, end, liveLocation, liveVehicleId) {
                         started = true;
                     }*/
                     if(getDistanceDuration(start,liveLoc,function(dist, time, id) {
-                        if(dist<=0.05){
+                        if(dist<=0.01){
                             started = true;
                         }
                     },null))

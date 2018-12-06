@@ -5,6 +5,7 @@ var stepSize = 0;
 var ACCESS_TOKEN = 'pk.eyJ1IjoiZ3Vsc2hhbmsiLCJhIjoiY2pvM3d1NGV3MTFydzN3cWlkZ2xjdmE1MSJ9.zQ1AATk2EOGJ4XMDyBV9vA';
 var booked = false;
 var started = false;
+var ended = false;
 var vehicleId = "";
 
 function initMap() {
@@ -182,7 +183,7 @@ function initMapMarkerCart(start, end, liveLocation, liveVehicleId) {
                 }
             }).success(function(vehicle) {
             // $.getJSON(fetchLiveUrl, function(vehicle) {
-                if(vehicle.isAvailable != true){
+                if(ended !=true){
                     var liveLong = vehicle.currentLocation.longitude;
                     var liveLat = vehicle.currentLocation.lattitude;
                     var liveLoc = [liveLong,liveLat];
@@ -193,15 +194,44 @@ function initMapMarkerCart(start, end, liveLocation, liveVehicleId) {
                     }*/
                     if(!started){
                         updateEstimatedTimes(liveLoc, start, 'ETA');
-                        getDistanceDuration(start,liveLoc,function(dist, time, id) {
+                        /*getDistanceDuration(start,liveLoc,function(dist, time, id) {
                             if(dist<=0.01){
                                 started = true;
                                 document.getElementById("ETA").innerHTML = "Arrived!";
                             }
-                        },null);
+                        },null);*/
+                        if(document.getElementById("ETA").innerHTML == "0.00"){
+                            started = true;
+                            document.getElementById("ETA").innerHTML = "Arrived!";
+                        }
                     }
-                    else if(booked) {
+                    else if(booked && !ended) {
                         updateEstimatedTimes(liveLoc, end, 'ETT');
+                        if(document.getElementById("ETT").innerHTML == "0.00"){
+                            ended = true;
+                            started = false;
+                            booked = false;
+                            document.getElementById("ETT").innerHTML = "Arrived!";
+                        }
+                    }
+                } else{
+                    document.getElementById("ETA").innerHTML = "Trip Completed!";
+                    document.getElementById("ETT").innerHTML = "Trip Completed!";
+                    if(vehicle.isAvailable == false){
+                        var releaseUrl = 'https://tamuber-mock-server.herokuapp.com/api/vehicles/'+liveVehicleId+'/release';
+                        $.ajax({
+                            method: 'POST',
+                            url: releaseUrl,
+                            error: function () {
+                                console.log("Couldn't release vehicle:"+liveVehicleId);
+                            }
+                        }).success(function() {
+                            console.log("Released vehicle:"+liveVehicleId);
+                            console.log("Defaults ended:"+ended+" started:"+started+" booked:"+booked);
+                        });
+                    } else{
+                        console.log("Already released vehicle:"+liveVehicleId);
+                        console.log("Defaults ended:"+ended+" started:"+started+" booked:"+booked);
                     }
                 }
             });

@@ -195,13 +195,12 @@ function initMapMarkerCart(start, end, liveLocation, liveVehicleId) {
                         getDistanceDuration(start,liveLoc,function(dist, time, id) {
                             if(dist<=0.01){
                                 started = true;
+                                document.getElementById("ETA").innerHTML = "Arrived!";
                             }
                         },null);
-                    }
-                    if(!started){
                         updateEstimatedTimes(liveLoc, start, 'ETA');
                     }
-                    if(booked && started) {
+                    else if(booked) {
                         updateEstimatedTimes(liveLoc, end, 'ETT');
                     }
                 }

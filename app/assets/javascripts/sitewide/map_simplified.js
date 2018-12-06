@@ -191,11 +191,13 @@ function initMapMarkerCart(start, end, liveLocation, liveVehicleId) {
                     /*if(liveLoc[0] == start[0] && liveLoc[1] == start[1]){
                         started = true;
                     }*/
-                    if(getDistanceDuration(start,liveLoc,function(dist, time, id) {
-                        if(dist<=0.01){
-                            started = true;
-                        }
-                    },null))
+                    if(!started){
+                        getDistanceDuration(start,liveLoc,function(dist, time, id) {
+                            if(dist<=0.01){
+                                started = true;
+                            }
+                        },null);
+                    }
                     if(!started){
                         updateEstimatedTimes(liveLoc, start, 'ETA');
                     }

@@ -188,9 +188,14 @@ function initMapMarkerCart(start, end, liveLocation, liveVehicleId) {
                     var liveLoc = [liveLong,liveLat];
                     console.log("Coordinates inside:"+liveLoc);
                     markerLive.setLngLat(liveLoc);
-                    if(liveLoc[0] == start[0] && liveLoc[1] == start[1]){
+                    /*if(liveLoc[0] == start[0] && liveLoc[1] == start[1]){
                         started = true;
-                    }
+                    }*/
+                    if(getDistanceDuration(start,liveLoc,function(dist, time, id) {
+                        if(dist<=0.05){
+                            started = true;
+                        }
+                    },null))
                     if(!started){
                         updateEstimatedTimes(liveLoc, start, 'ETA');
                     }
@@ -229,7 +234,9 @@ function getDistanceDuration(start, end, updateFunction, labelId){
     $.getJSON(url, function(jsonResponse) {
         var distance = (jsonResponse.routes[0].distance*0.001*0.621371).toFixed(2); // convert to km
         var duration = (jsonResponse.routes[0].duration/60).toFixed(2); // convert to minutes
-        updateFunction(distance, duration, labelId);
+        if(updateFunction!=null){
+            updateFunction(distance, duration, labelId);
+        }
     });
 }
 

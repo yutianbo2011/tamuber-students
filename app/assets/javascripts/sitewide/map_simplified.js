@@ -200,14 +200,14 @@ function initMapMarkerCart(start, end, liveLocation, liveVehicleId) {
                                 document.getElementById("ETA").innerHTML = "Arrived!";
                             }
                         },null);*/
-                        if(document.getElementById("ETA").innerHTML == "0.00"){
+                        if(document.getElementById("ETA").innerHTML == 0.00){
                             started = true;
                             document.getElementById("ETA").innerHTML = "Arrived!";
                         }
                     }
                     else if(booked && !ended) {
                         updateEstimatedTimes(liveLoc, end, 'ETT');
-                        if(document.getElementById("ETT").innerHTML == "0.00"){
+                        if(document.getElementById("ETT").innerHTML == 0.00){
                             ended = true;
                             started = false;
                             booked = false;

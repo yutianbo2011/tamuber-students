@@ -34,6 +34,7 @@ gem 'jbuilder', '~> 2.5'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
+  gem 'pg'
 group :development, :test do
   # Use sqlite3 as the database for Active Record
   gem 'sqlite3'
@@ -60,7 +61,7 @@ end
 
 group :production do
   # Use Postgres as the database for active record
-  gem 'pg'
+ # gem 'pg'
   gem 'mapbox-gl-rails'
 end
 

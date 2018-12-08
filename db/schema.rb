@@ -12,11 +12,14 @@
 
 ActiveRecord::Schema.define(version: 20181121203741) do
 
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
   create_table "cart_routes", force: :cascade do |t|
     t.decimal "length"
     t.string "startPoint"
     t.string "endPoint"
-    t.integer "trip_id"
+    t.bigint "trip_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["trip_id"], name: "index_cart_routes_on_trip_id"
@@ -25,7 +28,7 @@ ActiveRecord::Schema.define(version: 20181121203741) do
   create_table "carts", force: :cascade do |t|
     t.string "IP"
     t.boolean "inUse"
-    t.integer "trip_id"
+    t.bigint "trip_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "seat_count"
@@ -37,7 +40,7 @@ ActiveRecord::Schema.define(version: 20181121203741) do
   create_table "coordinates", force: :cascade do |t|
     t.decimal "lat"
     t.decimal "lng"
-    t.integer "cart_route_id"
+    t.bigint "cart_route_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["cart_route_id"], name: "index_coordinates_on_cart_route_id"
@@ -67,4 +70,7 @@ ActiveRecord::Schema.define(version: 20181121203741) do
     t.index ["email"], name: "index_users_on_email", unique: true
   end
 
+  add_foreign_key "cart_routes", "trips"
+  add_foreign_key "carts", "trips"
+  add_foreign_key "coordinates", "cart_routes"
 end

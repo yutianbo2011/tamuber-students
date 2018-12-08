@@ -60,8 +60,8 @@ end
 
 group :production do
   # Use Postgres as the database for active record
-  gem 'pg'
-  gem 'mapbox-gl-rails'
+  # gem 'pg'
+  # gem 'mapbox-gl-rails'
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem

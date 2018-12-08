@@ -240,3 +240,46 @@ label {
 #form-switch:checked~#login-form {
   display:none
 }
+
+#mapid {
+  height: 0em;
+}
+#mapid1{
+  height:440px;
+}
+
+.markerStart {
+  background-image: url('/images/greenMarker.png');
+  background-size: cover;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+.markerEnd {
+  background-image: url('/images/redMarker.png');
+  background-size: cover;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+.markerLive {
+  background-image: url('/images/cart2.png');
+  background-size: cover;
+  width: 30px;
+  height: 22px;
+  border-radius: 100%;
+  cursor: pointer;
+}
+
+.mapboxgl-popup {
+  max-width: 200px;
+}
+
+.mapboxgl-popup-content {
+  text-align: center;
+  font-family: 'Open Sans', sans-serif;
+}

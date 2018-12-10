@@ -127,7 +127,7 @@ function initMapMarkerCart(start, end, liveLocation, liveVehicleId, startName, s
     document.getElementById('CARD').innerHTML = liveVehicleId;
 
     map.on('load', function() {
-        getRoute(start,end,liveLocation);
+        getRoute(start,end,liveLocation, startName, startAddress, endName, endAddress);
     });
 
     function getRoute(start,end,liveLocation, startName, startAddress, endName, endAddress) {

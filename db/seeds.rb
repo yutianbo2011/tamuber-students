@@ -45,10 +45,10 @@ locations = [ {:name => "HRBB", :latitude => 30.6190388, :longitude => -96.33878
             {:name => "WEB", :latitude => 30.6102331, :longitude => -96.3409787},
             {:name => "Zackrey", :latitude => 30.6213205, :longitude => -96.3403854 },
             {:name => "Evans Library Annex", :latitude => 30.6164067, :longitude => -96.3384801},
-            {:name => "Rudder Comples", :latitude => 30.6133001, :longitude => -96.339924},
-            {:name => "Scoates Hall", :latitude => 30.6214851, :longitude => -96.3377064},
-            {:name => "The Pavilion", :latitude => 30.6214851, :longitude => -96.3377064},
-            {:name => "REC Center", :latitude => 30.6214851, :longitude => -96.3377064} ]
+            {:name => "Rudder Comples", :latitude => 30.6128312, :longitude => -96.3424836},
+            {:name => "Scoates Hall", :latitude => 30.6184909, :longitude => -96.3405125},
+            {:name => "The Pavilion", :latitude => 30.6166749, :longitude => -96.340373},
+            {:name => "REC Center", :latitude => 30.6073927, :longitude => -96.3454622} ]
             
 locations.each do |location|
   Location.create!(location)

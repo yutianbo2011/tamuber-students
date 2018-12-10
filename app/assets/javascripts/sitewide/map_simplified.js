@@ -39,7 +39,7 @@ function findMidPoint(start,end) {
     return [lon3,lat3];
 }
 
-function initMapMarkerCart3(start,end){
+function initMapMarkerCart3(start,end, startName, startAddress, endName, endAddress){
     console.log("Start is:"+start);
     console.log("End is:"+end);
     var getNearestVehicleUrl = 'https://tamuber-mock-server.herokuapp.com/api/vehicles/nearest?lattitude='+ start[1]+'&longitude='+start[0];
@@ -64,7 +64,7 @@ function initMapMarkerCart3(start,end){
         var nearLoc = [nearLong,nearLat];
         var nearId = nearestVehicle.id;
         vehicleId = nearId;
-        initMapMarkerCart(start,end,nearLoc,nearId)
+        initMapMarkerCart(start,end,nearLoc,nearId, startName, startAddress, endName, endAddress)
         // var fetchLiveUrl = 'https://api.myjson.com/bins/o0td6';
         // // 'https://jsonbin.io/5c03821b1deea01014bbb72f';
         // //'http://tamuber-mock-server.herokuapp.com/api/vehicles/'+vehicleId;
@@ -110,7 +110,7 @@ function initMapMarkerCart2(start,end,vehicleId){
     always(function(){});
 }
 
-function initMapMarkerCart(start, end, liveLocation, liveVehicleId) {
+function initMapMarkerCart(start, end, liveLocation, liveVehicleId, startName, startAddress, endName, endAddress) {
 
     console.log("in initMapwithMarker");
     var mapEl = $('#map');
@@ -130,7 +130,7 @@ function initMapMarkerCart(start, end, liveLocation, liveVehicleId) {
         getRoute(start,end,liveLocation);
     });
 
-    function getRoute(start,end,liveLocation) {
+    function getRoute(start,end,liveLocation, startName, startAddress, endName, endAddress) {
         console.log("route enter");
         var directionsRequest = 'https://api.mapbox.com/directions/v5/mapbox/driving/' + start[0] + ',' + start[1] + ';' + end[0] + ',' + end[1] + '?geometries=geojson&access_token=' + mapboxgl.accessToken;
         console.log(directionsRequest)
@@ -171,7 +171,7 @@ function initMapMarkerCart(start, end, liveLocation, liveVehicleId) {
                 }
             });
             // this is where the code from the next step will go
-            addMarkers(start, end, liveLocation);
+            addMarkers(start, end, liveLocation, startName, startAddress, endName, endAddress);
 
         }).always(function(){
         });
@@ -289,15 +289,19 @@ function updateETT(data) {
     }
 }
 
-function addMarkers(start, end, liveLocation) {
+function addMarkers(start, end, liveLocation, startName, startAddress, endName, endAddress) {
     var message = null;
     if (start != null) {
-        var strtMessage = "Start:" + "HRBB"
-        var strtAddress = "Harvey R. \"Bum\" Bright Building, College Station, TX 77840..";
+        var strtMessage = "Start:" + start;
+        var strtAddress = startAddress;
+        // var strtMessage = "Start:" + "HRBB"
+        // var strtAddress = "Harvey R. \"Bum\" Bright Building, College Station, TX 77840..";
     }
     if (end != null) {
-        var endMessage = "End:" + "ZACH"
-        var endAddress = "Zachry Engineering Education Complex, College Station, TX 77840..";
+        var endMessage = "End:" + endName
+        var endAddress = endAddress;
+        // var endMessage = "End:" + "ZACH"
+        // var endAddress = "Zachry Engineering Education Complex, College Station, TX 77840..";
     }
     var contentStartString = '<h5>' + strtMessage + "</h5>"
     contentStartString = contentStartString + "<p>Details : " + strtAddress + "</p>"

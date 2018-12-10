@@ -40,6 +40,8 @@ function findMidPoint(start,end) {
 }
 
 function initMapMarkerCart3(start,end){
+    console.log("Start is:"+start);
+    console.log("End is:"+end);
     var getNearestVehicleUrl = 'https://tamuber-mock-server.herokuapp.com/api/vehicles/nearest?lattitude='+ start[1]+'&longitude='+start[0];
     $.ajax({
         method: 'GET',

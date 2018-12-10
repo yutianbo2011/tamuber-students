@@ -292,13 +292,13 @@ function updateETT(data) {
 function addMarkers(start, end, liveLocation, startName, startAddress, endName, endAddress) {
     var message = null;
     if (start != null) {
-        var strtMessage = "Start:" + start;
+        var strtMessage = "Start:" + startName;
         var strtAddress = startAddress;
         // var strtMessage = "Start:" + "HRBB"
         // var strtAddress = "Harvey R. \"Bum\" Bright Building, College Station, TX 77840..";
     }
     if (end != null) {
-        var endMessage = "End:" + endName
+        var endMessage = "End:" + endName;
         var endAddress = endAddress;
         // var endMessage = "End:" + "ZACH"
         // var endAddress = "Zachry Engineering Education Complex, College Station, TX 77840..";

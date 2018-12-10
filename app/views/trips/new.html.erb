@@ -34,32 +34,23 @@
   </div>
 
   <!-- Manvitha changes-->
-
-  <%= form_for @trip, url: {action: "create"}, method: "POST" do |form| %>
-    <table style='margin-bottom:10px'>
-      <tr>
-        <th colspan ="2">Trip Details</th>
-      </tr>
-      <tr>
-        <td>Estimated Time of Arrival:</td>
-        <td id='ETA'>Not Available</td>
-      </tr>
-      <tr>
-        <td>Estimated Trip Time:</td>
-        <td id ='ETT' >Not Available</td>
-      </tr>
-      <tr>
-        <td>Car Details:</td>
-        <td id ='CARD'>Not Available</td>
-      </tr>
-    </table>
-    <%= form_tag("/specify", method: "post", id: "route_specs") do |form| %>
-    <% end %>
-    <!--<input type="submit" class="btn btn-primary" id="bookB" value='Book Trip' onclick=''></input>-->
-    <!--<button id="bookB" style = "font-size: 20px;" onclick="book();" >Book Trip</button>-->
-
-  <% end %>
-  <!-- Manvitha changes-->
+  <table style='margin-bottom:10px'>
+    <tr>
+      <th colspan ="2">Trip Details</th>
+    </tr>
+    <tr>
+      <td>Estimated Time of Arrival:</td>
+      <td id='ETA'>Not Available</td>
+    </tr>
+    <tr>
+      <td>Estimated Trip Time:</td>
+      <td id ='ETT' >Not Available</td>
+    </tr>
+    <tr>
+      <td>Car Details:</td>
+      <td id ='CARD'>Not Available</td>
+    </tr>
+  </table>
   <div class='info-box'>
     <div id='calculated-line'></div>
   </div>

@@ -23,11 +23,9 @@
   <h1>TAMUber Students</h1>
 </header>
 
-<% if false %>
   <p>Pickup: <%= @source.name %> , Coordinates: <%= @source.latitude %> , <%= @source.longitude %></p>
   <p>Drop off: <%= @destination.name %> , Coordinates: <%= @destination.latitude %> , <%= @destination.longitude %></p>
   <p>handicap access: <%= @needs_assist %></p>
-<% end %>
 
 <body onload='initMapMarkerCart3([<%= @source.longitude %> , <%= @source.latitude%>],
   [<%= @destination.longitude %> , <%= @destination.latitude %>]);'>

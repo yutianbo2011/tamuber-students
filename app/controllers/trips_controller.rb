@@ -138,7 +138,7 @@ class TripsController < ApplicationController
             @needs_assist = false
         end
         
-        # find sourcce and destination dropoff
+        # find source and destination dropoff
         @source = Location.find_by name: @src
         @destination = Location.find_by name: @dest
         

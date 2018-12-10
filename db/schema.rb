@@ -50,6 +50,7 @@ ActiveRecord::Schema.define(version: 20181121203741) do
     t.string "name"
     t.float "latitude"
     t.float "longitude"
+    t.string "address"
   end
 
   create_table "trips", force: :cascade do |t|

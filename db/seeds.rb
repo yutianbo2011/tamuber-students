@@ -38,17 +38,28 @@ end
 #   Cart.create!(cart)
 # end
 
-locations = [ {:name => "HRBB", :latitude => 30.6190388, :longitude => -96.338788},
-            {:name => "ETB", :latitude => 30.622837, :longitude => -96.339397},
-            {:name => "MSC", :latitude => 30.612311, :longitude => -96.341307},
-            {:name => "Kyle Field", :latitude => 30.610233, :longitude => -96.3409787},
-            {:name => "WEB", :latitude => 30.6102331, :longitude => -96.3409787},
-            {:name => "Zackrey", :latitude => 30.6213205, :longitude => -96.3403854 },
-            {:name => "Evans Library Annex", :latitude => 30.6164067, :longitude => -96.3384801},
-            {:name => "Rudder Comples", :latitude => 30.6128312, :longitude => -96.3424836},
-            {:name => "Scoates Hall", :latitude => 30.6184909, :longitude => -96.3405125},
-            {:name => "The Pavilion", :latitude => 30.6166749, :longitude => -96.340373},
-            {:name => "REC Center", :latitude => 30.6073927, :longitude => -96.3454622} ]
+locations = [ {:name => "HRBB", :latitude => 30.6190388, :longitude => -96.338788,
+              :address => "Harvey R. Bum Bright Building College Station, TX 77840"},
+            {:name => "ETB", :latitude => 30.622837, :longitude => -96.339397,
+              :address => "101 Bizzell St, College Station, TX 77843"},
+            {:name => "MSC", :latitude => 30.612311, :longitude => -96.341307,
+              :address => "275 Joe Routt Blvd College Station, TX 77840"},
+            {:name => "Kyle Field", :latitude => 30.610233, :longitude => -96.3409787,
+              :address => "756 Houston St, College Station, TX 77843"},
+            {:name => "WEB", :latitude => 30.6102331, :longitude => -96.3409787,
+              :address => "188 Bizzell St Bryan, TX 77801"},
+            {:name => "Zackrey", :latitude => 30.6213251, :longitude => -96.3425741,
+              :address => "125 Spence St College Station, TX 77840"},
+            {:name => "Evans Library Annex", :latitude => 30.6164113, :longitude => -96.3406688,
+              :address => "400 Spence St, College Station, TX 77843"},
+            {:name => "Rudder Comples", :latitude => 30.6128312, :longitude => -96.3424836,
+              :address => "401 Joe Routt Blvd, College Station, TX 77840"},
+            {:name => "Scoates Hall", :latitude => 30.6184909, :longitude => -96.3405125,
+              :address => "College Station, TX 77840"},
+            {:name => "The Pavilion", :latitude => 30.6166749, :longitude => -96.340373,
+              :address => "408 Spence St, College Station, TX 77840"},
+            {:name => "REC Center", :latitude => 30.6073927, :longitude => -96.3454622,
+              :address => "797 Olsen Blvd, College Station, TX 77840"} ]
             
 locations.each do |location|
   Location.create!(location)

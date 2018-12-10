@@ -5,6 +5,7 @@ var stepSize = 0;
 var ACCESS_TOKEN = 'pk.eyJ1IjoiZ3Vsc2hhbmsiLCJhIjoiY2pvM3d1NGV3MTFydzN3cWlkZ2xjdmE1MSJ9.zQ1AATk2EOGJ4XMDyBV9vA';
 var booked = false;
 var started = false;
+var ended = false;
 var vehicleId = "";
 
 function initMap() {
@@ -45,6 +46,12 @@ function initMapMarkerCart3(start,end){
         url: getNearestVehicleUrl,
         error: function() {
             console.log('No vehicles nearby...');
+            document.getElementById("ETA").innerHTML = "All vehicles busy. Reload!";
+            document.getElementById("ETT").innerHTML = "All vehicles busy. Reload!";
+            document.getElementById('bookB').style.display = 'block';
+            // document.getElementById('go_bak_btn').style.display = 'block';
+            // document.getElementById('go_bak_btn').style.visibility = 'hidden'
+            document.getElementById('bookB').disabled = true; 
         }
     }).done(function(nearestVehicle) {
         if(nearestVehicle == null){
@@ -169,11 +176,11 @@ function initMapMarkerCart(start, end, liveLocation, liveVehicleId) {
     }
     setInterval(function(){
         console.log("Hello");
-        if(markerLive!= null && stepSize<route.coordinates.length){
+        if(markerLive!= null /*&& stepSize<route.coordinates.length*/){
             // markerLive.setLngLat(route.coordinates[stepSize++]);
             var fetchLiveUrl = 'https://tamuber-mock-server.herokuapp.com/api/vehicles/'+liveVehicleId;
             // var fetchLiveUrl = //'https://raw.githubusercontent.com/rohan54/tamuber-students/master/myjson.json';
-            console.log("--------Iteration "+stepSize+" Coordinates:"+route.coordinates);
+            // console.log("--------Iteration "+stepSize+" Coordinates:"+route.coordinates);
             $.ajax({
                 method: 'GET',
                 url: fetchLiveUrl,
@@ -182,20 +189,55 @@ function initMapMarkerCart(start, end, liveLocation, liveVehicleId) {
                 }
             }).success(function(vehicle) {
             // $.getJSON(fetchLiveUrl, function(vehicle) {
-                if(vehicle.isAvailable != true){
+                if(ended !=true){
                     var liveLong = vehicle.currentLocation.longitude;
                     var liveLat = vehicle.currentLocation.lattitude;
                     var liveLoc = [liveLong,liveLat];
                     console.log("Coordinates inside:"+liveLoc);
                     markerLive.setLngLat(liveLoc);
-                    if(liveLoc == start){
+                    /*if(liveLoc[0] == start[0] && liveLoc[1] == start[1]){
                         started = true;
-                    }
+                    }*/
                     if(!started){
                         updateEstimatedTimes(liveLoc, start, 'ETA');
+                        /*getDistanceDuration(start,liveLoc,function(dist, time, id) {
+                            if(dist<=0.01){
+                                started = true;
+                                document.getElementById("ETA").innerHTML = "Arrived!";
+                            }
+                        },null);*/
+                        if(document.getElementById("ETA").innerHTML == "0.00 minutes"){
+                            started = true;
+                            document.getElementById("ETA").innerHTML = "Arrived!";
+                        }
                     }
-                    if(booked) {
+                    else if(booked && !ended) {
                         updateEstimatedTimes(liveLoc, end, 'ETT');
+                        if(document.getElementById("ETT").innerHTML == "0.00 minutes"){
+                            ended = true;
+                            started = false;
+                            booked = false;
+                            document.getElementById("ETT").innerHTML = "Arrived!";
+                        }
+                    }
+                } else{
+                    document.getElementById("ETA").innerHTML = "Trip Completed!";
+                    document.getElementById("ETT").innerHTML = "Trip Completed!";
+                    if(vehicle.isAvailable == false){
+                        var releaseUrl = 'https://tamuber-mock-server.herokuapp.com/api/vehicles/'+liveVehicleId+'/release';
+                        $.ajax({
+                            method: 'POST',
+                            url: releaseUrl,
+                            error: function () {
+                                console.log("Couldn't release vehicle:"+liveVehicleId);
+                            }
+                        }).success(function() {
+                            console.log("Released vehicle:"+liveVehicleId);
+                            console.log("Defaults ended:"+ended+" started:"+started+" booked:"+booked);
+                        });
+                    } else{
+                        console.log("Already released vehicle:"+liveVehicleId);
+                        console.log("Defaults ended:"+ended+" started:"+started+" booked:"+booked);
                     }
                 }
             });
@@ -219,6 +261,20 @@ function updateEstimatedTimes(liveLocation, start, labelId) {
         console.log("liveLoc :"+liveLocation);
         console.log("start :"+start);
     }
+}
+
+function getDistanceDuration(start, end, updateFunction, labelId){
+    var e = start[0] +","+start[1] +";" + end[0] + "," + end[1];
+    mapboxgl.accessToken = ACCESS_TOKEN
+    var url = 'https://api.mapbox.com/directions/v5/mapbox/driving/' + e +'?geometries=geojson&steps=true&&access_token=' + mapboxgl.accessToken;
+    console.log("eta url:"+url);
+    $.getJSON(url, function(jsonResponse) {
+        var distance = (jsonResponse.routes[0].distance*0.001*0.621371).toFixed(2); // convert to km
+        var duration = (jsonResponse.routes[0].duration/60).toFixed(2); // convert to minutes
+        if(updateFunction!=null){
+            updateFunction(distance, duration, labelId);
+        }
+    });
 }
 
 function updateETT(data) {
@@ -288,20 +344,6 @@ function calcRoute(lat, lng) {
 function calculateAndDisplayRoute(request, startPointName, endPointName, routeId) {
 }
 
-function getDistanceDuration(start, end, updateFunction, labelId){
-    var e = start[0] +","+start[1] +";" + end[0] + "," + end[1];
-    mapboxgl.accessToken = ACCESS_TOKEN
-    var url = 'https://api.mapbox.com/directions/v5/mapbox/driving/' + e +'?geometries=geojson&steps=true&&access_token=' + mapboxgl.accessToken;
-    console.log("eta url:"+url);
-    $.getJSON(url, function(jsonResponse) {
-        var distance = (jsonResponse.routes[0].distance*0.001*0.621371).toFixed(2); // convert to km
-        var duration = (jsonResponse.routes[0].duration/60).toFixed(2); // convert to minutes
-        updateFunction(distance, duration, labelId);
-    });
-}
-
-
-
 function getMatch(e) {
     console.log("match route invoked");
     mapboxgl.accessToken = ACCESS_TOKEN
@@ -334,10 +376,10 @@ function abc(){
 function book(){
     $("#bookB").text("Booked");
     document.getElementById('bookB').style.display = 'block';
-    document.getElementById('go_bak_btn').style.display = 'block';
-    document.getElementById('go_bak_btn').style.visibility = 'hidden'
-    // document.getElementById('bookB').disabled = true; 
-    var getNearestVehicleUrl = 'http://tamuber-mock-server.herokuapp.com/api/vehicles/'+vehicleId+'/book';
+    // document.getElementById('go_bak_btn').style.display = 'block';
+    // document.getElementById('go_bak_btn').style.visibility = 'hidden'
+    document.getElementById('bookB').disabled = true; 
+    var getNearestVehicleUrl = 'https://tamuber-mock-server.herokuapp.com/api/vehicles/'+vehicleId+'/book';
     $.ajax({
         method: 'POST',
         url: getNearestVehicleUrl,

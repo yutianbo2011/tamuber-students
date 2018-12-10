@@ -143,9 +143,7 @@ class TripsController < ApplicationController
         @destination = Location.find_by name: @dest
         
         # if @source == nil
-        # Added by Manish. You are free to remove
-        @trip=Trip.new
-        @trip.save 
+         
     end
     
     # def specify

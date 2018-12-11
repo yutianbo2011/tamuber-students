@@ -46,7 +46,9 @@ group :development, :test do
   gem 'poltergeist'
   gem 'database_cleaner'
   gem 'rspec-expectations'
-  gem 'cucumber', '~> 3.1.2'
+  #gem 'cucumber', '~> 3.1.2'
+  gem 'cucumber-rails', :require => false
+  gem 'cucumber-rails-training-wheels'
 end
 
 group :development do

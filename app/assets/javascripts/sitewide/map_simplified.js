@@ -39,10 +39,66 @@ function findMidPoint(start,end) {
     return [lon3,lat3];
 }
 
-function initMapMarkerCart3(start,end, startName, startAddress, endName, endAddress){
-    console.log("Start is:"+start);
-    console.log("End is:"+end);
-    var getNearestVehicleUrl = 'https://tamuber-mock-server.herokuapp.com/api/vehicles/nearest?lattitude='+ start[1]+'&longitude='+start[0];
+// function initMapMarkerCart3(start,end, startName, startAddress, endName, endAddress){
+//     console.log("Start is:"+start);
+//     console.log("End is:"+end);
+//     var getNearestVehicleUrl = 'https://tamuber-mock-server.herokuapp.com/api/vehicles/nearest?lattitude='+ start[1]+'&longitude='+start[0];
+//     $.ajax({
+//         method: 'GET',
+//         url: getNearestVehicleUrl,
+//         error: function() {
+//             console.log('No vehicles nearby...');
+//             document.getElementById("ETA").innerHTML = "All vehicles busy. Reload!";
+//             document.getElementById("ETT").innerHTML = "All vehicles busy. Reload!";
+//             document.getElementById('bookB').style.display = 'block';
+//             // document.getElementById('go_bak_btn').style.display = 'block';
+//             // document.getElementById('go_bak_btn').style.visibility = 'hidden'
+//             document.getElementById('bookB').disabled = true; 
+//         }
+//     }).done(function(nearestVehicle) {
+//         if(nearestVehicle == null){
+//             return;
+//         }
+//         var nearLong = nearestVehicle.currentLocation.longitude;
+//         var nearLat = nearestVehicle.currentLocation.lattitude;
+//         var nearLoc = [nearLong,nearLat];
+//         var nearId = nearestVehicle.id;
+//         vehicleId = nearId;
+//         initMapMarkerCart(start,end,nearLoc,nearId, startName, startAddress, endName, endAddress)
+//         // var fetchLiveUrl = 'https://api.myjson.com/bins/o0td6';
+//         // // 'https://jsonbin.io/5c03821b1deea01014bbb72f';
+//         // //'http://tamuber-mock-server.herokuapp.com/api/vehicles/'+vehicleId;
+//         /*var fetchLiveUrl = 'https://raw.githubusercontent.com/rohan54/tamuber-students/master/myjson.json';
+//         $.getJSON(fetchLiveUrl, function(vehicle){
+//             // vehicle = JSON.parse(vehicle);
+//             console.log("vehicle");
+//             console.log(vehicle);
+//             var liveLong = vehicle.currentLocation.longitude;
+//             var liveLat = vehicle.currentLocation.lattitude;
+//             var liveLoc = [liveLong,liveLat];
+//             var liveId = vehicle.id;
+//             initMapMarkerCart(start,end,liveLoc,nearId)
+//         }).always(function(){
+//         });*/
+//     });
+// }
+
+function initMapMarkerCart3(src, dest){
+    // console.log("Start is:"+start);
+    // console.log("End is:"+end);
+    var srcname = src.name
+    var srclat = src.latitude
+    var srclong = src.longitude
+    var srcaddr = src.address
+    var srccoord = [srclong, srclat]
+    
+    var destname = dest.name
+    var destlat = dest.latitude
+    var destlong = dest.longitude
+    var destaddr = dest.address
+    var destcoord = [destlong, destlat]
+    
+    var getNearestVehicleUrl = 'https://tamuber-mock-server.herokuapp.com/api/vehicles/nearest?lattitude='+ srclat+'&longitude='+srclong;
     $.ajax({
         method: 'GET',
         url: getNearestVehicleUrl,
@@ -64,7 +120,8 @@ function initMapMarkerCart3(start,end, startName, startAddress, endName, endAddr
         var nearLoc = [nearLong,nearLat];
         var nearId = nearestVehicle.id;
         vehicleId = nearId;
-        initMapMarkerCart(start,end,nearLoc,nearId, startName, startAddress, endName, endAddress)
+        initMapMarkerCart(srccoord, destcoord, nearLoc, nearId,
+                          srcname, srcaddr, destname, destaddr)
         // var fetchLiveUrl = 'https://api.myjson.com/bins/o0td6';
         // // 'https://jsonbin.io/5c03821b1deea01014bbb72f';
         // //'http://tamuber-mock-server.herokuapp.com/api/vehicles/'+vehicleId;
@@ -82,7 +139,6 @@ function initMapMarkerCart3(start,end, startName, startAddress, endName, endAddr
         });*/
     });
 }
-
 
 
 

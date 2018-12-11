@@ -2,6 +2,7 @@
 @import "bootstrap";
 
 /* universal */
+$accent: #500;
 
 body {
   display: flex;
@@ -205,10 +206,6 @@ input {
   }
 }
 
-.button {
-  width: 25%;
-}
-
 #session_remember_me {
   width: auto;
   margin-left: 0;
@@ -249,6 +246,24 @@ label {
 }
 #form-switch:checked~#login-form {
   display:none
+}
+
+table {
+  border-collapse: collapse;
+  margin: 0 auto;
+  color: #333;
+  text-align: left;
+  tr:nth-child(odd) {
+    background: #eee;
+  }
+  th {
+    color: #fff;
+    background: $accent;
+    
+  }
+  th, td {
+    padding: 0.375em 1em;
+  }
 }
 
 #mapid {

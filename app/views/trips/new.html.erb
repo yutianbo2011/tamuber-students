@@ -26,7 +26,7 @@
 
 <!--<body onload='initMapMarkerCart3( [<%= @source.longitude %> , <%= @source.latitude%>] , [<%= @destination.longitude %> , <%= @destination.latitude %>], '<%= @source.name %>', '<%= @source.name %>', '<%= @destination.name %>', '<%= @destination.name %>' );'>-->
 <!--<body onload='initMapMarkerCart3([-96.3425741, 30.6213251], [-96.323706, 30.609521], "acd", "xyz", "123", "456");'>-->
-<body onload='initMapMarkerCart3( <%= @source %> , <%= @destination %>);'>
+<body onload='initMapMarkerCart3( <%=raw @source.to_json %> , <%=raw @destination.to_json %>);'>
 <main>
   <h1>Selected Route</h1>
   <div id="mapid" name='mapid'></div>

@@ -7,7 +7,7 @@ end
 
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '~> 5.1.5'
+gem 'rails'
 # Edit Manish start
 gem 'bootstrap-sass', '~> 3.3.7'
 # Edit Manish end
@@ -41,14 +41,14 @@ group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
   # Adds support for Capybara system testing and selenium driver
-  gem 'capybara', '~> 2.13'
+  # gem 'capybara', '~> 2.13'
   gem 'selenium-webdriver', '~> 3.11.0'
   gem 'poltergeist'
-  gem 'database_cleaner'
-  gem 'rspec-expectations'
+  # gem 'database_cleaner'
+  gem 'rspec-rails', '~> 3.5'
   #gem 'cucumber', '~> 3.1.2'
   gem 'cucumber-rails', :require => false
-  gem 'cucumber-rails-training-wheels'
+  # gem 'cucumber-rails-training-wheels'
 end
 
 group :development do
@@ -67,5 +67,8 @@ group :production do
   gem 'mapbox-gl-rails'
 end
 
+group :test do
+  gem 'database_cleaner'
+end
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]

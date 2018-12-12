@@ -1,0 +1,178 @@
+    1  git clone https://github.com/BhatNikhil/tamuber-students.git
+    2  sudo yum -y update
+    3  sudo su
+    4  rvm use 2.4.0
+    5  ruby --version
+    6  rvmsudo gem install rspec rspec-rails rspec-rails-matchers
+    7  gem list
+    8  cd tamuber-students/
+    9  sudo su
+   10  nvm i v8
+   11  npm install -g heroku
+   12  heroku
+   13  sudo yum install postgresql postgresql-server postgresql-devel postgresql-contrib postgresql-docs
+   14  git branch -a
+   15  git checkout feature/cucumber
+   16  cucumber
+   17  sudo su
+   18  cucumber
+   19  ls
+   20  cucumber features/
+   21  sudo su'
+   22  sudo su
+   23  vim Gemfile
+   24  sudo su
+   25  cucumber
+   26  sudo su
+   27  cucumber
+   28  sudo su
+   29  cucumber
+   30  sudo su
+   31  cucumber
+   32  gem update rails
+   33  bundle update
+   34  sudo su
+   35  cucumber
+   36  touch Gemfile.lock
+   37  vi Gemfile.lock
+   38  sudo su
+   39  cucumber
+   40  git status
+   41  git add .
+   42  git commit -m "cucumber 1"
+   43  git checkout master
+   44  ls
+   45  cp TAMUBer* ..
+   46  ls
+   47  cd ..
+   48  ls
+   49  cd tamuber-students/
+   50  git checkout feature/cucumber
+   51  cd ..
+   52  ls
+   53  cd tamuber-students/
+   54  sudo su
+   55  cucumber
+   56  git status
+   57  git add .
+   58  git checkout -m "Gemfile changed"
+   59  git commit -m "Gemfile changed"
+   60  git checkout master
+   61  git log
+   62  git checkout feature/cucumber
+   63  cd ..
+   64  cucumber
+   65  cd tamuber-students/
+   66  cucumber
+   67  sudo su
+   68  cucumber
+   69  ls
+   70  git reset --hard
+   71  git checkout
+   72  git checkout feature/login
+   73  cucumber
+   74  sudo su
+   75  cucumber
+   76  git pull
+   77  sudo su
+   78  cucumber
+   79  bundle install cucumber
+   80  sudo su
+   81  cucumber
+   82  bundle exec rake db:migrate
+   83  sudo su
+   84  cucumber
+   85  sudo su
+   86  cucumber
+   87  git pull
+   88  git checkout feature/login
+   89  rails generate cucumber:install capybara
+   90  sudo su
+   91  rails generate cucumber:install capybara
+   92  cd features/
+   93  rails generate cucumber:install capybara
+   94  cd ..
+   95  cucumber
+   96  sudo su
+   97  cucumber
+   98  ls
+   99  rm -r features/
+  100  ls
+  101  sudo su
+  102  vim Gemfile
+  103  sudo su
+  104  rails generate cucumber:install
+  105  sudo su
+  106  cucumber
+  107  bundle install
+  108  rails generate cucumber:install
+  109  cucumber -init
+  110  sudo su
+  111  cucumber
+  112  bundle init
+  113  sudo su
+  114  bundle
+  115  cucumber
+  116  bundle init
+  117  sudo su
+  118  cucumber
+  119  sudo su
+  120  cucumber
+  121  sudo su
+  122  cucumber
+  123  sudo su
+  124  cucumber
+  125  rm Gemfile.lock 
+  126  '
+  127  ls
+  128  sudo su
+  129  cucumber
+  130  ls
+  131  sudo su
+  132  cucumber
+  133  vim Gemfile
+  134  git reset --hard
+  135  sudo git reset --hard
+  136  ls
+  137  cd tamuber-students/
+  138  gem install rails
+  139  cd tamuber-students/
+  140  gem install rails
+  141  sudo su
+  142  vim Gemfile
+  143  sudo su
+  144  bundle exec rails db:create
+  145  bundle exec rails db:migrate
+  146  bundle exec rails db:rollout
+  147  bundle exec rails db:rollback
+  148  bundle exec rails db:create
+  149  bundle exec rails db:migrate
+  150  ls
+  151  cd log/
+  152  ls
+  153  ll
+  154  chown user:user development.log 
+  155  chown ec2-user:ec2-user development.log 
+  156  sudo chown ec2-user:ec2-user development.log 
+  157  cd ..
+  158  bundle exec rails db:migrate
+  159  ll
+  160  sudo chown -r ec2-user:ec2-user features
+  161  man chown 
+  162  sudo chown -R ec2-user:ec2-user features
+  163  ll
+  164  cucumber
+  165  sudo su
+  166  bundle exec rails generate rspec:install
+  167  sudo su
+  168  bundle exec rails generate cucumber:install
+  169  ll
+  170  sudo chown -R ec2-user:ec2-user log
+  171  sudo chown -R ec2-user:ec2-user .
+  172  ll
+  173  bundle exec rails generate cucumber:install
+  174  cucumber
+  175  sudo su
+  176  vim spec/rails_helper.rb 
+  177  cucumber
+  178  history > cucumber_installation_history

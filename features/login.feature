@@ -7,4 +7,4 @@ Scenario: login with valid credentials
   When I fill in Email
   And I fill in Password
   And I click on "Log in" button
-    Then I should see the "Cart Requirements"
+  Then I should see the "Cart Requirements"

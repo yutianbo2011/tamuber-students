@@ -1,4 +1,4 @@
-Feature: Show me the 'Cart Reqirements' page if I haven't started a trip yet
+  Feature: Show me the 'Cart Reqirements' page if I haven't started a trip yet
   As a user
   So that I can't view a pickup point or cart location that doesn't exist
   I want to see the 'Cart Requirements' page if I haven't started a trip yet

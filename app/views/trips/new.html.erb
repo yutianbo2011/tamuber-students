@@ -27,7 +27,7 @@
 <% end %>
 
 <body onload='initMapMarkerCart3( <%=raw @source.to_json %> , <%=raw @destination.to_json %>);'>
-<div class="scrollbar">
+<div style="overflow-y: scroll;">
 <main>
   <h3>Selected Route</h3>
   <div id="mapid" name='mapid'></div>

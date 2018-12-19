@@ -12,6 +12,9 @@ body {
   padding-top: 60px;
   overflow:auto;
 }
+.scrollable{
+  overflow : scroll;
+}
 
 section {
   overflow: auto;

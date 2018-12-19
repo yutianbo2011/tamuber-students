@@ -27,6 +27,7 @@
 <% end %>
 
 <body onload='initMapMarkerCart3( <%=raw @source.to_json %> , <%=raw @destination.to_json %>);'>
+<div class="scrollbar">
 <main>
   <h3>Selected Route</h3>
   <div id="mapid" name='mapid'></div>
@@ -62,4 +63,5 @@
   <!-- Manvitha changes-->
   <input type="submit" class="btn btn-primary" id="bookB" value='Book Trip' onclick='book();' style="width:150px;background-color:#500;margin-left:auto;margin-right:auto;display:block"></input>
 </main>
+</div>
 </body>

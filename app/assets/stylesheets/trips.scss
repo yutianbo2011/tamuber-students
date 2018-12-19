@@ -9,15 +9,9 @@ body {
   flex-direction: column;
   //justify-content: center;
   align-items: center;
-  width: 100vw;
-  height: 100vh;
   padding-top: 60px;
   overflow:auto;
 }
-
-// #mapid1,#mapid{
-//   overflow:scroll;
-// }
 
 section {
   overflow: auto;
@@ -270,7 +264,7 @@ table {
   height: 0em;
 }
 #mapid1{
-  // height:440px;
+  height:440px;
 }
 
 .markerStart {

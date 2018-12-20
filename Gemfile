@@ -33,6 +33,8 @@ gem 'jbuilder', '~> 2.5'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
+# dotenv-rails is for sending password link through email
+gem 'dotenv-rails'
 
   gem 'pg'
 group :development, :test do

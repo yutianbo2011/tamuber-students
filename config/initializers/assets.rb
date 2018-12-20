@@ -38,7 +38,7 @@ Rails.application.config.assets.precompile += %w( pickup.js )
 Rails.application.config.assets.precompile += %w( transit.js )
 # Edit Manish start
 #Javascript for "login and signup" view
-Rails.application.config.assets.precompile += %w( sessions.css users.css )
+Rails.application.config.assets.precompile += %w( sessions.css users.css password_resets.css)
 # Edit Manish end
 #Javascript for "end" view
 Rails.application.config.assets.precompile += %w( end.js )

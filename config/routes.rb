@@ -1,4 +1,8 @@
 Rails.application.routes.draw do
+  get 'password_resets/new'
+
+  get 'password_resets/edit'
+
   get 'tamuber/index'
 
   root 'tamuber#index'
@@ -24,4 +28,5 @@ Rails.application.routes.draw do
   #match 'users/show',   to: "trips#specify",      via: :get
   # Edit end
   resources :users
+  resources :password_resets,     only: [:new, :create, :edit, :update]
 end

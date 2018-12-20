@@ -88,4 +88,17 @@ Rails.application.configure do
 
   # Do not dump schema after migrations.
   config.active_record.dump_schema_after_migration = false
+
+# added the following for sending email through password
+ config.action_mailer.smtp_settings = {
+    address: "smtp.gmail.com",
+    port: 587,
+    domain: "gmail.com",
+    authentication: "login",
+    enable_starttls_auto: true,
+    user_name: "mansishrivastava90@gmail.com",
+    password: "tamuber123"
+  }
+# doesn't have to be Heroku, but you get the idea.
+ config.action_mailer.default_url_options = { :host => 'tranquil-anchorage-36618.herokuapp.com' }
 end

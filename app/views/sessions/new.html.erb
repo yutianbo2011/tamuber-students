@@ -1,6 +1,12 @@
 <% provide(:title, "Log in") %>
 <h1>Log in</h1>
 
+<div>
+  <% flash.each do |name, msg| -%>
+      <%= content_tag :div, msg, class: name %>
+  <% end -%>
+</div>
+
 <div class="row">
   <div class="col-md-6 col-md-offset-3">
     <%= form_for(:session, url: login_path) do |f| %>

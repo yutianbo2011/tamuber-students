@@ -14,26 +14,6 @@
     <!--<script src='https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-draw/v1.0.0/mapbox-gl-draw.js'></script>-->
     <!--<link rel='stylesheet' href='https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-draw/v1.0.0/mapbox-gl-draw.css' type='text/css'/>-->
   <!-- Manvitha changes-->
-  <!--<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>FIrst map</title>
-    <link rel="stylesheet" href="https://js.arcgis.com/3.16/dijit/themes/claro/claro.css"/>
-    <link rel="stylesheet" type="text/css" href="https://js.arcgis.com/3.16/esri/css/esri.css" />
-    <style>
-           html, body ,#map{position: absolute; left: 125px; top: 58px; height: 80%; width: 80%; margin: 0; padding: 0;}
-    </style>
-    <script type="text/javascript" src="https://js.arcgis.com//3.16/init.js" ></script>
-    <script>
-        require(["esri/map", "dojo/domReady!"], function (Map) {
-            var map = new Map("map", {
-                center: [-118, 34.5],
-                zoom: 8,
-                basemap: "topo"
-            });
-        });
- 
- 
-    </script>-->
   <meta charset="utf-8">
   <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no">
   <title>ArcGIS API for JavaScript Hello World App</title>
@@ -52,7 +32,7 @@
     ], function(Map, MapView) {
 
       var map = new Map({
-        basemap: "topo-vector"
+        basemap: "streets"
       });
 
       var view = new MapView({

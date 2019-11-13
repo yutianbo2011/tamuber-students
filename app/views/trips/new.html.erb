@@ -43,14 +43,14 @@
   <p>handicap access: <%= @needs_assist %></p>
 <% end %>
 
-<body onload='initMapMarkerCart3( <%=raw @source.to_json %> , <%=raw @destination.to_json %>);'>
+<body onload='initMapMarkerCart3( <%=raw @source.to_json %> , <%=raw @destination.to_json %>);' class="claro">
 <main>
   <h1>Selected Route</h1>
   <div id="mapid" name='mapid'></div>
   <div id="mapid1" name='mapid1'></div>
   
-  <!--<div id="map" >
-  </div>-->
+  <div id="map" >
+  </div>
   
   <!-- Manvitha changes-->
   <div class='info-box'>

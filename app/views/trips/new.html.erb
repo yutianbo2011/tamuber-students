@@ -28,8 +28,9 @@
   <script>
     require([
       "esri/Map",
-      "esri/views/MapView"
-    ], function(Map, MapView) {
+      "esri/views/MapView",
+      "esri/Basemap"
+    ], function(Map, MapView, Basemap) {
       var basemap = new Basemap({
         portalItem: {
           id: "0d5c4a69058f464e844fb30022d81d57"  // WGS84 Streets Vector webmap

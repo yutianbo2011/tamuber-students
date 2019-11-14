@@ -38,6 +38,12 @@
       "dojo/domReady!"
     ], function(Map, MapView, Home, TileLayer) {
         var map = new Map();
+        
+        var layer = null,
+        layerUrl = "https://gis.tamu.edu/arcgis/rest/services/FCOR/BaseMap_20191008/MapServer",
+        layer = new TileLayer(layerUrl, null);
+        map.layers.add(layer);
+        
         var view = new MapView({
           container: "viewDiv",
           map: map,
@@ -52,10 +58,6 @@
             view: view
         });
         view.ui.add(homeBtn, "top-left");
-        var layer = null,
-        layerUrl = "https://gis.tamu.edu/arcgis/rest/services/FCOR/BaseMap_20191008/MapServer",
-        layer = new TileLayer(layerUrl, null);
-        map.layers.add(layer);
       });
       
     // require([

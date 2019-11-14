@@ -30,29 +30,20 @@
       "esri/Map",
       "esri/views/MapView"
     ], function(Map, MapView) {
-
-      // var map = new Map({
-      //   basemap: "AggieTestMap"
-      // });
-
-      // var view = new MapView({
-      //   container: "viewDiv",
-      //   map: map,
-      //   center: [-40, 28],
-      //   zoom: 2
-      // });
-      var webmap = new WebMap({
+      var basemap = new Basemap({
         portalItem: {
-          id: "0d5c4a69058f464e844fb30022d81d57"
+          id: "0d5c4a69058f464e844fb30022d81d57"  // WGS84 Streets Vector webmap
         }
       });
-
+      var map = new Map({
+        basemap: basemap
+      });
+      
       var view = new MapView({
         container: "viewDiv",
-        //*** UPDATE ***//
-        map: webmap
-        //center: [-118.80500,34.02700],
-        //zoom: 13
+        map: map,
+        center: [-40, 28],
+        zoom: 2
       });
     });
   </script>

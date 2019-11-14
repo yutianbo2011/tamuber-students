@@ -27,37 +27,21 @@
 
   <script>
     require([
-      "esri/Basemap"
+      "esri/Map",
       "esri/views/MapView"
-    ], function(Basemap, MapView) {
-      var basemap = new Basemap({
-        baseLayers: [
-          new MapImageLayer({
-            url: "https://gis.tamu.edu/arcgis/rest/services/FCOR/MapInfo_20190529/MapServer/",
-            title: "Basemap"
-          })  
-        ],
-        title: "basemap",
-        id: "basemap"
-      });
+    ], function(Map, MapView) {
 
       var map = new Map({
-        basemap: basemap
+        basemap: "topo-vector"
       });
-      
-      // var map = new Map({
-      //   basemap: basemap
-      // });
-      
+
       var view = new MapView({
         container: "viewDiv",
         map: map,
-        constraints: {
-          lods: TileInfo.create().lods
-        }
-        // center: [-40, 28],
-        // zoom: 2
+        center: [-118.71511,34.09042],
+        zoom: 11
       });
+
     });
   </script>
   <%= javascript_include_tag "new" %>

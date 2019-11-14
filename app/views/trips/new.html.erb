@@ -30,7 +30,7 @@
       "esri/Map",
       "esri/views/MapView",
       "esri/widgets/Home",
-      "esri/layers/MapImageLayer",
+      "esri/layers/TileLayer",
       "dojo/domReady!"
     ], function(Map, MapView, Home, MapImageLayer) {
         var map = new Map();
@@ -43,8 +43,8 @@
         });
         view.ui.add(homeBtn, "top-left");
         var layer = null,
-        layerUrl = "https://gis.tamu.edu/arcgis/rest/services/FCOR/MapInfo_20190529/MapServer",
-        layer = new MapImageLayer(layerUrl, null);
+        layerUrl = "https://gis.tamu.edu/arcgis/rest/services/FCOR/MapInfo_20191008/MapServer",
+        layer = new TileLayer(layerUrl, null);
         map.layers.add(layer);
     });
   </script>

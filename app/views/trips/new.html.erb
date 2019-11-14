@@ -22,6 +22,10 @@
       position: absolute; left: 125px; top: 58px; height: 80%; width: 80%; margin: 0; padding: 0;
     }
   </style>
+  <!-- Favorite Bookmark Icon -->
+  <link rel="shortcut icon" type="image/ico" href="//www.esri.com/favicon.ico" />
+  <link rel="icon" type="image/ico" href="//www.esri.com/favicon.ico" />
+  <!-- End Favorite Bookmark Icon --> <link href="/arcgis/rest/static/main.css" rel="stylesheet" type="text/css"/>
   <link href="https://js.arcgis.com/4.5/esri/css/main.css" rel="stylesheet" type="text/css" />
   <script type="text/javascript" src="https://js.arcgis.com/4.5/"></script>
 
@@ -43,7 +47,7 @@
         });
         view.ui.add(homeBtn, "top-left");
         var layer = null,
-        layerUrl = "https://gis.tamu.edu/arcgis/rest/services/FCOR/MapInfo_20191008/MapServer",
+        layerUrl = "https://gis.tamu.edu/arcgis/rest/services/FCOR/BaseMap_20191008/MapServer",
         layer = new TileLayer(layerUrl, null);
         map.layers.add(layer);
     });

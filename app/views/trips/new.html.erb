@@ -19,7 +19,7 @@
   <title>ArcGIS API for JavaScript Hello World App</title>
   <style>
     html, body, #viewDiv {
-       height: 100%; width: 100%; margin: 0; padding: 0;
+      position: absolute; left: 125px; top: 58px; height: 80%; width: 80%; margin: 0; padding: 0;
     }
   </style>
   <link rel="stylesheet" href="https://js.arcgis.com/4.13/esri/css/main.css">
@@ -27,13 +27,22 @@
 
   <script>
     require([
-      "esri/WebMap"
+      "esri/Basemap"
       "esri/views/MapView"
-    ], function(WebMap, MapView) {
-      var webmap = new WebMap({
-        portalItem: {
-          id: "41281c51f9de45edaf1c8ed44bb10e30"
-        }
+    ], function(Basemap, MapView) {
+      var basemap = new Basemap({
+        baseLayers: [
+          new MapImageLayer({
+            url: "https://gis.tamu.edu/arcgis/rest/services/FCOR/MapInfo_20190529/MapServer/",
+            title: "Basemap"
+          })  
+        ],
+        title: "basemap",
+        id: "basemap"
+      });
+
+      var map = new Map({
+        basemap: basemap
       });
       
       // var map = new Map({
@@ -42,7 +51,10 @@
       
       var view = new MapView({
         container: "viewDiv",
-        map: webmap
+        map: map,
+        constraints: {
+          lods: TileInfo.create().lods
+        }
         // center: [-40, 28],
         // zoom: 2
       });

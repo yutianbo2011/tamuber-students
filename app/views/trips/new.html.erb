@@ -28,20 +28,31 @@
   <script>
     require([
       "esri/Map",
-      "esri/views/MapView"
-    ], function(Map, MapView) {
+      "esri/views/MapView",
+      "esri/widgets/Locate"
+    ], function(Map, MapView, Locate) {
 
       var map = new Map({
-        basemap: "streets"
+        basemap: "streets-navigation-vector"
       });
 
       var view = new MapView({
         container: "viewDiv",
         map: map,
-        center: [-118.71511,34.09042],
-        zoom: 11
+        center: [-40, 28],
+        zoom: 2
+      });
+      
+      var locate = new Locate({
+        view: view,
+        useHeadingEnabled: false,
+        goToOverride: function(view, options) {
+          options.target.scale = 1500;  // Override the default map scale
+          return view.goTo(options.target);
+        }
       });
 
+      view.ui.add(locate, "top-left");
     });
   </script>
   <%= javascript_include_tag "new" %>

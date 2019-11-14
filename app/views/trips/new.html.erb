@@ -27,24 +27,25 @@
 
   <script>
     require([
-      "esri/Map",
+      "esri/WebMap"
       "esri/views/MapView",
       "esri/Basemap"
     ], function(Map, MapView, Basemap) {
-      var basemap = new Basemap({
+      var webmap = new WebMap({
         portalItem: {
-          id: "0d5c4a69058f464e844fb30022d81d57"  // WGS84 Streets Vector webmap
+          id: "0d5c4a69058f464e844fb30022d81d57"
         }
       });
-      var map = new Map({
-        basemap: basemap
-      });
+      
+      // var map = new Map({
+      //   basemap: basemap
+      // });
       
       var view = new MapView({
         container: "viewDiv",
-        map: map,
-        center: [-40, 28],
-        zoom: 2
+        map: webmap,
+        // center: [-40, 28],
+        // zoom: 2
       });
     });
   </script>

@@ -101,7 +101,8 @@
         });
         view.ui.add(homeBtn, "top-left");
         var directions = new Directions({
-          view: view
+          view: view,
+          routeServiceUrl: "https://utility.arcgis.com/usrsvcs/appservices/Bj4Y09lbZUcOR4uF/rest/services/World/Route/NAServer/Route_World/solve"
         });
         view.ui.add(directions, "top-right");
     });

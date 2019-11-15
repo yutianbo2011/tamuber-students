@@ -71,11 +71,16 @@
         var map = new Map({
           basemap: "streets-navigation-vector"
         });
+        var layer = null,
+        layerUrl = "https://gis.tamu.edu/arcgis/rest/services/FCOR/BaseMap_20191008/MapServer",
+        layer = new TileLayer(layerUrl, null);
+        
+        map.layers.add(layer);
         var view = new MapView({
           container: "viewDiv",
           map: map,
-          // center: [30.0, -96.0],
-          // zoom: 5
+          center: [30.617177	-96.331136],
+          zoom: 5,
           padding: {
             right: 320
           }
@@ -88,11 +93,6 @@
           view: view
         });
         view.ui.add(homeBtn, "top-left");
-        var layer = null,
-        layerUrl = "https://gis.tamu.edu/arcgis/rest/services/FCOR/BaseMap_20191008/MapServer",
-        layer = new TileLayer(layerUrl, null);
-        map.layers.add(layer);
-        
         var directions = new Directions({
           view: view
         });

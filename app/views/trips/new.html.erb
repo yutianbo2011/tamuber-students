@@ -107,6 +107,17 @@
         var routeTask = new RouteTask({
           url: "https://utility.arcgis.com/usrsvcs/appservices/Bj4Y09lbZUcOR4uF/rest/services/World/Route/NAServer/Route_World"
         });
+        
+        var point_zach = {
+          type: "point",  // autocasts as new Point()
+          longitude: -96.34113,
+          latitude: 30.62110
+        };
+        var point_kyle = {
+          type: "point",  // autocasts as new Point()
+          longitude: -96.34184,
+          latitude: 30.61114
+        };
         function addGraphic(type, point) {
           var graphic = new Graphic({
             symbol: {
@@ -118,17 +129,20 @@
           });
           view.graphics.add(graphic);
         }
-        view.on("click", function(event){
-          if (view.graphics.length === 0) {
-            addGraphic("start", event.mapPoint);
-          } else if (view.graphics.length === 1) {
-            addGraphic("finish", event.mapPoint);
-            getRoute();
-          } else {
-            view.graphics.removeAll();
-            addGraphic("start",event.mapPoint);
-          }
-        });
+        addGraphic("start", point_zach)
+        addGraphic("finish", point_kyle)
+        getRoute();
+        // view.on("click", function(event){
+        //   if (view.graphics.length === 0) {
+        //     addGraphic("start", event.mapPoint);
+        //   } else if (view.graphics.length === 1) {
+        //     addGraphic("finish", event.mapPoint);
+        //     getRoute();
+        //   } else {
+        //     view.graphics.removeAll();
+        //     addGraphic("start",event.mapPoint);
+        //   }
+        // });
         function getRoute() {
         // Setup the route parameters
           var routeParams = new RouteParameters({

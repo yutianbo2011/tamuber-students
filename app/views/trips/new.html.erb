@@ -123,11 +123,33 @@
             addGraphic("start", event.mapPoint);
           } else if (view.graphics.length === 1) {
             addGraphic("finish", event.mapPoint);
+            getRoute();
           } else {
             view.graphics.removeAll();
             addGraphic("start",event.mapPoint);
           }
         });
+        function getRoute() {
+        // Setup the route parameters
+          var routeParams = new RouteParameters({
+            stops: new FeatureSet({
+              features: view.graphics.toArray() // Pass the array of graphics
+            }),
+            returnDirections: true
+          });
+        // Get the route
+          routeTask.solve(routeParams).then(function(data) {
+          // Display the route
+            data.routeResults.forEach(function(result) {
+              result.route.symbol = {
+                type: "simple-line",
+                color: [5, 150, 255],
+                width: 3
+              };
+              view.graphics.add(result.route);
+            });
+          });
+        }
     });
     // require([
     //   "esri/Map",

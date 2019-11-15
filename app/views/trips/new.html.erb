@@ -118,6 +118,11 @@
           longitude: -96.34037,
           latitude: 30.60985
         };
+        var point_3 = {
+          type: "point",  // autocasts as new Point()
+          longitude: -96.34924,
+          latitude: 30.61073
+        };
         function addGraphic(type, point) {
           var graphic = new Graphic({
             symbol: {
@@ -131,6 +136,7 @@
         }
         addGraphic("start", point_zach)
         addGraphic("finish", point_kyle)
+        addGraphic("finish", point_3)
         getRoute();
         // view.on("click", function(event){
         //   if (view.graphics.length === 0) {

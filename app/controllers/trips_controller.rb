@@ -48,15 +48,15 @@ class TripsController < ApplicationController
         end
         
         # find source and destination dropoff
-        @source = Location.find_by('locations.name' => @src)
+        @source = Location.find_by_name('locations.name' => @src)
         @destination = Location.find_by('locations.name' => @dest)
         
-        @source_lat = Location.select('locations.latitude').find_by('locations.name' => @src)
+        @source_lat = Location.find_by('locations.name' => @src).select('locations.latitude')
         @source_lon = Location.select('locations.longitude').find_by('locations.name' => @src)
         @destination_lat = Location.select('locations.latitude').find_by('locations.name' => @dest)
         @destination_lon = Location.select('locations.longitude').find_by('locations.name' => @dest)
         
-        gon.source_lat = 30.62110
+        gon.source_lat = @source_lat
     end
     
     def specify

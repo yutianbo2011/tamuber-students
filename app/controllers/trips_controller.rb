@@ -57,7 +57,6 @@ class TripsController < ApplicationController
         @destination_lon = Location.select('locations.longitude').find_by('locations.name' => @dest)
         
         gon.source_lat = 30.62110
-        gon.
     end
     
     def specify

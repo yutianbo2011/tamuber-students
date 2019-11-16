@@ -48,8 +48,8 @@ class TripsController < ApplicationController
         end
         
         # find source and destination dropoff
-        @source = Location.find_by name: @src
-        @destination = Location.find_by name: @dest
+        @source_lat = Location.find_by name(@src).plunk(:latitude)
+        @destination_lon = Location.find_by name(@dest).plunk(:longitude)
         
         # @source_lat = Location.find_by(name: @src).select(":latitude")
         # @source_lon = Location.find_by(name: @src).select(":longitude")

@@ -48,7 +48,7 @@ class TripsController < ApplicationController
         end
         
         # find source and destination dropoff
-        @source = Location.find_by_name('locations.name' => @src)
+        @source = Location.find_by('locations.name' => @src)
         @destination = Location.find_by('locations.name' => @dest)
         
         @source_lat = Location.select('locations.latitude').find_by('locations.name' => @src)

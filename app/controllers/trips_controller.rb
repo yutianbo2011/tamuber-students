@@ -59,6 +59,7 @@ class TripsController < ApplicationController
         gon.source_lon = @source_lon
         gon.destination_lat = @destination_lat
         gon.destination_lon = @destination_lon
+        
     end
     
     def specify

@@ -56,14 +56,7 @@ class TripsController < ApplicationController
         @destination_lat = Location.select('locations.latitude').find_by('locations.name' => @dest)
         @destination_lon = Location.select('locations.longitude').find_by('locations.name' => @dest)
         
-        # @source_lat = Location.find_by(name: @src).select(":latitude")
-        # @source_lon = Location.find_by(name: @src).select(":longitude")
-        # @destination_lat = Location.find_by(name: @dest).select(":latitude")
-        # @destination_lon = Location.find_by(name: @dest).select(":longitude")
-        # gon.source_lat = @source_lat
-        # gon.source_lon = @source_lon
-        # gon.destination_lat = @destination_lat
-        # gon.destination_lon = @destination_lon
+        gon.source_lat = @source_lat
         
     end
     

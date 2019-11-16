@@ -112,7 +112,7 @@
           type: "point",  // autocasts as new Point()
           // longitude: -96.34113,
           // latitude: 30.62110
-          longitude: gon.source_lon
+          longitude: gon.source_lon,
           latitude: gon.source_lat
         };
         var point_destination = {
@@ -136,8 +136,8 @@
           });
           view.graphics.add(graphic);
         }
-        addGraphic("start", point_zach)
-        addGraphic("finish", point_kyle)
+        addGraphic("start", point_source)
+        addGraphic("finish", point_destination)
         getRoute();
         // view.on("click", function(event){
         //   if (view.graphics.length === 0) {

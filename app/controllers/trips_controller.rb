@@ -51,13 +51,14 @@ class TripsController < ApplicationController
         @source = Location.find_by('locations.name' => @src)
         @destination = Location.find_by('locations.name' => @dest)
         
-        # @source_lat = Location.select('locations.latitude').find_by('locations.name' => @src)
-        @source_lon = Location.select('locations.longitude').find_by('locations.name' => @src)
-        @destination_lat = Location.select('locations.latitude').find_by('locations.name' => @dest)
-        @destination_lon = Location.select('locations.longitude').find_by('locations.name' => @dest)
-        
         @source_lat = Location.where(:name => @src).pluck(:latitude)
+        @source_lon = Location.where(:name => @src).pluck(:longitude)
+        @destination_lat = Location.where(:name => @dest).pluck(:latitude)
+        @destination_lon = Location.where(:name => @dest).pluck(:longitude)
         gon.source_lat = @source_lat[0]
+        gon.source_lon = @source_lon[0]
+        gon.destination_lat = @destination_lat[0]
+        gon.destination_lon = @destination_lon[0]
     end
     
     def specify

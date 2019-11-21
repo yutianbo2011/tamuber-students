@@ -37,6 +37,8 @@
   <script type="text/javascript" src="https://js.arcgis.com/4.13/"></script>
 
   <script type="text/javascript">
+    // The first version of Aggie Map. User can arbitrarily select two points on the map and the route in between will 
+    // be shown on the map. 
     // require([
     //   "esri/Map",
     //   "esri/views/MapView",
@@ -72,6 +74,8 @@
     //     });
     //     view.ui.add(directions, "top-right");
     // });
+    // The second vertion of Aggie Map. Once the user select the destination and pickup location, then the route between 
+    // these two points will be shown in the next page. 
     require([
       "esri/Map",
       "esri/views/MapView",
@@ -120,11 +124,6 @@
           longitude: gon.destination_lon,
           latitude: gon.destination_lat
         };
-        // var point_3 = {
-        //   type: "point",  // autocasts as new Point()
-        //   longitude: -96.34924,
-        //   latitude: 30.61073
-        // };
         function addGraphic(type, point) {
           var graphic = new Graphic({
             symbol: {
@@ -139,17 +138,6 @@
         addGraphic("start", point_source)
         addGraphic("finish", point_destination)
         getRoute();
-        // view.on("click", function(event){
-        //   if (view.graphics.length === 0) {
-        //     addGraphic("start", event.mapPoint);
-        //   } else if (view.graphics.length === 1) {
-        //     addGraphic("finish", event.mapPoint);
-        //     getRoute();
-        //   } else {
-        //     view.graphics.removeAll();
-        //     addGraphic("start",event.mapPoint);
-        //   }
-        // });
         function getRoute() {
         // Setup the route parameters
           var routeParams = new RouteParameters({
@@ -172,30 +160,7 @@
           });
         }
     });
-    // require([
-    //   "esri/Map",
-    //   "esri/views/MapView",
-    //   //*** ADD ***//
-    //   "esri/widgets/Directions"
-    // ], function(Map, MapView, Directions) {
-    //   var map = new Map({
-    //     //*** UPDATE ***//
-    //     basemap: "streets-navigation-vector"
-    //   });
-
-    //   var view = new MapView({
-    //     container: "viewDiv",
-    //     map: map,
-    //     //*** UPDATE ***//
-    //     center: [-118.24532,34.05398],
-    //     zoom: 12
-    //   });
-      
-    //   var directions = new Directions({
-    //     view: view
-    //   });
-    //   view.ui.add(directions, "top-right");
-    // });
+    
   </script>
   <%= javascript_include_tag "new" %>
   

@@ -51,6 +51,8 @@ class TripsController < ApplicationController
         @source = Location.find_by('locations.name' => @src)
         @destination = Location.find_by('locations.name' => @dest)
         
+        # Get latitude and longitude coordinates of two points. 
+        # Pass variables through gon package. 
         @source_lat = Location.where(:name => @src).pluck(:latitude)
         @source_lon = Location.where(:name => @src).pluck(:longitude)
         @destination_lat = Location.where(:name => @dest).pluck(:latitude)

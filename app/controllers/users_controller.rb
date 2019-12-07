@@ -2,7 +2,8 @@ class UsersController < ApplicationController
   skip_before_action :check_token
   
   def show
-    @user = User.find(params[:id])
+    #@user = User.find(params[:id])
+    @user = User.find(session[:user_id])
   end
 
   def new
@@ -20,13 +21,22 @@ class UsersController < ApplicationController
       render 'new'
     end
   end
+  
+  def update
+    @user = User.find(session[:user_id])
+    @user.update_attribute(:firstname, user_params[:firstname])
+    @user.update_attribute(:lastname, user_params[:lastname])
+    @user.update_attribute(:email, user_params[:email])
+    @user.update_attribute(:phone, user_params[:phone])
+    redirect_to specify_path
+  end
 
   private
 
-    def user_params
-      params.require(:user).permit(:firstname, :lastname, :email, :password,
-                                   :password_confirmation)
-    end
+  def user_params
+    params.require(:user).permit(:firstname, :lastname, :email, :phone, :password,
+                                 :password_confirmation)
+  end
     
    
 end

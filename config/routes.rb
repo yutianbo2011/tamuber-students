@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'users/show'
+
   get 'tamuber/index'
 
   root 'tamuber#index'
@@ -24,4 +26,7 @@ Rails.application.routes.draw do
   #match 'users/show',   to: "trips#specify",      via: :get
   # Edit end
   resources :users
+  get '/update',  to: 'users#show'
+  patch '/update',  to: 'users#update'
+  
 end

@@ -85,8 +85,10 @@
       "esri/tasks/support/RouteParameters",
       "esri/tasks/support/FeatureSet",
       "esri/Graphic",
-      "dojo/domReady!"
-    ], function(Map, MapView, Home, TileLayer, RouteTask, RouteParameters, FeatureSet, Graphic) {
+      "dojo/domReady!",
+      "esri/layers/FeatureLayer",
+      "esri/symbols/PictureMarkerSymbol",
+    ], function(Map, MapView, Home, TileLayer, RouteTask, RouteParameters, FeatureSet, Graphic, FeatureLayer, PictureMarkerSymbol) {
         var map = new Map({
           basemap: "streets-navigation-vector"
         });
@@ -124,6 +126,60 @@
           longitude: gon.destination_lon,
           latitude: gon.destination_lat
         };
+        
+        /*var BusIconGraphic = new Graphic({
+           geometry: {
+             type: "point",
+             x: -96.34642,
+             y: 30.612
+           },
+           symbol: {
+             type: "picture-marker",
+             url:"http://static.arcgis.com/images/Symbols/Transportation/esriDefaultMarker_191.png",
+             width: "30px",
+             height: "30px"
+           }
+          });
+        view.graphics.add(BusIconGraphic);*/
+        
+        function addBus(xlon, ylat){
+          var BusIconGraphic = new Graphic({
+           geometry: {
+             type: "point",
+             //x: -96.34642,
+             //y: 30.612
+             x: xlon,
+             y: ylat
+           },
+           symbol: {
+             type: "picture-marker",
+             url:"http://static.arcgis.com/images/Symbols/Transportation/esriDefaultMarker_191.png",
+             width: "30px",
+             height: "30px"
+           }
+          });
+        view.graphics.add(BusIconGraphic);
+        }
+        addBus(-96.34642,30.612)
+        /*
+        const Http = new XMLHttpRequest();
+        const url='https://jsonplaceholder.typicode.com/posts';
+        Http.open("GET", url);
+        Http.send();
+
+        Http.onreadystatechange = (e) => {
+          console.log(Http.responseText)
+        }
+        */
+        
+        var pms = new PictureMarkerSymbol({
+          url: 'images/search-pointer.png', //this does not for a sublayer symbol
+          //url: 'https://js.arcgis.com/3.28/esri/dijit/Search/images/search-pointer.png', //this works
+          width: "22px",
+          height: "22px"
+        });
+        view.graphics.add(pms);
+        
         function addGraphic(type, point) {
           var graphic = new Graphic({
             symbol: {
